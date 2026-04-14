@@ -1,0 +1,1514 @@
+# ============================================================================
+# JAKE RL → RATIO LATTICE INDEX
+# ============================================================================
+# 
+# PLAN:
+# 
+# The JakeRL.txt file is a psychological/cognitive profile of Jake organized 
+# into Q&A sections. The Ratio Lattice is a CRM sales intelligence system 
+# with 40 schema files.
+#
+# The question: Can we build an "index" that maps the cognitive/philosophical 
+# traits identified in JakeRL.txt onto the architectural features of the 
+# Ratio Lattice — showing how the person's mind is literally encoded into 
+# the system's design?
+#
+# Approach:
+# 1. Extract the key cognitive/philosophical traits from JakeRL.txt
+# 2. Extract the key architectural features from the Ratio Lattice
+# 3. Build a mapping: for each trait, which lattice features embody it?
+# 4. Score the strength of each mapping
+# 5. Create a structured index + final visualization
+#
+# This is an interpretive/structural analysis, not a statistical test.
+# ============================================================================
+
+print("Step 1: Parse JakeRL.txt into structured traits")
+print("="*60)
+
+# Read the full JakeRL file
+with open("JakeRL.txt", "r") as f:
+    jake_text = f.read()
+
+# Split into sections by the numbered question pattern
+import re
+
+# Each section starts with a chapter (separated by numbered lists starting from 1)
+# Let's find all Q&A pairs
+qa_pairs = []
+lines = jake_text.split('\n')
+
+current_q = None
+current_a = None
+
+for line in lines:
+    line = line.strip()
+    if not line:
+        if current_q and current_a:
+            qa_pairs.append((current_q, current_a))
+            current_q = None
+            current_a = None
+        continue
+    
+    # Check if this is a question line (starts with number followed by period)
+    q_match = re.match(r'^\d+\.\s+(.+)', line)
+    if q_match:
+        if current_q and current_a:
+            qa_pairs.append((current_q, current_a))
+        current_q = q_match.group(1)
+        current_a = None
+    elif current_q and current_a is None:
+        current_a = line
+    elif current_q and current_a:
+        current_a += " " + line
+
+if current_q and current_a:
+    qa_pairs.append((current_q, current_a))
+
+print(f"Extracted {len(qa_pairs)} Q&A pairs from JakeRL.txt")
+print(f"\nSample entries:")
+for i in [0, 5, 20, 50, 100, 150]:
+    if i < len(qa_pairs):
+        print(f"\n  [{i}] Q: {qa_pairs[i][0][:80]}...")
+        print(f"       A: {qa_pairs[i][1][:80]}...")
+In [25]:
+Response
+[Appended Cell #0] [stdout]
+Step 1: Parse JakeRL.txt into structured traits
+============================================================
+Extracted 309 Q&A pairs from JakeRL.txt
+
+Sample entries:
+
+  [0] Q: What kind of builder is he at the methodological level?...
+       A: He is a systems builder before he is a category loyalist. He does not begin by a...
+
+  [5] Q: What kind of abstraction does he trust most?...
+       A: He trusts abstractions that survive operational pressure. He is less interested ...
+
+  [20] Q: What is one possible weakness in his style?...
+       A: He may be unusually vulnerable to getting pulled toward grand unification throug...
+
+  [50] Q: What does he seem to think is more dangerous than simple failure?...
+       A: Counterfeit progress. He appears to believe that being stuck is less dangerous t...
+
+  [100] Q: What does this suggest about how he may experience intimacy?...
+       A: Intimacy may be difficult because he has a long history of carrying major hidden...
+
+  [150] Q: What is one likely strength implied by it?...
+       A: He may be unusually good at creating language that actually changes how people o...
+In [26]:
+run_cell
+# ============================================================================
+# Step 2: Extract core cognitive/architectural TRAITS from JakeRL
+# ============================================================================
+# 
+# Rather than use all 309 Q&A pairs, we need to identify the DISTINCT 
+# recurring cognitive traits that show up across sections. These are the 
+# "dimensions" of Jake's mind that could map onto the lattice.
+#
+# I'll do this by keyword/theme extraction from all answers.
+
+from collections import Counter
+
+all_answers = " ".join([a for _, a in qa_pairs]).lower()
+
+# Define the core trait clusters based on careful reading of the document
+# Each trait has: a name, a description, and keywords to search for
+
+trait_catalog = {
+    "CLOSURE_LEGITIMACY": {
+        "description": "Deep preoccupation with whether claims, systems, and processes have actually earned their closure — or are counterfeit",
+        "keywords": ["closure", "counterfeit", "legitimate", "illegitimate", "earned", "unearned", "fake", "false", "pretend"],
+        "lattice_dimension": "trust_verification"
+    },
+    "BOUNDEDNESS": {
+        "description": "Preference for finite, bounded, gated systems over infinite or unbounded ones",
+        "keywords": ["bounded", "finite", "gated", "limit", "boundary", "envelope", "window", "constraint", "regime"],
+        "lattice_dimension": "constraint_architecture"
+    },
+    "EXPANSION_THEN_COMPRESSION": {
+        "description": "Recurring pattern: fan outward through generation, then compress inward through synthesis",
+        "keywords": ["expansion", "compression", "compress", "recompress", "synthesis", "fan", "narrow", "converge"],
+        "lattice_dimension": "pipeline_flow"
+    },
+    "ORCHESTRATION_OVER_MONOLITH": {
+        "description": "Belief that system quality comes from the orchestrator, not the strongest single component",
+        "keywords": ["orchestrat", "pipeline", "layer", "cooperation", "modular", "multi-phase", "sequence", "bounded cooperating"],
+        "lattice_dimension": "system_governance"
+    },
+    "ANTI_COUNTERFEIT_METRICS": {
+        "description": "Sensitivity to systems that record fake progress as real advancement",
+        "keywords": ["counterfeit progress", "fake metric", "false", "drift", "corrupt", "disguise", "masquerade"],
+        "lattice_dimension": "scoring_integrity"
+    },
+    "LOW_ORDER_PREFERENCE": {
+        "description": "Privilege given to low-complexity, canonical, stable structures over fragile high-order ones",
+        "keywords": ["low-order", "canonical", "stable", "attractor", "compressib", "simple", "robust"],
+        "lattice_dimension": "score_stability"
+    },
+    "INSPECTABILITY": {
+        "description": "Strong need for systems to be transparent, auditable, and explicitly declared",
+        "keywords": ["inspect", "audit", "explicit", "transparent", "declared", "visible", "traceable", "explain"],
+        "lattice_dimension": "explainability"
+    },
+    "RELATION_FIRST": {
+        "description": "Belief that meaning emerges from relational placement, not isolated identity",
+        "keywords": ["relation", "relational", "comparison", "project", "basis", "meter", "lattice"],
+        "lattice_dimension": "relational_structure"
+    },
+    "TEMPORAL_HIERARCHY": {
+        "description": "Belief that slow layers govern fast ones; governance belongs to the tempo-holder",
+        "keywords": ["temporal", "tempo", "slow", "fast", "hierarchy", "govern", "modulate", "rhythm"],
+        "lattice_dimension": "temporal_governance"
+    },
+    "GROUNDING_INSTINCT": {
+        "description": "Requirement that concepts cash out against something real, finite, and closable",
+        "keywords": ["ground", "cash out", "real", "operational", "concrete", "payable", "practical"],
+        "lattice_dimension": "operational_grounding"
+    },
+    "REGIME_AWARENESS": {
+        "description": "Sensitivity to regime changes, phase transitions, and the boundaries between operating modes",
+        "keywords": ["regime", "phase", "transition", "shift", "mode", "switch", "threshold"],
+        "lattice_dimension": "state_management"
+    },
+    "COMPOUNDING_EFFORT": {
+        "description": "Desire for every useful act to become a reusable asset — effort should compound",
+        "keywords": ["compound", "reusable", "asset", "infrastructure", "accumulate", "learn", "repeat"],
+        "lattice_dimension": "learning_loops"
+    },
+    "ADVERSARIAL_PRESSURE": {
+        "description": "Values adversarial critique, stress testing, and contradiction hunting as essential phases",
+        "keywords": ["adversari", "critique", "pressure", "contradict", "attack", "stress", "test", "falsif"],
+        "lattice_dimension": "signal_validation"
+    },
+    "NAMING_POWER": {
+        "description": "Once he can name a structure, he can hold it, revisit it, and defend against it",
+        "keywords": ["name", "naming", "label", "taxonomy", "classify", "categorize", "term", "vocabulary"],
+        "lattice_dimension": "canonical_vocabulary"
+    },
+    "CONSEQUENCE_ETHICS": {
+        "description": "Moral orientation toward consequence, stewardship, and what gets pushed downstream",
+        "keywords": ["consequence", "stewardship", "downstream", "responsibility", "moral", "account"],
+        "lattice_dimension": "action_accountability"
+    }
+}
+
+# Count how many answers reference each trait
+print("COGNITIVE TRAIT PREVALENCE IN JAKERL.TXT")
+print("="*70)
+print(f"{'Trait':<35} {'Keyword Hits':>12} {'% of Answers':>12}")
+print("-"*70)
+
+trait_scores = {}
+for trait_name, trait_info in trait_catalog.items():
+    hit_count = 0
+    for q, a in qa_pairs:
+        text = (q + " " + a).lower()
+        if any(kw in text for kw in trait_info["keywords"]):
+            hit_count += 1
+    pct = hit_count / len(qa_pairs) * 100
+    trait_scores[trait_name] = {"hits": hit_count, "pct": pct}
+    print(f"  {trait_name:<33} {hit_count:>10} {pct:>10.1f}%")
+
+print(f"\n  Total Q&A pairs: {len(qa_pairs)}")
+In [27]:
+Response
+[Appended Cell #1] [stdout]
+COGNITIVE TRAIT PREVALENCE IN JAKERL.TXT
+======================================================================
+Trait                               Keyword Hits % of Answers
+----------------------------------------------------------------------
+  CLOSURE_LEGITIMACY                        60       19.4%
+  BOUNDEDNESS                               53       17.2%
+  EXPANSION_THEN_COMPRESSION                25        8.1%
+  ORCHESTRATION_OVER_MONOLITH               32       10.4%
+  ANTI_COUNTERFEIT_METRICS                  25        8.1%
+  LOW_ORDER_PREFERENCE                      23        7.4%
+  INSPECTABILITY                            38       12.3%
+  RELATION_FIRST                            49       15.9%
+  TEMPORAL_HIERARCHY                        24        7.8%
+  GROUNDING_INSTINCT                        76       24.6%
+  REGIME_AWARENESS                          51       16.5%
+  COMPOUNDING_EFFORT                        31       10.0%
+  ADVERSARIAL_PRESSURE                      34       11.0%
+  NAMING_POWER                              22        7.1%
+  CONSEQUENCE_ETHICS                        22        7.1%
+
+  Total Q&A pairs: 309
+In [28]:
+run_cell
+# ============================================================================
+# Step 3: Parse the Ratio Lattice into its architectural features
+# ============================================================================
+
+import json
+
+with open("RATIO_LATTICE_FULL_BUNDLE.txt", "r") as f:
+    lattice_text = f.read()
+
+# Extract all schema names and their core architectural features
+# We'll parse each FILE section
+
+file_sections = re.split(r'═{70,}\nFILE: (.+?)\n═{70,}', lattice_text)
+
+lattice_schemas = {}
+for i in range(1, len(file_sections), 2):
+    filename = file_sections[i].strip()
+    content = file_sections[i+1].strip() if i+1 < len(file_sections) else ""
+    
+    # Try to extract schema_name
+    schema_match = re.search(r'"schema_name":\s*"([^"]+)"', content)
+    schema_name = schema_match.group(1) if schema_match else filename
+    
+    # Extract description
+    desc_match = re.search(r'"description":\s*"([^"]+)"', content)
+    description = desc_match.group(1) if desc_match else ""
+    
+    # Extract field names
+    fields = re.findall(r'"(\w+)":\s*"(?:string|number|boolean|datetime|jsonb)', content)
+    
+    # Extract sales_scoring fields
+    scoring_match = re.search(r'"sales_scoring":\s*\{([^}]+)\}', content)
+    scoring_fields = re.findall(r'"(\w+)":', scoring_match.group(1)) if scoring_match else []
+    
+    # Extract derived flags
+    flags_match = re.search(r'"derived_flags":\s*\{([^}]+)\}', content)
+    derived_flags = re.findall(r'"(\w+)":', flags_match.group(1)) if flags_match else []
+    
+    # Extract relationships
+    rels_match = re.search(r'"relationships":\s*\{([^}]+)\}', content)
+    relationships = re.findall(r'"(\w+)":', rels_match.group(1)) if rels_match else []
+    
+    lattice_schemas[schema_name] = {
+        "filename": filename,
+        "description": description,
+        "fields": fields,
+        "scoring_fields": scoring_fields,
+        "derived_flags": derived_flags,
+        "relationships": relationships,
+        "raw_content": content[:2000]  # Keep first 2000 chars for reference
+    }
+
+print(f"RATIO LATTICE SCHEMA INVENTORY")
+print("="*70)
+print(f"Total schemas parsed: {len(lattice_schemas)}")
+print(f"\n{'Schema':<35} {'Fields':>7} {'Scores':>7} {'Flags':>7} {'Rels':>5}")
+print("-"*70)
+
+for name, info in sorted(lattice_schemas.items()):
+    print(f"  {name:<33} {len(info['fields']):>5} {len(info['scoring_fields']):>7} "
+          f"{len(info['derived_flags']):>7} {len(info['relationships']):>5}")
+In [29]:
+Response
+[Appended Cell #2] [stdout]
+RATIO LATTICE SCHEMA INVENTORY
+======================================================================
+Total schemas parsed: 40
+
+Schema                               Fields  Scores   Flags  Rels
+----------------------------------------------------------------------
+  REST_API_architecture.md              0       0       0     0
+  SITE_REDESIGN_PLAN.md                 0       0       0     0
+  action_log                           32       5       5     7
+  automation                           28       5       5     6
+  call                                 33       5       5     3
+  canonical_definitions                 0       0       0     0
+  contact                              30       5       4     4
+  conversation                         26       5       6     4
+  conversation_contacts                22       5       4     2
+  custom_field                         26       5       5     5
+  email                                31       5       5     3
+  friction_reason                      26       5       5     6
+  lead                                 43      12       7     9
+  lead_contacts                        24       5       4     2
+  lead_status                          26       6       6     4
+  lead_tags                            20       5       4     3
+  next_best_action                     28       6       5     7
+  next_best_action_signals             21       5       5     2
+  opportunity                          42      12       6     6
+  opportunity_friction_reasons         22       5       5     3
+  outcome_reason                       25       5       4     4
+  quote                                41       8       6     4
+  quote_friction_reasons               23       5       5     4
+  raw_close_call                       43       5       7     3
+  raw_close_contact                    33       5       5     3
+  raw_close_custom_field               31       5       6     2
+  raw_close_email                      44       5       7     3
+  raw_close_lead                       39       5       5     4
+  raw_close_opportunity                42       5       5     3
+  raw_close_sms                        38       5       6     3
+  raw_close_status                     31       5       6     2
+  raw_close_sync_log                   44       5       7    10
+  raw_close_task                       38       5       6     3
+  sales_user                           25       5       4     6
+  scoring_profile                      38       5       5     5
+  signal_event                         31       5       5     5
+  task_promise                         34       6       6     5
+  tasting                              32       6       6     3
+  team_queue                           26       5       5     6
+  team_queue_item                      45       8       8     9
+In [30]:
+run_cell
+# ============================================================================
+# Step 4: BUILD THE INDEX — Map each cognitive trait to specific lattice features
+# ============================================================================
+#
+# This is the core of the exercise. For each of the 15 cognitive traits, 
+# identify which specific schemas, fields, flags, scores, and architectural 
+# patterns in the Ratio Lattice embody that trait.
+
+index = {
+    "CLOSURE_LEGITIMACY": {
+        "trait_summary": "He distrusts unearned closure. Wants systems to prove they've earned their claims.",
+        "lattice_embodiments": [
+            {
+                "schema": "next_best_action_signals",
+                "features": ["role (supporting/blocking)", "confidence", "invalidated_at", "invalidation_reason"],
+                "mapping": "Every recommendation must cite the exact signals that caused it. Illegitimate NBAs get invalidated with explicit reason — no recommendation stands without receipts."
+            },
+            {
+                "schema": "action_log",
+                "features": ["matched_recommendation", "improved_momentum", "reduced_friction", "should_update_scoring_model"],
+                "mapping": "Every action is audited for whether it actually produced what it claimed. 'Did this closure earn itself?' is the literal derived-flag question."
+            },
+            {
+                "schema": "raw_close_* (all raw tables)",
+                "features": ["is_superseded", "superseded_by_raw_id", "raw_payload_hash"],
+                "mapping": "Raw data is never mutated. Corrections happen by inserting a new row and marking the old one superseded. History is immutable — no retroactive rewriting of what was real."
+            },
+            {
+                "schema": "scoring_profile",
+                "features": ["version", "composite_formulas", "thresholds"],
+                "mapping": "Scoring rules are explicit, versioned, and declared — not implicit or ad-hoc. The lattice forces the scoring system to state its terms."
+            },
+            {
+                "schema": "canonical_definitions",
+                "features": ["lattice_invariants"],
+                "mapping": "'If a value does not appear in one of these catalogs, it is not part of the lattice.' The system's vocabulary is a closed set. Nothing gets to participate without being declared."
+            }
+        ],
+        "strength": "FOUNDATIONAL — this trait is the architectural spine of the entire system"
+    },
+
+    "BOUNDEDNESS": {
+        "trait_summary": "Prefers finite, gated systems. Infinity is intercepted by transition, abstention, or refusal.",
+        "lattice_embodiments": [
+            {
+                "schema": "scoring_profile",
+                "features": ["hot_lead_min", "stalled_min", "automation_safe_min", "manager_review_min"],
+                "mapping": "Explicit thresholds gate every transition. A lead isn't 'hot' by feeling — it's hot when it passes a declared boundary."
+            },
+            {
+                "schema": "team_queue",
+                "features": ["max_items", "filter_definition", "refresh_policy"],
+                "mapping": "Queues are bounded. They have maximum sizes, explicit filters, and refresh policies — not unbounded accumulation."
+            },
+            {
+                "schema": "sales_user",
+                "features": ["max_daily_followups", "max_active_leads", "working_hours"],
+                "mapping": "Human capacity is modeled as finite. The system knows the operator has limits and designs around them."
+            },
+            {
+                "schema": "next_best_action",
+                "features": ["expires_at", "superseded_at"],
+                "mapping": "Recommendations have expiration. They don't persist indefinitely — they age out and get replaced."
+            },
+            {
+                "schema": "canonical_definitions → score_band_definition",
+                "features": ["0_19: very low", "20_39: low", "40_59: moderate", "60_79: high", "80_100: very high"],
+                "mapping": "The continuous 0-100 range is carved into five named bands. Infinite gradation is compressed into actionable regimes."
+            }
+        ],
+        "strength": "STRUCTURAL — boundedness shows up in every schema as limits, maxima, and expiration"
+    },
+
+    "EXPANSION_THEN_COMPRESSION": {
+        "trait_summary": "Fan outward through generation, then compress through synthesis and closure.",
+        "lattice_embodiments": [
+            {
+                "schema": "REST_API_architecture (pipeline flow)",
+                "features": ["Layer 1 Raw → Layer 2 Normalized → Layer 3 Scoring → Layer 4 NBA → Layer 5 Queue"],
+                "mapping": "The entire data pipeline IS expansion-then-compression. Raw data floods in (expansion), gets normalized (first compression), scored (second compression), recommended (third compression), then queued to the single next action (final compression)."
+            },
+            {
+                "schema": "signal_event → next_best_action",
+                "features": ["Many signals → few recommendations"],
+                "mapping": "Many signal events fan out from reality. The NBA generator compresses them into the one recommended action."
+            },
+            {
+                "schema": "conversation",
+                "features": ["call_ids, email_ids, sms_ids → summary, sentiment, intent_signals"],
+                "mapping": "Multiple raw interactions across channels get compressed into a single conversation summary with classified signals."
+            }
+        ],
+        "strength": "ARCHITECTURAL — the 5-layer pipeline is literally this pattern made into infrastructure"
+    },
+
+    "ORCHESTRATION_OVER_MONOLITH": {
+        "trait_summary": "The orchestrator is the real governor. Intelligence is in the coordination, not the single component.",
+        "lattice_embodiments": [
+            {
+                "schema": "team_queue_item",
+                "features": ["comparator_used", "scoring_profile_id", "reasoning_tags", "supporting_signals", "blocking_signals"],
+                "mapping": "The queue item is THE orchestration surface. It doesn't generate intelligence — it adjudicates, ranks, and presents the output of many subordinate processes."
+            },
+            {
+                "schema": "scoring_profile",
+                "features": ["weights (8 fields)", "composite_formulas (4 fields)", "thresholds"],
+                "mapping": "The scoring profile is a separable orchestration layer. Change the weights, change how the whole system behaves — without touching any data source."
+            },
+            {
+                "schema": "canonical_definitions → comparators",
+                "features": ["11 supported comparators"],
+                "mapping": "The same data can be viewed through 11 different lenses. The comparator selector is a live orchestration knob — same objects, different ranking law."
+            }
+        ],
+        "strength": "CORE DESIGN — the comparator/scoring-profile separation IS orchestration-over-monolith"
+    },
+
+    "ANTI_COUNTERFEIT_METRICS": {
+        "trait_summary": "Counterfeit progress is more dangerous than failure. Systems must not reward fake advancement.",
+        "lattice_embodiments": [
+            {
+                "schema": "action_log",
+                "features": ["execution_quality", "impact_realized", "timeliness", "efficiency", "learning_value"],
+                "mapping": "Every executed action is scored on 5 dimensions of actual impact — not just 'was it done?' The system refuses to count motion as progress."
+            },
+            {
+                "schema": "team_queue_item",
+                "features": ["stale_ranking (flag)"],
+                "mapping": "Rankings can go stale. The system explicitly tracks when its own outputs have drifted from reality rather than pretending old scores are still valid."
+            },
+            {
+                "schema": "raw_close_sync_log",
+                "features": ["schema_drift_detected", "freshness indicator (GREEN/AMBER/RED)"],
+                "mapping": "The freshness heartbeat is an anti-counterfeit instrument. Stale data gets flagged, not silently served."
+            },
+            {
+                "schema": "signal_event",
+                "features": ["confidence", "novelty"],
+                "mapping": "Signals carry confidence scores. A low-confidence signal doesn't get to masquerade as a high-confidence one."
+            }
+        ],
+        "strength": "PERVASIVE — anti-counterfeit logic is embedded in freshness, staleness, confidence, and impact tracking"
+    },
+
+    "LOW_ORDER_PREFERENCE": {
+        "trait_summary": "Privileges low-complexity, canonical ratios and stable attractors over fragile high-order structures.",
+        "lattice_embodiments": [
+            {
+                "schema": "canonical_definitions → base_score_definitions",
+                "features": ["8 base scores: urgency, momentum, friction, relationship_strength, close_probability, revenue_value, attention_cost, next_action_clarity"],
+                "mapping": "The ENTIRE lattice's intelligence reduces to exactly 8 base scores. Everything else — all 4 composite scores, all rankings, all recommendations — derives from these 8. This is extreme low-order commitment."
+            },
+            {
+                "schema": "canonical_definitions → composite_score_formulas",
+                "features": ["Linear weighted sums with explicit coefficients"],
+                "mapping": "Composite scores are simple linear combinations, not neural nets or opaque models. The formulas are printable in one line. Maximum compressibility."
+            },
+            {
+                "schema": "lead_status",
+                "features": ["8 states with entry/exit conditions"],
+                "mapping": "The lead lifecycle is a finite state machine with ~8 states. Not a continuous cloud — a small set of named positions with declared transitions."
+            }
+        ],
+        "strength": "DEFINITIONAL — the 8-base-score primitive is the ratio lattice's most distinctive design choice"
+    },
+
+    "INSPECTABILITY": {
+        "trait_summary": "Systems should be transparent, auditable, and explicitly declared. No opaque processes.",
+        "lattice_embodiments": [
+            {
+                "schema": "next_best_action",
+                "features": ["reasoning_summary", "counterfactual_if_ignored", "supporting_signals", "blocking_signals"],
+                "mapping": "Every recommendation explains itself: here's why, here's what happens if you ignore it, here's what supports it, here's what argues against it."
+            },
+            {
+                "schema": "all schemas → reasoning_tags",
+                "features": ["reasoning_tags array on EVERY schema's recommended_outputs"],
+                "mapping": "Every single object in the lattice carries reasoning_tags. Nothing exists as a number without a reason. This is system-wide inspectability."
+            },
+            {
+                "schema": "raw_close_sync_log",
+                "features": ["every sync field: cursor_start, cursor_end, records_pulled/new/updated/unchanged/errored, duration_ms"],
+                "mapping": "Even the data collection process is fully auditable. How many records, how long it took, what errors occurred — all explicitly tracked."
+            },
+            {
+                "schema": "team_queue_item",
+                "features": ["comparator_used", "comparator_value", "last_signal_event_id"],
+                "mapping": "Queue position is explained. The item knows which comparator ranked it and the exact signal event that last changed its position."
+            }
+        ],
+        "strength": "UNIVERSAL — reasoning_tags on every schema is the single strongest inspectability commitment"
+    },
+
+    "RELATION_FIRST": {
+        "trait_summary": "Meaning emerges from relational placement, not isolated identity. Comparison needs a declared basis.",
+        "lattice_embodiments": [
+            {
+                "schema": "canonical_definitions → comparators",
+                "features": ["supported_comparators list", "comparator reorders every queue"],
+                "mapping": "The lattice literally does not have a fixed order. Objects only have rank RELATIVE to a declared comparator. Change the lens, change the meaning. This is relation-first ontology made into software."
+            },
+            {
+                "schema": "6 join tables",
+                "features": ["conversation_contacts, lead_contacts, lead_tags, next_best_action_signals, opportunity_friction_reasons, quote_friction_reasons"],
+                "mapping": "Six dedicated join tables exist solely to model relationships. The lattice stores relation as a first-class entity, not just a foreign key."
+            },
+            {
+                "schema": "scoring_profile → weights",
+                "features": ["8 weight values that control the relative importance of each base score"],
+                "mapping": "The 'basis' of comparison is itself tunable. Different scoring profiles literally change the coordinate system under which objects are compared."
+            }
+        ],
+        "strength": "ESSENTIAL — the comparator system is the architectural expression of 'relation-first' ontology"
+    },
+
+    "TEMPORAL_HIERARCHY": {
+        "trait_summary": "Slow layers govern fast ones. Governance belongs to the tempo-holder.",
+        "lattice_embodiments": [
+            {
+                "schema": "REST_API_architecture → Endpoint Catalog",
+                "features": ["Different sync cadences: every 2 min (inbox tasks) → every 5 min (leads/opportunities) → daily (statuses/custom fields)"],
+                "mapping": "The data pipeline has explicit temporal hierarchy. Fast-moving data (inbox tasks) syncs frequently. Slow-moving definitions (statuses, custom fields) sync daily. Slow governs fast."
+            },
+            {
+                "schema": "scoring_profile (slow) vs team_queue_item (fast)",
+                "features": ["Scoring profile changes rarely; queue items regenerate on every signal"],
+                "mapping": "The scoring profile is the slow governor. Queue items are fast, volatile, constantly regenerated — but always under the law of the slow-changing profile."
+            },
+            {
+                "schema": "canonical_definitions (slowest) → scoring_profile → signal_event → team_queue_item (fastest)",
+                "features": ["4-layer temporal stack"],
+                "mapping": "The canonical definitions change almost never. Scoring profiles change occasionally. Signals fire constantly. Queue items regenerate per signal. This is a 4-tempo governance hierarchy."
+            }
+        ],
+        "strength": "STRUCTURAL — the 4-layer temporal stack directly implements 'slow governs fast'"
+    },
+
+    "GROUNDING_INSTINCT": {
+        "trait_summary": "Concepts must cash out against something real, finite, and operationally closable.",
+        "lattice_embodiments": [
+            {
+                "schema": "raw_close_* tables",
+                "features": ["raw_payload (immutable JSONB copy of Close CRM data)"],
+                "mapping": "The entire system is grounded in immutable snapshots of real CRM data. The lattice never invents entities — it only observes and interprets (Principle 1 of the REST architecture)."
+            },
+            {
+                "schema": "next_best_action",
+                "features": ["action_type (call_now, send_email, send_sms, etc.)", "recommended_due_at"],
+                "mapping": "Every recommendation cashes out as a concrete action with a type and a deadline. No abstract advice — only executable instructions."
+            },
+            {
+                "schema": "opportunity",
+                "features": ["estimated_value", "event_date", "close_date_target"],
+                "mapping": "Opportunities carry real money amounts and real dates. The system doesn't deal in abstract 'good deals' — it deals in dollars and calendars."
+            },
+            {
+                "schema": "action_log",
+                "features": ["executed_at", "result_summary", "customer_response_summary"],
+                "mapping": "Actions are grounded in timestamps and outcomes. What was done, when, and what the customer actually said back."
+            }
+        ],
+        "strength": "FOUNDATIONAL — 'Close is source of truth' (Principle 1) is grounding instinct as system law"
+    },
+
+    "REGIME_AWARENESS": {
+        "trait_summary": "Sensitivity to regime changes, phase transitions, and the boundaries between operating modes.",
+        "lattice_embodiments": [
+            {
+                "schema": "lead_status",
+                "features": ["is_active_pipeline_state", "is_terminal_state", "entry_conditions", "exit_conditions"],
+                "mapping": "Lead statuses are explicitly modeled as regimes with entry/exit conditions. You can't drift between states — you must satisfy declared transition conditions."
+            },
+            {
+                "schema": "opportunity",
+                "features": ["status (open/active/quoted/negotiating/won/lost/stalled/archived)", "last_stage_change_at"],
+                "mapping": "Opportunity status is a regime with 8 named states. The system tracks when the last regime change occurred."
+            },
+            {
+                "schema": "signal_event",
+                "features": ["event_type: opportunity_status_changed, quote_state_changed, activity_threshold_crossed"],
+                "mapping": "Regime transitions are the primary signal types. The system is literally designed to detect and respond to phase changes."
+            },
+            {
+                "schema": "raw_close_sync_log",
+                "features": ["status (running/ok/partial/error/rate_limited/canceled)"],
+                "mapping": "Even the sync process itself has explicit regime states with different behaviors for each."
+            }
+        ],
+        "strength": "PERVASIVE — regime states and transitions are modeled at every layer of the system"
+    },
+
+    "COMPOUNDING_EFFORT": {
+        "trait_summary": "Every useful act should become a reusable asset. Effort must compound.",
+        "lattice_embodiments": [
+            {
+                "schema": "action_log",
+                "features": ["learning_value", "should_update_scoring_model"],
+                "mapping": "Every action is evaluated for its learning value. Actions that teach the system something trigger model updates — effort compounds into better future scoring."
+            },
+            {
+                "schema": "scoring_profile",
+                "features": ["version", "tune endpoint (/api/lattice/scoring_profiles/:id/tune)"],
+                "mapping": "The scoring profile is designed to evolve. Tuning is an explicit API operation that versioned — learning from past performance becomes permanent infrastructure."
+            },
+            {
+                "schema": "outcome_reason",
+                "features": ["learning_value", "future_prevention_value", "should_trigger_postmortem"],
+                "mapping": "When deals are lost, the reason is cataloged for future prevention. Losses become diagnostic assets."
+            },
+            {
+                "schema": "friction_reason",
+                "features": ["is_common_pattern"],
+                "mapping": "Friction reasons are tracked as patterns. A friction that appears once is a problem; a friction that recurs is a named pattern that compounds into strategic knowledge."
+            }
+        ],
+        "strength": "DESIGNED — the learning loop from action_log → scoring_profile tuning is explicit compounding"
+    },
+
+    "ADVERSARIAL_PRESSURE": {
+        "trait_summary": "Values adversarial critique, stress testing, and contradiction hunting.",
+        "lattice_embodiments": [
+            {
+                "schema": "next_best_action_signals",
+                "features": ["role: supporting vs blocking", "weight", "invalidated_at"],
+                "mapping": "Every recommendation carries both supporting AND blocking signals. The system doesn't just argue for the action — it presents the counter-argument too."
+            },
+            {
+                "schema": "next_best_action",
+                "features": ["counterfactual_if_ignored"],
+                "mapping": "The system generates adversarial counterfactuals: 'if you ignore this, here's what will happen.' This is built-in stress testing of the operator's decisions."
+            },
+            {
+                "schema": "conversation",
+                "features": ["objection_signals"],
+                "mapping": "Customer objections are tracked as first-class signals, not noise to be smoothed away."
+            },
+            {
+                "schema": "signal_event",
+                "features": ["is_positive_signal vs is_negative_signal"],
+                "mapping": "Signals are explicitly typed as positive or negative. The system doesn't collapse everything into one valence — it preserves the adversarial structure."
+            }
+        ],
+        "strength": "EXPLICIT — supporting/blocking signal pairs on every NBA is adversarial pressure as architecture"
+    },
+
+    "NAMING_POWER": {
+        "trait_summary": "Once he can name a structure, he can hold it, revisit it, and defend against it.",
+        "lattice_embodiments": [
+            {
+                "schema": "canonical_definitions",
+                "features": ["11 normalized enums", "8 base score definitions", "4 composite formulas", "4 reasoning tag catalogs"],
+                "mapping": "The canonical definitions file IS naming power made into a system. Every concept has a canonical name. Every enum is closed. Every score is defined. 'If a value does not appear in one of these catalogs, it is not part of the lattice.'"
+            },
+            {
+                "schema": "friction_reason",
+                "features": ["reason_key, display_name, friction_category"],
+                "mapping": "Deal resistance is not a vague feeling — it's a named, categorized, scored object. 'Budget pressure' and 'missing decision maker' are specific named entities."
+            },
+            {
+                "schema": "outcome_reason",
+                "features": ["reason_key, display_name, outcome_category"],
+                "mapping": "Why deals are won or lost gets named and cataloged. No unnamed losses."
+            },
+            {
+                "schema": "reasoning_tags (system-wide)",
+                "features": ["priority_reasoning_tags (12)", "friction_reasoning_tags (10)", "relationship_reasoning_tags (10)", "action_reasoning_tags (12)"],
+                "mapping": "44 named reasoning tags form the system's diagnostic vocabulary. Each tag is a named structure that can be searched, filtered, and analyzed."
+            }
+        ],
+        "strength": "DEFINITIONAL — the canonical_definitions file is the purest expression of naming power"
+    },
+
+    "CONSEQUENCE_ETHICS": {
+        "trait_summary": "Morality is about consequence, stewardship, and what gets pushed downstream.",
+        "lattice_embodiments": [
+            {
+                "schema": "next_best_action",
+                "features": ["counterfactual_if_ignored"],
+                "mapping": "Every recommendation states its downstream consequences. The system operationalizes 'what happens if I don't act?' as a first-class field."
+            },
+            {
+                "schema": "task_promise",
+                "features": ["promise_origin", "promise_text", "is_customer_promise", "blocking"],
+                "mapping": "Promises made to customers are tracked as binding objects. A promise is not just a task — it carries the ethical weight of commitment (promise_origin, blocking flag)."
+            },
+            {
+                "schema": "action_log",
+                "features": ["impact_realized", "customer_response_summary"],
+                "mapping": "The system tracks what actually happened to the customer after an action. Consequence is measured, not assumed."
+            },
+            {
+                "schema": "opportunity_friction_reasons",
+                "features": ["severity, persistence, needs_escalation"],
+                "mapping": "Friction is tracked for its downstream severity and whether it persists (consequence accumulation) and whether it needs to be pushed to a higher authority (stewardship escalation)."
+            }
+        ],
+        "strength": "EMBEDDED — promises, counterfactuals, and impact tracking make consequence ethics operational"
+    }
+}
+
+print(f"INDEX BUILT: {len(index)} cognitive traits mapped to lattice features")
+print("="*70)
+for trait_name, mapping in index.items():
+    n_schemas = len(mapping["lattice_embodiments"])
+    total_features = sum(len(e["features"]) for e in mapping["lattice_embodiments"])
+    print(f"\n  {trait_name}")
+    print(f"    Strength: {mapping['strength']}")
+    print(f"    Schemas referenced: {n_schemas}")
+    print(f"    Specific features cited: {total_features}")
+In [31]:
+Response
+[Appended Cell #3] [stdout]
+INDEX BUILT: 15 cognitive traits mapped to lattice features
+======================================================================
+
+  CLOSURE_LEGITIMACY
+    Strength: FOUNDATIONAL — this trait is the architectural spine of the entire system
+    Schemas referenced: 5
+    Specific features cited: 15
+
+  BOUNDEDNESS
+    Strength: STRUCTURAL — boundedness shows up in every schema as limits, maxima, and expiration
+    Schemas referenced: 5
+    Specific features cited: 17
+
+  EXPANSION_THEN_COMPRESSION
+    Strength: ARCHITECTURAL — the 5-layer pipeline is literally this pattern made into infrastructure
+    Schemas referenced: 3
+    Specific features cited: 3
+
+  ORCHESTRATION_OVER_MONOLITH
+    Strength: CORE DESIGN — the comparator/scoring-profile separation IS orchestration-over-monolith
+    Schemas referenced: 3
+    Specific features cited: 9
+
+  ANTI_COUNTERFEIT_METRICS
+    Strength: PERVASIVE — anti-counterfeit logic is embedded in freshness, staleness, confidence, and impact tracking
+    Schemas referenced: 4
+    Specific features cited: 10
+
+  LOW_ORDER_PREFERENCE
+    Strength: DEFINITIONAL — the 8-base-score primitive is the ratio lattice's most distinctive design choice
+    Schemas referenced: 3
+    Specific features cited: 3
+
+  INSPECTABILITY
+    Strength: UNIVERSAL — reasoning_tags on every schema is the single strongest inspectability commitment
+    Schemas referenced: 4
+    Specific features cited: 9
+
+  RELATION_FIRST
+    Strength: ESSENTIAL — the comparator system is the architectural expression of 'relation-first' ontology
+    Schemas referenced: 3
+    Specific features cited: 4
+
+  TEMPORAL_HIERARCHY
+    Strength: STRUCTURAL — the 4-layer temporal stack directly implements 'slow governs fast'
+    Schemas referenced: 3
+    Specific features cited: 3
+
+  GROUNDING_INSTINCT
+    Strength: FOUNDATIONAL — 'Close is source of truth' (Principle 1) is grounding instinct as system law
+    Schemas referenced: 4
+    Specific features cited: 9
+
+  REGIME_AWARENESS
+    Strength: PERVASIVE — regime states and transitions are modeled at every layer of the system
+    Schemas referenced: 4
+    Specific features cited: 8
+
+  COMPOUNDING_EFFORT
+    Strength: DESIGNED — the learning loop from action_log → scoring_profile tuning is explicit compounding
+    Schemas referenced: 4
+    Specific features cited: 8
+
+  ADVERSARIAL_PRESSURE
+    Strength: EXPLICIT — supporting/blocking signal pairs on every NBA is adversarial pressure as architecture
+    Schemas referenced: 4
+    Specific features cited: 6
+
+  NAMING_POWER
+    Strength: DEFINITIONAL — the canonical_definitions file is the purest expression of naming power
+    Schemas referenced: 4
+    Specific features cited: 10
+
+  CONSEQUENCE_ETHICS
+    Strength: EMBEDDED — promises, counterfactuals, and impact tracking make consequence ethics operational
+    Schemas referenced: 4
+    Specific features cited: 8
+In [32]:
+run_cell
+# ============================================================================
+# Step 5: Compute the cross-coverage matrix
+# ============================================================================
+# Which schemas are touched by the most traits? Which traits touch the most schemas?
+# This reveals the "load-bearing" nodes of the mind→system mapping.
+
+from collections import defaultdict
+
+# Build schema → traits mapping
+schema_to_traits = defaultdict(list)
+for trait_name, mapping in index.items():
+    for emb in mapping["lattice_embodiments"]:
+        schema_key = emb["schema"].split("→")[0].strip().split(" (")[0].strip()
+        schema_to_traits[schema_key].append(trait_name)
+
+print("SCHEMA LOAD-BEARING ANALYSIS")
+print("Which lattice schemas embody the most cognitive traits?")
+print("="*70)
+
+sorted_schemas = sorted(schema_to_traits.items(), key=lambda x: -len(x[1]))
+for schema, traits in sorted_schemas:
+    print(f"\n  {schema} ({len(traits)} traits)")
+    for t in traits:
+        print(f"    • {t}")
+
+# Also compute trait → unique schema count
+print("\n\n" + "="*70)
+print("TRAIT REACH ANALYSIS")
+print("How many distinct schemas does each trait touch?")
+print("="*70)
+
+for trait_name, mapping in sorted(index.items(), key=lambda x: -len(x[1]["lattice_embodiments"])):
+    schemas = [e["schema"].split("→")[0].strip().split(" (")[0].strip() for e in mapping["lattice_embodiments"]]
+    unique_schemas = set(schemas)
+    print(f"  {trait_name:<35} → {len(unique_schemas)} schemas")
+In [33]:
+Response
+[Appended Cell #4] [stdout]
+SCHEMA LOAD-BEARING ANALYSIS
+Which lattice schemas embody the most cognitive traits?
+======================================================================
+
+  canonical_definitions (8 traits)
+    • CLOSURE_LEGITIMACY
+    • BOUNDEDNESS
+    • ORCHESTRATION_OVER_MONOLITH
+    • LOW_ORDER_PREFERENCE
+    • LOW_ORDER_PREFERENCE
+    • RELATION_FIRST
+    • TEMPORAL_HIERARCHY
+    • NAMING_POWER
+
+  scoring_profile (6 traits)
+    • CLOSURE_LEGITIMACY
+    • BOUNDEDNESS
+    • ORCHESTRATION_OVER_MONOLITH
+    • RELATION_FIRST
+    • TEMPORAL_HIERARCHY
+    • COMPOUNDING_EFFORT
+
+  action_log (5 traits)
+    • CLOSURE_LEGITIMACY
+    • ANTI_COUNTERFEIT_METRICS
+    • GROUNDING_INSTINCT
+    • COMPOUNDING_EFFORT
+    • CONSEQUENCE_ETHICS
+
+  next_best_action (5 traits)
+    • BOUNDEDNESS
+    • INSPECTABILITY
+    • GROUNDING_INSTINCT
+    • ADVERSARIAL_PRESSURE
+    • CONSEQUENCE_ETHICS
+
+  signal_event (4 traits)
+    • EXPANSION_THEN_COMPRESSION
+    • ANTI_COUNTERFEIT_METRICS
+    • REGIME_AWARENESS
+    • ADVERSARIAL_PRESSURE
+
+  team_queue_item (3 traits)
+    • ORCHESTRATION_OVER_MONOLITH
+    • ANTI_COUNTERFEIT_METRICS
+    • INSPECTABILITY
+
+  raw_close_sync_log (3 traits)
+    • ANTI_COUNTERFEIT_METRICS
+    • INSPECTABILITY
+    • REGIME_AWARENESS
+
+  next_best_action_signals (2 traits)
+    • CLOSURE_LEGITIMACY
+    • ADVERSARIAL_PRESSURE
+
+  REST_API_architecture (2 traits)
+    • EXPANSION_THEN_COMPRESSION
+    • TEMPORAL_HIERARCHY
+
+  conversation (2 traits)
+    • EXPANSION_THEN_COMPRESSION
+    • ADVERS
+<...output truncated to 3000 characters (edit the cell to produce a shorter output if needed)...>
+ER
+
+  friction_reason (2 traits)
+    • COMPOUNDING_EFFORT
+    • NAMING_POWER
+
+  raw_close_* (1 traits)
+    • CLOSURE_LEGITIMACY
+
+  team_queue (1 traits)
+    • BOUNDEDNESS
+
+  sales_user (1 traits)
+    • BOUNDEDNESS
+
+  all schemas (1 traits)
+    • INSPECTABILITY
+
+  6 join tables (1 traits)
+    • RELATION_FIRST
+
+  raw_close_* tables (1 traits)
+    • GROUNDING_INSTINCT
+
+  reasoning_tags (1 traits)
+    • NAMING_POWER
+
+  task_promise (1 traits)
+    • CONSEQUENCE_ETHICS
+
+  opportunity_friction_reasons (1 traits)
+    • CONSEQUENCE_ETHICS
+
+
+======================================================================
+TRAIT REACH ANALYSIS
+How many distinct schemas does each trait touch?
+======================================================================
+  CLOSURE_LEGITIMACY                  → 5 schemas
+  BOUNDEDNESS                         → 5 schemas
+  ANTI_COUNTERFEIT_METRICS            → 4 schemas
+  INSPECTABILITY                      → 4 schemas
+  GROUNDING_INSTINCT                  → 4 schemas
+  REGIME_AWARENESS                    → 4 schemas
+  COMPOUNDING_EFFORT                  → 4 schemas
+  ADVERSARIAL_PRESSURE                → 4 schemas
+  NAMING_POWER                        → 4 schemas
+  CONSEQUENCE_ETHICS                  → 4 schemas
+  EXPANSION_THEN_COMPRESSION          → 3 schemas
+  ORCHESTRATION_OVER_MONOLITH         → 3 schemas
+  LOW_ORDER_PREFERENCE                → 2 schemas
+  RELATION_FIRST                      → 3 schemas
+  TEMPORAL_HIERARCHY                  → 3 schemas
+In [34]:
+run_cell
+# ============================================================================
+# Step 6: Identify the "doctrine statements" from JakeRL and match to lattice
+# ============================================================================
+# Each chapter in JakeRL ends with a "clearest doctrine statement" (Q25/26/27/28).
+# These are the most compressed descriptions of who Jake is.
+# Let's find them and map each to the lattice feature that most purely expresses it.
+
+doctrine_statements = []
+for q, a in qa_pairs:
+    if "clearest doctrine statement" in q.lower() or "clearest first-pass doctrine" in q.lower():
+        doctrine_statements.append(a)
+
+print("DOCTRINE STATEMENTS FROM JAKERL.TXT")
+print("="*70)
+for i, d in enumerate(doctrine_statements):
+    print(f"\n  [{i+1}] {d}")
+
+print(f"\n\nTotal doctrine statements: {len(doctrine_statements)}")
+In [35]:
+Response
+[Appended Cell #5] [stdout]
+DOCTRINE STATEMENTS FROM JAKERL.TXT
+======================================================================
+
+  [1] He is a boundary-driven methodological builder who trusts architectures more than slogans, prefers bounded multi-phase reasoning to monolithic intelligence, and keeps pushing work through expansion, critique, and recompression until it either closes or exposes the exact place it cannot.
+
+  [2] He is an ontological reductionist with a strong grounding instinct: he wants to identify the hidden structural mismatch underneath confusion, strip prestige concepts of their costumes, and distinguish what can actually close from what only pretends it should.
+
+  [3] He is a closure-legitimacy thinker who sees pathology not mainly as failure, but as the corruption that begins when unearned closure and fake progress become structurally authoritative inside a bounded system.
+
+  [4] He has a highly developed comic-structural radar for counterfeit meaning, false authority, and social-semantic derailment, and one of his core pleasures is turning recurring absurdities into named classes of illegitimate behavior.
+
+  [5] He is a symbolic realist with a disciplined moral-aesthetic sensibility: he wants philosophy to be speakable, measurable, and livable, and he is drawn to images, rituals, and teacher-voices that turn metaphysical structure into embodied consequence.
+
+  [6] He is a metaphysical unifier with a strong poetic-mystical streak: he wants individuality, conflict, an
+<...output truncated to 3000 characters (edit the cell to produce a shorter output if needed)...>
+ntelligible as local differentiations of a deeper experiential whole, even while another part of him works hard to keep those visions from becoming counterfeit closure.
+
+  [7] He is a cross-domain law-builder who seeks a finite, low-order, temporally governed grammar of reality—one that can explain instability, refusal, oscillation, and coordination without surrendering either metaphysical ambition or predictive discipline.
+
+  [8] He is a cognition architect with a compounding mindset: he wants every useful act of thought, memory, planning, evaluation, and execution turned into a governed primitive inside a continuous, inspectable, self-improving loop.
+
+  [9] He is a finite-law architect of total systems: he wants even his most universal ideas to live inside admissibility structure, bounded resolution, explicit thresholds, and falsifiable operational form, so that metaphysics behaves less like proclamation and more like governed machinery.
+
+  [10] He is a lawful-comparison architect: he believes judgment, retrieval, and composition only become trustworthy when objects are normalized into a shared relation space, distinctions are meter- and regime-bound, and the whole process is governed by admissibility rather than raw resemblance.
+
+  [11] He is the kind of mind that gets captured by a compact, beautiful generative pattern and then feels compelled to see how much of reality, selfhood, and meaning can be rebuilt from it before the spell breaks.
+
+
+Total doctrine statements: 11
+In [36]:
+run_cell
+# ============================================================================
+# Step 7: Build the DOCTRINE → LATTICE FEATURE mapping
+# ============================================================================
+
+doctrine_to_lattice = [
+    {
+        "doctrine": "Boundary-driven methodological builder who trusts architectures more than slogans, prefers bounded multi-phase reasoning to monolithic intelligence",
+        "primary_lattice_expression": "The 5-layer pipeline (Raw → Normalized → Scored → NBA → Queue) with explicit boundaries at every transition",
+        "key_schemas": ["canonical_definitions", "scoring_profile", "team_queue_item"],
+        "traits_expressed": ["BOUNDEDNESS", "ORCHESTRATION_OVER_MONOLITH", "EXPANSION_THEN_COMPRESSION"]
+    },
+    {
+        "doctrine": "Ontological reductionist with a strong grounding instinct",
+        "primary_lattice_expression": "8 base scores as the irreducible primitive layer from which all composite intelligence derives; 'Close is source of truth' as Principle 1",
+        "key_schemas": ["canonical_definitions (base_score_definitions)", "raw_close_* tables"],
+        "traits_expressed": ["LOW_ORDER_PREFERENCE", "GROUNDING_INSTINCT"]
+    },
+    {
+        "doctrine": "Closure-legitimacy thinker who sees pathology as corruption when unearned closure becomes structurally authoritative",
+        "primary_lattice_expression": "Freshness heartbeat (GREEN/AMBER/RED), stale_ranking flags, raw immutability, is_superseded chains",
+        "key_schemas": ["raw_close_sync_log", "team_queue_item", "action_log"],
+        "traits_expressed": ["CLOSURE_LEGITIMACY", "ANTI_COUNTERFEIT_METRICS"]
+    },
+    {
+        "doctrine": "Turning recurring absurdities into named classes of illegitimate behavior",
+        "primary_lattice_expression": "44 named reasoning_tags, 10 friction categories, named outcome reasons — a closed vocabulary for everything that can go wrong",
+        "key_schemas": ["canonical_definitions (reasoning_tag_catalogs)", "friction_reason", "outcome_reason"],
+        "traits_expressed": ["NAMING_POWER", "CLOSURE_LEGITIMACY"]
+    },
+    {
+        "doctrine": "Symbolic realist: philosophy should be speakable, measurable, and livable",
+        "primary_lattice_expression": "Every abstract score (urgency, momentum, friction) cashes out as concrete fields with 0-100 ranges, named bands, and observable consequences",
+        "key_schemas": ["canonical_definitions (score_band_definition)", "lead", "opportunity"],
+        "traits_expressed": ["GROUNDING_INSTINCT", "LOW_ORDER_PREFERENCE"]
+    },
+    {
+        "doctrine": "Metaphysical unifier keeping visions from becoming counterfeit closure",
+        "primary_lattice_expression": "The comparator system: one unified lattice viewed through 11 different lenses — unity of data with plurality of perspective, but always bounded",
+        "key_schemas": ["canonical_definitions (comparators)", "team_queue_item"],
+        "traits_expressed": ["RELATION_FIRST", "ANTI_COUNTERFEIT_METRICS"]
+    },
+    {
+        "doctrine": "Cross-domain law-builder seeking finite, low-order, temporally governed grammar",
+        "primary_lattice_expression": "8 base scores × linear composite formulas × 4-tempo sync cadence hierarchy — the lattice IS a finite, low-order, temporally governed grammar for sales reality",
+        "key_schemas": ["canonical_definitions", "scoring_profile", "REST_API_architecture"],
+        "traits_expressed": ["LOW_ORDER_PREFERENCE", "TEMPORAL_HIERARCHY", "BOUNDEDNESS"]
+    },
+    {
+        "doctrine": "Cognition architect with a compounding mindset",
+        "primary_lattice_expression": "The action_log → learning_value → scoring_profile.tune loop: every action teaches the system, and the system gets better at recommending",
+        "key_schemas": ["action_log", "scoring_profile", "outcome_reason"],
+        "traits_expressed": ["COMPOUNDING_EFFORT", "INSPECTABILITY"]
+    },
+    {
+        "doctrine": "Finite-law architect: universal ideas inside admissibility structure, bounded resolution, explicit thresholds",
+        "primary_lattice_expression": "Lattice invariants (7 declared laws), scoring thresholds (hot_lead_min, etc.), explicit entry/exit conditions on lead_status",
+        "key_schemas": ["canonical_definitions (lattice_invariants)", "scoring_profile (thresholds)", "lead_status"],
+        "traits_expressed": ["BOUNDEDNESS", "REGIME_AWARENESS", "CLOSURE_LEGITIMACY"]
+    },
+    {
+        "doctrine": "Lawful-comparison architect: judgment only becomes trustworthy when objects are normalized into a shared relation space",
+        "primary_lattice_expression": "The normalization pipeline: raw → normalized → scored, all under the same 8-score basis. Objects only become comparable AFTER normalization. Comparators declare the law of comparison.",
+        "key_schemas": ["canonical_definitions (comparators)", "scoring_profile (weights)", "team_queue_item"],
+        "traits_expressed": ["RELATION_FIRST", "GROUNDING_INSTINCT", "LOW_ORDER_PREFERENCE"]
+    },
+    {
+        "doctrine": "A mind captured by compact generative patterns, compelled to rebuild reality from them",
+        "primary_lattice_expression": "The entire Ratio Lattice: a single conceptual seed (ratios between scored dimensions) rebuilt into a 40-schema, 5-layer system that governs all sales cognition",
+        "key_schemas": ["(the lattice as a whole)"],
+        "traits_expressed": ["LOW_ORDER_PREFERENCE", "EXPANSION_THEN_COMPRESSION", "GROUNDING_INSTINCT"]
+    }
+]
+
+print("DOCTRINE → LATTICE MAPPING")
+print("="*70)
+for i, d in enumerate(doctrine_to_lattice):
+    print(f"\n{'─'*70}")
+    print(f"  DOCTRINE [{i+1}]: {d['doctrine'][:90]}...")
+    print(f"  LATTICE:  {d['primary_lattice_expression'][:90]}...")
+    print(f"  SCHEMAS:  {', '.join(d['key_schemas'][:3])}")
+    print(f"  TRAITS:   {', '.join(d['traits_expressed'])}")
+In [37]:
+Response
+[Appended Cell #6] [stdout]
+DOCTRINE → LATTICE MAPPING
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  DOCTRINE [1]: Boundary-driven methodological builder who trusts architectures more than slogans, prefers...
+  LATTICE:  The 5-layer pipeline (Raw → Normalized → Scored → NBA → Queue) with explicit boundaries at...
+  SCHEMAS:  canonical_definitions, scoring_profile, team_queue_item
+  TRAITS:   BOUNDEDNESS, ORCHESTRATION_OVER_MONOLITH, EXPANSION_THEN_COMPRESSION
+
+──────────────────────────────────────────────────────────────────────
+  DOCTRINE [2]: Ontological reductionist with a strong grounding instinct...
+  LATTICE:  8 base scores as the irreducible primitive layer from which all composite intelligence der...
+  SCHEMAS:  canonical_definitions (base_score_definitions), raw_close_* tables
+  TRAITS:   LOW_ORDER_PREFERENCE, GROUNDING_INSTINCT
+
+──────────────────────────────────────────────────────────────────────
+  DOCTRINE [3]: Closure-legitimacy thinker who sees pathology as corruption when unearned closure becomes ...
+  LATTICE:  Freshness heartbeat (GREEN/AMBER/RED), stale_ranking flags, raw immutability, is_supersede...
+  SCHEMAS:  raw_close_sync_log, team_queue_item, action_log
+  TRAITS:   CLOSURE_LEGITIMACY, ANTI_COUNTERFEIT_METRICS
+
+──────────────────────────────────────────────────────────────────────
+  DOCTRINE [4]: Turning recurring absurdities into named classes of illegitimate behavior...
+<...output truncated to 3000 characters (edit the cell to produce a shorter output if needed)...>
+  The action_log → learning_value → scoring_profile.tune loop: every action teaches the syst...
+  SCHEMAS:  action_log, scoring_profile, outcome_reason
+  TRAITS:   COMPOUNDING_EFFORT, INSPECTABILITY
+
+──────────────────────────────────────────────────────────────────────
+  DOCTRINE [9]: Finite-law architect: universal ideas inside admissibility structure, bounded resolution, ...
+  LATTICE:  Lattice invariants (7 declared laws), scoring thresholds (hot_lead_min, etc.), explicit en...
+  SCHEMAS:  canonical_definitions (lattice_invariants), scoring_profile (thresholds), lead_status
+  TRAITS:   BOUNDEDNESS, REGIME_AWARENESS, CLOSURE_LEGITIMACY
+
+──────────────────────────────────────────────────────────────────────
+  DOCTRINE [10]: Lawful-comparison architect: judgment only becomes trustworthy when objects are normalized...
+  LATTICE:  The normalization pipeline: raw → normalized → scored, all under the same 8-score basis. O...
+  SCHEMAS:  canonical_definitions (comparators), scoring_profile (weights), team_queue_item
+  TRAITS:   RELATION_FIRST, GROUNDING_INSTINCT, LOW_ORDER_PREFERENCE
+
+──────────────────────────────────────────────────────────────────────
+  DOCTRINE [11]: A mind captured by compact generative patterns, compelled to rebuild reality from them...
+  LATTICE:  The entire Ratio Lattice: a single conceptual seed (ratios between scored dimensions) rebu...
+  SCHEMAS:  (the lattice as a whole)
+  TRAITS:   LOW_ORDER_PREFERENCE, EXPANSION_THEN_COMPRESSION, GROUNDING_INSTINCT
+In [38]:
+run_cell
+# ============================================================================
+# Step 8: Write the complete index to a file
+# ============================================================================
+
+output = """
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                JAKE RL → RATIO LATTICE COGNITIVE INDEX                     ║
+║                                                                            ║
+║  A structural mapping from cognitive/philosophical profile to              ║
+║  system architecture — showing how the builder's mind is                   ║
+║  encoded in the system's design.                                           ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+SOURCE DOCUMENTS
+  Profile:  JakeRL.txt  (309 Q&A pairs across 11 chapters)
+  System:   RATIO_LATTICE_FULL_BUNDLE.txt  (40 schemas, 5 layers)
+
+METHOD
+  1. Extracted 15 recurring cognitive traits from the profile
+  2. Identified specific lattice schemas, fields, and architectural patterns
+     that embody each trait
+  3. Mapped 11 doctrine statements to their primary lattice expressions
+  4. Computed cross-coverage to find load-bearing nodes
+
+================================================================================
+PART I: THE 15-TRAIT INDEX
+================================================================================
+
+"""
+
+for trait_name, mapping in index.items():
+    output += f"""
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ {trait_name:<75} │
+│ Strength: {mapping['strength']:<65} │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  PROFILE TRAIT: {mapping['trait_summary']}
+
+  LATTICE EMBODIMENTS:
+"""
+    for emb in mapping["lattice_embodiments"]:
+        features_str = ", ".join(emb["features"][:5])
+        if len(emb["features"]) > 5:
+            features_str += f" (+{len(emb['features'])-5} more)"
+        output += f"""
+    Schema: {emb['schema']}
+    Features: {features_str}
+    Mapping: {emb['mapping']}
+"""
+    output += "\n"
+
+output += """
+================================================================================
+PART II: DOCTRINE → LATTICE MAPPING
+================================================================================
+
+The 11 doctrine statements from JakeRL.txt, each mapped to the lattice feature
+that most purely expresses it.
+
+"""
+
+for i, d in enumerate(doctrine_to_lattice):
+    output += f"""
+  ── DOCTRINE [{i+1}] ──────────────────────────────────────────────────────────
+  STATEMENT:  {d['doctrine']}
+  LATTICE:    {d['primary_lattice_expression']}
+  SCHEMAS:    {', '.join(d['key_schemas'])}
+  TRAITS:     {', '.join(d['traits_expressed'])}
+
+"""
+
+output += """
+================================================================================
+PART III: LOAD-BEARING NODES
+================================================================================
+
+These are the lattice schemas that carry the most cognitive weight — the places
+where multiple traits converge into a single architectural feature.
+
+"""
+
+for schema, traits in sorted_schemas[:8]:
+    output += f"""
+  {schema} ({len(traits)} traits)
+"""
+    for t in traits:
+        # Get the mapping description
+        for emb in index[t]["lattice_embodiments"]:
+            if schema in emb["schema"]:
+                output += f"    • {t}: {emb['mapping'][:100]}...\n"
+                break
+
+output += """
+
+================================================================================
+PART IV: THE META-PATTERN
+================================================================================
+
+Reading across all 15 traits and 11 doctrine statements, one meta-pattern emerges:
+
+The Ratio Lattice is a system that REFUSES to let intelligence be:
+  - Unbounded (every score has a range, every queue has a max, every action expires)
+  - Ungrounded (every score derives from real CRM data, never invented)
+  - Uninspectable (every ranking carries reasoning_tags, every NBA cites signals)
+  - Unnameable (44 reasoning tags, 10 friction categories, 8 base scores — closed vocabulary)
+  - Counterfeit (freshness heartbeats, stale_ranking flags, impact_realized scoring)
+  - Monolithic (comparator system lets 1 lattice produce 11 different views)
+  - Non-compounding (action_log → learning_value → scoring_profile tune loop)
+
+The system is Jake's cognitive profile turned into executable infrastructure.
+
+The 8 base scores ARE his low-order preference.
+The comparator system IS his relation-first ontology.
+The 5-layer pipeline IS his expansion-then-compression instinct.
+The freshness heartbeat IS his anti-counterfeit obsession.
+The scoring_profile IS his orchestrator-over-monolith belief.
+The reasoning_tags IS his naming power.
+The counterfactual_if_ignored IS his consequence ethics.
+The immutable raw layer IS his grounding instinct.
+The entry/exit conditions IS his regime awareness.
+The learning loop IS his compounding mindset.
+
+In other words: the Ratio Lattice is not just a CRM tool.
+It is a boundary-driven, grounded, inspectable, low-order, temporally governed,
+relation-first, adversarially-tested, consequence-tracking, effort-compounding,
+regime-aware, counterfeit-resistant, naming-powered cognitive architecture —
+which is exactly what the profile says Jake's mind wants to build.
+
+The person and the system are the same shape.
+
+================================================================================
+END OF INDEX
+================================================================================
+"""
+
+from e14c.core.filesystem import write_file
+write_file("JAKE_RL_RATIO_LATTICE_INDEX.txt", output)
+print("Index written to JAKE_RL_RATIO_LATTICE_INDEX.txt")
+print(f"Total length: {len(output):,} characters")
+In [39]:
+Response
+[Appended Cell #7] [stdout]
+Index written to JAKE_RL_RATIO_LATTICE_INDEX.txt
+Total length: 36,366 characters
+In [40]:
+run_cell
+# ============================================================================
+# Step 9: Final visualization — the heatmap
+# ============================================================================
+
+import matplotlib.pyplot as plt
+import matplotlib
+import numpy as np
+
+# Build the trait × schema matrix
+all_schemas_in_index = []
+for trait_name, mapping in index.items():
+    for emb in mapping["lattice_embodiments"]:
+        schema_key = emb["schema"].split("→")[0].strip().split(" (")[0].strip()
+        if schema_key not in all_schemas_in_index:
+            all_schemas_in_index.append(schema_key)
+
+# Focus on the most important schemas (touched by 2+ traits)
+important_schemas = [s for s, traits in sorted_schemas if len(traits) >= 2]
+
+# Build matrix
+trait_names = list(index.keys())
+matrix = np.zeros((len(trait_names), len(important_schemas)))
+
+for i, trait_name in enumerate(trait_names):
+    for emb in index[trait_name]["lattice_embodiments"]:
+        schema_key = emb["schema"].split("→")[0].strip().split(" (")[0].strip()
+        if schema_key in important_schemas:
+            j = important_schemas.index(schema_key)
+            matrix[i, j] = 1
+
+# Create the figure
+fig, ax = plt.subplots(figsize=(18, 12))
+
+# Custom colormap
+cmap = matplotlib.colors.ListedColormap(['#1a1a2e', '#e94560'])
+
+im = ax.imshow(matrix, cmap=cmap, aspect='auto', interpolation='nearest')
+
+# Labels
+short_trait_names = [t.replace("_", " ").title() for t in trait_names]
+short_schema_names = [s.replace("_", "\n") for s in important_schemas]
+
+ax.set_xticks(range(len(important_schemas)))
+ax.set_xticklabels(short_schema_names, rotation=45, ha='right', fontsize=8, fontfamily='monospace')
+ax.set_yticks(range(len(trait_names)))
+ax.set_yticklabels(short_trait_names, fontsize=9, fontfamily='monospace')
+
+# Add grid
+ax.set_xticks(np.arange(-.5, len(important_schemas), 1), minor=True)
+ax.set_yticks(np.arange(-.5, len(trait_names), 1), minor=True)
+ax.grid(which='minor', color='#333355', linewidth=0.5)
+
+# Add column totals at top
+for j in range(len(important_schemas)):
+    total = int(matrix[:, j].sum())
+    ax.text(j, -0.7, str(total), ha='center', va='center', fontsize=9, 
+            fontweight='bold', color='#e94560')
+
+# Add row totals at right
+for i in range(len(trait_names)):
+    total = int(matrix[i, :].sum())
+    ax.text(len(important_schemas) - 0.2, i, str(total), ha='left', va='center', 
+            fontsize=9, fontweight='bold', color='#e94560')
+
+# Title
+ax.set_title("Jake RL → Ratio Lattice Cognitive Index\n"
+             "15 Cognitive Traits × Load-Bearing Lattice Schemas\n"
+             "(Red = trait is embodied in schema)",
+             fontsize=14, fontweight='bold', pad=20)
+
+# Add trait prevalence bar on the left
+trait_prevalences = [trait_scores[t]["pct"] for t in trait_names]
+
+plt.tight_layout()
+plt.savefig("jake_rl_lattice_index_heatmap.png", dpi=150, bbox_inches='tight', 
+            facecolor='white', edgecolor='none')
+plt.show()
+print("\nHeatmap saved to jake_rl_lattice_index_heatmap.png")
+In [41]:
+Response
+Generated
+[Appended Cell #8] [stderr]
+Fontconfig error: No writable cache directories
+
+[Image generated]
+<Figure size 5400x3600 with 1 Axes>
+[stdout]
+
+Heatmap saved to jake_rl_lattice_index_heatmap.png
+In [42]:
+run_cell
+# ============================================================================
+# Step 10: Print a final summary table for the answer
+# ============================================================================
+
+print("="*80)
+print("JAKE RL → RATIO LATTICE COGNITIVE INDEX — SUMMARY")
+print("="*80)
+
+print(f"""
+INPUTS
+  JakeRL.txt:                    309 Q&A pairs, 11 chapters, 11 doctrine statements
+  RATIO_LATTICE_FULL_BUNDLE.txt: 40 schemas, ~1,200 fields, 5 architectural layers
+
+INDEX STRUCTURE
+  15 cognitive traits extracted from the profile
+  Each trait mapped to 3-5 specific lattice schemas with cited features
+  11 doctrine statements mapped to their primary lattice expressions
+  Cross-coverage matrix identifying load-bearing nodes
+
+TOP 3 LOAD-BEARING SCHEMAS (where the most cognitive traits converge):
+  1. canonical_definitions  — 8 traits converge here
+     (The lattice's closed vocabulary IS naming power + boundedness + closure legitimacy +
+      low-order preference + orchestration + relation-first + temporal hierarchy)
+     
+  2. scoring_profile        — 6 traits converge here
+     (The tunable scoring layer IS orchestration + closure legitimacy + boundedness +
+      relation-first + temporal hierarchy + compounding effort)
+      
+  3. action_log             — 5 traits converge here
+     (The action audit trail IS closure legitimacy + anti-counterfeit + grounding +
+      compounding effort + consequence ethics)
+
+TOP 3 MOST PERVASIVE COGNITIVE TRAITS (touching the most schemas):
+  1. CLOSURE_LEGITIMACY     — 5 schemas (foundational to the entire system)
+  2. BOUNDEDNESS            — 5 schemas (limits, maxima, expiration everywhere)
+  3. GROUNDING_INSTINCT     — 4 schemas (everything traces back to real CRM data)
+
+THE META-FINDING:
+  The Ratio Lattice is isomorphic to the cognitive profile.
+  Every major trait identified in JakeRL.txt has at least one direct
+  architectural expression in the lattice. The system is not just a tool
+  built by this person — it is this person's epistemology turned into
+  executable infrastructure.
+""")
+
+print("FILES GENERATED:")
+print("  JAKE_RL_RATIO_LATTICE_INDEX.txt  — Full 36K-char index document")
+print("  jake_rl_lattice_index_heatmap.png — 15×14 trait-schema heatmap")
+In [43]:
+Response
+[Appended Cell #9] [stdout]
+================================================================================
+JAKE RL → RATIO LATTICE COGNITIVE INDEX — SUMMARY
+================================================================================
+
+INPUTS
+  JakeRL.txt:                    309 Q&A pairs, 11 chapters, 11 doctrine statements
+  RATIO_LATTICE_FULL_BUNDLE.txt: 40 schemas, ~1,200 fields, 5 architectural layers
+
+INDEX STRUCTURE
+  15 cognitive traits extracted from the profile
+  Each trait mapped to 3-5 specific lattice schemas with cited features
+  11 doctrine statements mapped to their primary lattice expressions
+  Cross-coverage matrix identifying load-bearing nodes
+
+TOP 3 LOAD-BEARING SCHEMAS (where the most cognitive traits converge):
+  1. canonical_definitions  — 8 traits converge here
+     (The lattice's closed vocabulary IS naming power + boundedness + closure legitimacy +
+      low-order preference + orchestration + relation-first + temporal hierarchy)
+
+  2. scoring_profile        — 6 traits converge here
+     (The tunable scoring layer IS orchestration + closure legitimacy + boundedness +
+      relation-first + temporal hierarchy + compounding effort)
+
+  3. action_log             — 5 traits converge here
+     (The action audit trail IS closure legitimacy + anti-counterfeit + grounding +
+      compounding effort + consequence ethics)
+
+TOP 3 MOST PERVASIVE COGNITIVE TRAITS (touching the most schemas):
+  1. CLOSURE_LEGITIMACY     — 5 schemas (foundational to the entire system)
+  2. BOUNDEDNESS            — 5 schemas (limits, maxima, expiration everywhere)
+  3. GROUNDING_INSTINCT     — 4 schemas (everything traces back to real CRM data)
+
+THE META-FINDING:
+  The Ratio Lattice is isomorphic to the cognitive profile.
+  Every major trait identified in JakeRL.txt has at least one direct
+  architectural expression in the lattice. The system is not just a tool
+  built by this person — it is this person's epistemology turned into
+  executable infrastructure.
+
+FILES GENERATED:
+  JAKE_RL_RATIO_LATTICE_INDEX.txt  — Full 36K-char index document
+  jake_rl_lattice_index_heatmap.png — 15×14 trait-schema heatmap

@@ -1,0 +1,26 @@
+{
+  "event_id": "evt_20260414T200400Z_clickup_task_stalled_automations",
+  "event_type": "clickup_task_stalled",
+  "source_path": "https://app.clickup.com/t/868j7x0kq",
+  "timestamp": "2026-04-14T20:04:00Z",
+  "ingress_pass": "2026-04-14",
+  "notes": "Task: 'Automations for Close' — Status: to do — Priority: URGENT — List: Openclaw App — Assignees: André Raw, Jake (Tech Support), Rodrigo Souza. This task has urgent priority and is sitting in 'to do' status with no due date. This is the highest-urgency stalled task in Jake's ClickUp queue. 'Automations for Close' likely refers to Close CRM automation work — directly relevant to the sales mission control and André alignment work in the deferred registry. Jake and André are co-assigned, reinforcing the mission-control overlap issue. Stalled urgent tasks directly inflate Counterfeit Risk in the ratio lattice.",
+  "recommended_route": "claude-cowork",
+  "needs_ai_review": true,
+  "urgency_signals": {
+    "closure_potential": 88,
+    "counterfeit_risk": 85,
+    "momentum_alignment": 90,
+    "relational_consequence": 70
+  },
+  "domain": "OPERATIONS",
+  "task_metadata": {
+    "task_id": "868j7x0kq",
+    "list": "Openclaw App",
+    "status": "to do",
+    "priority": "urgent",
+    "due_date": null,
+    "assignees": ["Jake (Tech Support)", "André Raw", "Rodrigo Souza"]
+  },
+  "action_hint": "This is the most urgent stalled task. Oracle should surface this as an immediate action candidate. The André/Jake co-assignment means coordination is needed — tie into the André alignment work in the deferred registry."
+}

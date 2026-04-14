@@ -1,0 +1,47 @@
+{
+  "event_id": "evt_20260414T044721509Z_daily-substrate-sweep_5e7b45e2",
+  "event_type": "daily_substrate_sweep",
+  "timestamp": "2026-04-14T04:47:21.510Z",
+  "source_path": ".",
+  "classification": "state",
+  "recommended_route": "codex",
+  "needs_ai_review": true,
+  "ledger_updates": [
+    "FDL.md",
+    "FCL.md",
+    "MACRO_LEDGER.md",
+    "TCL.md"
+  ],
+  "notes": "Files scanned: 35. Created since previous snapshot: 0. Edited since previous snapshot: 1. Removed since previous snapshot: 0. Ledger drift findings: 3.",
+  "status": "new",
+  "sweep": {
+    "created": [],
+    "edited": [
+      "scripts/daily_substrate_sweep.mjs"
+    ],
+    "removed": [],
+    "drift_findings": [
+      {
+        "severity": "info",
+        "file": "analysis/firsttry.txt",
+        "message": "Analysis references an artifact that is not present in this workspace.",
+        "evidence": "JAKE_RL_RATIO_LATTICE_INDEX.txt",
+        "recommended_owner": "claude-cowork"
+      },
+      {
+        "severity": "info",
+        "file": "analysis/firsttry.txt",
+        "message": "Analysis references an artifact that is not present in this workspace.",
+        "evidence": "jake_rl_lattice_index_heatmap.png",
+        "recommended_owner": "claude-cowork"
+      },
+      {
+        "severity": "info",
+        "file": "analysis/firsttry.txt",
+        "message": "Analysis references an artifact that is not present in this workspace.",
+        "evidence": "RATIO_LATTICE_FULL_BUNDLE.txt",
+        "recommended_owner": "claude-cowork"
+      }
+    ]
+  }
+}

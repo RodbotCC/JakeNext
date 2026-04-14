@@ -1,0 +1,26 @@
+{
+  "event_id": "evt_20260414T200500Z_clickup_task_stalled_kpis",
+  "event_type": "clickup_task_stalled",
+  "source_path": "https://app.clickup.com/t/868j7x27z",
+  "timestamp": "2026-04-14T20:05:00Z",
+  "ingress_pass": "2026-04-14",
+  "notes": "Task: 'KPI'S DAILY ALL SALES REPS' — Status: to do — Priority: none — List: Openclaw App — Assignees: Jake (Tech Support), André Raw, Rodrigo Souza. Daily KPI tracking for all sales reps sitting in 'to do' means the daily measurement system is not running. This is an operational gap — without daily KPI tracking, the sales mission loses its feedback loop. Co-assigned to the full trio (Jake, André, Rodrigo) which suggests this may be waiting on someone to own it definitively. Given the André/Jake duplication issue, ownership ambiguity is the likely blocker.",
+  "recommended_route": "claude-cowork",
+  "needs_ai_review": true,
+  "urgency_signals": {
+    "closure_potential": 75,
+    "counterfeit_risk": 70,
+    "momentum_alignment": 78,
+    "relational_consequence": 60
+  },
+  "domain": "OPERATIONS",
+  "task_metadata": {
+    "task_id": "868j7x27z",
+    "list": "Openclaw App",
+    "status": "to do",
+    "priority": null,
+    "due_date": null,
+    "assignees": ["Jake (Tech Support)", "André Raw", "Rodrigo Souza"]
+  },
+  "action_hint": "Needs ownership assignment before it can move. André/Jake overlap may mean both think the other is handling it. Surface as part of André alignment conversation."
+}

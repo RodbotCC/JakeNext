@@ -1,0 +1,158 @@
+{
+  "generated_at": "2026-04-14T17:35:35.163Z",
+  "dispatcher_version": "1.0",
+  "total_dispatched": 15,
+  "total_skipped": 0,
+  "results": [
+    {
+      "timestamp": "2026-04-14T17:35:35.165Z",
+      "packet": "handoff/codex/inbox/evt_20260414T044721509Z_daily-substrate-sweep_5e7b45e2.md",
+      "lane": "codex",
+      "executionMode": "",
+      "moduleTarget": "",
+      "blockerType": "",
+      "action": "surface_for_codex_review",
+      "outcome": "queued_awaiting_codex"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.217Z",
+      "packet": "handoff/codex/inbox/evt_20260414T163828571Z_daily-substrate-sweep_155a28ee.md",
+      "lane": "codex",
+      "executionMode": "queue_only",
+      "moduleTarget": "external_signal_activation",
+      "blockerType": "none",
+      "action": "surface_for_codex_review",
+      "outcome": "queued_awaiting_codex"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.218Z",
+      "packet": "handoff/codex/inbox/wo_20260414T070700Z_dispatcher-roadmap-breakdown.md",
+      "lane": "codex",
+      "executionMode": "",
+      "moduleTarget": "",
+      "blockerType": "",
+      "action": "surface_for_codex_review",
+      "outcome": "queued_awaiting_codex"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.219Z",
+      "packet": "handoff/claude-cowork/inbox/brief_20260414T053500Z_codex-claude-cowork-operating-brief.md",
+      "lane": "claude-cowork",
+      "executionMode": "",
+      "moduleTarget": "",
+      "blockerType": "",
+      "action": "surface_for_semantic_review",
+      "outcome": "queued_awaiting_claude_cowork"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.220Z",
+      "packet": "handoff/claude-cowork/inbox/brief_20260414T070500Z_sylvia-north-star-brief.md",
+      "lane": "claude-cowork",
+      "executionMode": "",
+      "moduleTarget": "",
+      "blockerType": "",
+      "action": "surface_for_semantic_review",
+      "outcome": "queued_awaiting_claude_cowork"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.221Z",
+      "packet": "handoff/claude-cowork/inbox/evt_20260414T044829818Z_ledger-drift_767772f0.md",
+      "lane": "claude-cowork",
+      "executionMode": "",
+      "moduleTarget": "",
+      "blockerType": "",
+      "action": "surface_for_semantic_review",
+      "outcome": "queued_awaiting_claude_cowork"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.222Z",
+      "packet": "handoff/claude-cowork/inbox/evt_20260414T200400Z_clickup_task_stalled_automations.md",
+      "lane": "claude-cowork",
+      "executionMode": "claude_semantic",
+      "moduleTarget": "external_signal_activation",
+      "blockerType": "semantic_review",
+      "action": "surface_for_semantic_review",
+      "outcome": "queued_awaiting_claude_cowork"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.222Z",
+      "packet": "handoff/claude-cowork/inbox/evt_20260414T200500Z_clickup_task_stalled_kpis.md",
+      "lane": "claude-cowork",
+      "executionMode": "claude_semantic",
+      "moduleTarget": "external_signal_activation",
+      "blockerType": "semantic_review",
+      "action": "surface_for_semantic_review",
+      "outcome": "queued_awaiting_claude_cowork"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.223Z",
+      "packet": "handoff/claude-cowork/inbox/wo_20260414T070600Z_module-doctrine-refinement.md",
+      "lane": "claude-cowork",
+      "executionMode": "",
+      "moduleTarget": "",
+      "blockerType": "",
+      "action": "surface_for_semantic_review",
+      "outcome": "queued_awaiting_claude_cowork"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.223Z",
+      "packet": "jake/inbox/evt_20260414T200000Z_slack_dm_unanswered_andre.md",
+      "lane": "jake",
+      "executionMode": "manual_jake",
+      "moduleTarget": "external_signal_activation",
+      "blockerType": "operator_truth",
+      "action": "surface_as_operator_bottleneck",
+      "outcome": "awaiting_jake"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.224Z",
+      "packet": "jake/inbox/evt_20260414T200100Z_slack_dm_unanswered_rodrigo_watch.md",
+      "lane": "jake",
+      "executionMode": "manual_jake",
+      "moduleTarget": "external_signal_activation",
+      "blockerType": "operator_truth",
+      "action": "surface_as_operator_bottleneck",
+      "outcome": "awaiting_jake"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.224Z",
+      "packet": "jake/inbox/evt_20260414T200200Z_slack_dm_unanswered_toni.md",
+      "lane": "jake",
+      "executionMode": "manual_jake",
+      "moduleTarget": "external_signal_activation",
+      "blockerType": "operator_truth",
+      "action": "surface_as_operator_bottleneck",
+      "outcome": "awaiting_jake"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.225Z",
+      "packet": "jake/inbox/evt_20260414T200300Z_slack_dm_unanswered_spyros.md",
+      "lane": "jake",
+      "executionMode": "manual_jake",
+      "moduleTarget": "external_signal_activation",
+      "blockerType": "operator_truth",
+      "action": "surface_as_operator_bottleneck",
+      "outcome": "awaiting_jake"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.226Z",
+      "packet": "jake/inbox/evt_20260414T200600Z_clickup_task_stalled_payments.md",
+      "lane": "jake",
+      "executionMode": "manual_jake",
+      "moduleTarget": "external_signal_activation",
+      "blockerType": "operator_truth",
+      "action": "surface_as_operator_bottleneck",
+      "outcome": "awaiting_jake"
+    },
+    {
+      "timestamp": "2026-04-14T17:35:35.227Z",
+      "packet": "jake/inbox/req_20260414T070500Z_self-model-grounding.md",
+      "lane": "jake",
+      "executionMode": "",
+      "moduleTarget": "",
+      "blockerType": "",
+      "action": "surface_as_operator_bottleneck",
+      "outcome": "awaiting_jake"
+    }
+  ]
+}

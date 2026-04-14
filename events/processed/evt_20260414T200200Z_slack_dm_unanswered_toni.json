@@ -1,0 +1,18 @@
+{
+  "event_id": "evt_20260414T200200Z_slack_dm_unanswered_toni",
+  "event_type": "slack_dm_unanswered",
+  "source_path": "https://comeketocatering.slack.com/archives/D0AN72M818U/p1776026915118289",
+  "timestamp": "2026-04-14T20:02:00Z",
+  "ingress_pass": "2026-04-14",
+  "notes": "Toni Llagas sent Jake a DM on 2026-04-12 at 16:48 EDT containing a Zoom meeting link (https://us04web.zoom.us/j/4393647421). No accompanying text — just a raw Zoom link. Could be a meeting invite, a link to an active session, or a follow-up to a prior conversation. 2 days unanswered as of this ingress pass. Without context on whether Jake attended or this is outstanding, oracle routes to Jake for judgment on whether this needs acknowledgment.",
+  "recommended_route": "jake",
+  "needs_ai_review": true,
+  "urgency_signals": {
+    "closure_potential": 55,
+    "counterfeit_risk": 30,
+    "momentum_alignment": 60,
+    "relational_consequence": 65
+  },
+  "domain": "RELATIONSHIPS",
+  "action_hint": "Jake should confirm whether this Zoom link was already used/attended. If the meeting hasn't happened yet or Toni needs acknowledgment, respond."
+}

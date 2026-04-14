@@ -1,0 +1,26 @@
+{
+  "event_id": "evt_20260414T200600Z_clickup_task_stalled_payments",
+  "event_type": "clickup_task_stalled",
+  "source_path": "https://app.clickup.com/t/868j7x2cm",
+  "timestamp": "2026-04-14T20:06:00Z",
+  "ingress_pass": "2026-04-14",
+  "notes": "Task: 'ALL SALES PAYMENTS CHECKED' — Status: to do — Priority: none — List: Openclaw App — Assignees: André Raw, Rodrigo Souza, Jake (Tech Support). Sales payment verification sitting idle. In a catering/sales business, unchecked payments represent real financial exposure. This task is a recurring operational obligation that is currently stuck. Like the KPI task, the three-way co-assignment may be masking ownership ambiguity. Stalled payment checking is a direct Counterfeit Risk signal — work is being assumed done while it isn't.",
+  "recommended_route": "jake",
+  "needs_ai_review": true,
+  "urgency_signals": {
+    "closure_potential": 80,
+    "counterfeit_risk": 80,
+    "momentum_alignment": 75,
+    "relational_consequence": 65
+  },
+  "domain": "OPERATIONS",
+  "task_metadata": {
+    "task_id": "868j7x2cm",
+    "list": "Openclaw App",
+    "status": "to do",
+    "priority": null,
+    "due_date": null,
+    "assignees": ["André Raw", "Rodrigo Souza", "Jake (Tech Support)"]
+  },
+  "action_hint": "Jake should confirm whether payments are actually being checked by someone despite 'to do' status, or whether this is a genuine gap. Route to Jake because financial verification requires operator truth."
+}

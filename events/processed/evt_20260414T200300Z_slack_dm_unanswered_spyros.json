@@ -1,0 +1,18 @@
+{
+  "event_id": "evt_20260414T200300Z_slack_dm_unanswered_spyros",
+  "event_type": "slack_dm_unanswered",
+  "source_path": "https://comeketocatering.slack.com/archives/D0AN72LTTE0/p1775923255128999",
+  "timestamp": "2026-04-14T20:03:00Z",
+  "ingress_pass": "2026-04-14",
+  "notes": "Spyros Marinos sent Jake a DM on 2026-04-11 at 12:00 EDT saying 'If you're on now I am'. Real-time availability ping — 3+ days ago. The moment has passed, but the unacknowledged message leaves an open relational loop with Spyros. In the same thread window, Spyros also asked about events@comeketocatering.com login access (Apr 9). Pattern suggests Spyros has been trying to connect with Jake on operational/access questions and may feel unreachable.",
+  "recommended_route": "jake",
+  "needs_ai_review": true,
+  "urgency_signals": {
+    "closure_potential": 50,
+    "counterfeit_risk": 20,
+    "momentum_alignment": 55,
+    "relational_consequence": 70
+  },
+  "domain": "RELATIONSHIPS",
+  "action_hint": "Jake should acknowledge Spyros with a brief response — even just 'Sorry I missed this, what did you need?' — to close the relational gap and surface any outstanding access/operational questions."
+}

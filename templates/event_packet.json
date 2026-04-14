@@ -1,0 +1,13 @@
+{
+  "event_id": "evt_YYYYMMDDTHHMMSSZ_slug",
+  "event_type": "file_created",
+  "timestamp": "YYYY-MM-DDTHH:MM:SS.sssZ",
+  "source_path": "relative/path/from/workspace",
+  "classification": "raw_source | analysis | ledger | tooling | canon | handoff | state | unknown",
+  "recommended_route": "codex | claude-cowork | shared/conflicts | shared/questions | shared/decisions",
+  "needs_ai_review": true,
+  "ledger_updates": [],
+  "notes": "What changed and why this event exists.",
+  "status": "new"
+}
+

@@ -1,0 +1,14 @@
+{
+  "event_id": "evt_20260414T044829818Z_ledger-drift_767772f0",
+  "event_type": "ledger_drift",
+  "timestamp": "2026-04-14T04:48:29.819Z",
+  "source_path": "analysis/firsttry.txt",
+  "classification": "analysis",
+  "recommended_route": "claude-cowork",
+  "needs_ai_review": true,
+  "ledger_updates": [
+    "TCL.md"
+  ],
+  "notes": "analysis/firsttry.txt references RATIO_LATTICE_FULL_BUNDLE.txt, JAKE_RL_RATIO_LATTICE_INDEX.txt, and jake_rl_lattice_index_heatmap.png, but those artifacts are not present in this workspace. Claude Co-Work should decide whether to recover, regenerate, ignore, or document these missing artifacts.",
+  "status": "new"
+}

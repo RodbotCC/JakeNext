@@ -1,0 +1,26 @@
+# Secrets - never commit
+.env
+*.secret
+**/secrets/
+
+# Local machine state (regenerated each session)
+.oraclestate/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor artifacts
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Node
+node_modules/
+
+# Temporary files
+*.tmp
+*.temp

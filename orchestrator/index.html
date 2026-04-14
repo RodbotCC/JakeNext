@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JakeNext — Sylvia Orchestrator</title>
+  <meta name="description" content="A Sylvia-facing orchestration surface for JakeNext, showing the file tree, chooser loop, north-star modules, Jake lane, ratio lattice, and the operational boundary between Codex and Claude Co-Work.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <nav class="rail" aria-label="Orchestrator navigation">
+      <div class="rail-logo">SY</div>
+      <button class="rail-btn active" data-view="tree" aria-label="Tree">Tree</button>
+      <button class="rail-btn" data-view="sylvia" aria-label="Sylvia">Self</button>
+      <button class="rail-btn" data-view="chooser" aria-label="Chooser">Choose</button>
+      <button class="rail-btn" data-view="lattice" aria-label="Lattice">Lattice</button>
+      <button class="rail-btn" data-view="triggers" aria-label="Triggers">Rules</button>
+      <button class="rail-btn" data-view="events" aria-label="Events">Events</button>
+      <button class="rail-btn" data-view="handoff" aria-label="Handoff">Queues</button>
+      <button class="rail-btn" data-view="agents" aria-label="Agents">Agents</button>
+      <button class="rail-btn" data-view="scripts" aria-label="Scripts">Scripts</button>
+      <button class="rail-btn" data-view="dispatch" aria-label="Dispatch">Act</button>
+      <div class="rail-spacer"></div>
+      <div class="rail-foot">syl</div>
+    </nav>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">JakeNext / Sylvia North Star</p>
+          <h1>Sylvia Orchestrator</h1>
+          <p class="subhead">The tree is still the operating surface, but now it also feeds a chooser loop. This control panel explains how Sylvia, the ratio lattice, module progress, the Jake lane, Codex, and Claude Co-Work fit together.</p>
+        </div>
+        <div class="topbar-meta">
+          <div class="meta-pill">
+            <span class="meta-label">Active partner</span>
+            <span class="meta-value">Claude Co-Work</span>
+          </div>
+          <div class="meta-pill">
+            <span class="meta-label">Substrate owner</span>
+            <span class="meta-value">Codex</span>
+          </div>
+          <div class="meta-pill">
+            <span class="meta-label">Named identity</span>
+            <span class="meta-value">Sylvia</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="stage">
+        <section class="stage-main">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker" id="sectionKicker">File Tree</p>
+              <h2 id="sectionTitle">Everything lives somewhere for a reason.</h2>
+            </div>
+            <div class="status-strip" id="statusStrip"></div>
+          </div>
+          <div class="panel-scroll" id="panelScroll"></div>
+        </section>
+
+        <aside class="preview-panel">
+          <div class="preview-header">
+            <span class="preview-dot"></span>
+            <span>Hover Preview</span>
+          </div>
+          <div class="preview-body" id="previewBody">
+            <div class="preview-empty">
+              <h3>Touch the tree.</h3>
+              <p>Hover a directory, module, comparator, queue, or agent to see why it exists, what it interacts with, and what should happen when something changes.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
