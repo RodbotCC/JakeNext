@@ -27,15 +27,49 @@ Nothing interacts with anything else without affecting it.
 
 ### Gray Code Cycle (Δ-Gray)
 
+**The Cosmological Bootstrap (canonical direction):**
 ```
-11 → 10 → 00 → 01 → (wrap) → 11
- OR   NOT   AND  LOCK        OR
+00 → 01 → 11 → 10 → 00
+AND  LOCK  OR   NOT  AND
 ```
 
-**Each step flips exactly ONE bit** (Gray code property).
+**Each step flips exactly ONE bit** (Gray code property):
+- 00 → 01 (flip right bit)
+- 01 → 11 (flip left bit)
+- 11 → 10 (flip right bit)
+- 10 → 00 (flip left bit)
 
-This is the natural traversal of reality:
-- Future (OR) → Present (NOT) → Past (AND) → Memory (LOCK) → Future (OR)...
+### The Bootstrap Sequence
+
+```
+00 (AND) - Pure vacuum, self-aware
+    ↓
+01 (LOCK) - First shadow appears
+    ↓
+11 (OR) - Knot forms, Big Bang
+    ↓
+10 (NOT) - Separation, duality
+    ↓
+00 (AND) - Return home, but changed
+    ↓
+01 (LOCK) - Second structure
+    ↓
+11 (OR) - Second expansion
+    ↓
+10 (NOT) - Second separation
+    ↓
+00 (AND) - Lattice has two points now
+    ...
+```
+
+**The lattice builds point by point through repeated ONAL cycles.**
+
+Each cycle:
+1. Starts from self-aware void (AND)
+2. Something crystallizes (LOCK)
+3. It expands/branches (OR)
+4. Selection separates (NOT)
+5. Returns to reference, but with one more point
 
 ---
 
@@ -80,6 +114,20 @@ Two systems interact, and that harmonious interaction between them **creates an 
 
 **Future meets past in the present inside of the locks.**
 
+The cosmological direction (how reality builds):
+```
+00 (AND/void) — self-aware vacuum
+    ↓
+01 (LOCK/shadow) — first structure crystallizes
+    ↓
+11 (OR/bang) — expansion, possibilities branch
+    ↓
+10 (NOT/separation) — selection, duality
+    ↓
+00 (AND/return) — back to reference, but changed
+```
+
+The experiential direction (how we encounter it):
 ```
 11 (OR/future) — possibilities branch
     ↓
@@ -88,9 +136,9 @@ Two systems interact, and that harmonious interaction between them **creates an 
 00 (AND/past) — reference integrates
     ↓
 01 (LOCK/memory) — becomes real
-    ↓
-(wrap to 11)
 ```
+
+Both are valid traversals of the same Gray cycle.
 
 ---
 
@@ -297,7 +345,7 @@ The ledgers are the substrate where LOCK phase happens — where choices become 
 
 **Future meets past in the present inside of the locks.**
 
-**The Gray cycle traverses: 11 → 10 → 00 → 01 → 11**
+**The Gray cycle traverses: 00 → 01 → 11 → 10 → 00 (cosmological bootstrap)**
 
 **6 (0110) = NO path. 9 (1001) = YES path.**
 
