@@ -1,0 +1,5 @@
+/plugin install fakechat@claude-plugins-official
+claude --channels plugin:fakechat@claude-plugins-official
+
+Then open:
+http://localhost:8787

@@ -1,0 +1,33 @@
+{
+  "name": "auto-memory",
+  "title": "Auto Memory",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "understanding Claude's automatic memory system",
+    "disabling or redirecting auto memory",
+    "auditing saved memory content",
+    "debugging persistence and instruction issues"
+  ],
+  "core_objects": [
+    "autoMemoryEnabled",
+    "autoMemoryDirectory",
+    "MEMORY.md",
+    "topic memory files",
+    "/memory",
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY"
+  ],
+  "required_fields": [],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/auto-memory-disabled.json",
+    "examples/custom-memory-directory.json",
+    "examples/memory-tree.txt",
+    "examples/disable-auto-memory.sh",
+    "examples/memory-requests.txt"
+  ]
+}

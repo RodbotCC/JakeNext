@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "FileChanged": [
+      {
+        "matcher": ".envrc|.env",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "direnv export bash >> \"$CLAUDE_ENV_FILE\""
+          }
+        ]
+      }
+    ]
+  }
+}

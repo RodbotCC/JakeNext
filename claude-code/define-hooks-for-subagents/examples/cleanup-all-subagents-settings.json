@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "SubagentStop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "./scripts/cleanup-db-connection.sh" }
+        ]
+      }
+    ]
+  }
+}

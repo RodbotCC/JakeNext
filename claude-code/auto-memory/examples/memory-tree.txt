@@ -1,0 +1,5 @@
+~/.claude/projects/<project>/memory/
+├── MEMORY.md
+├── debugging.md
+├── api-conventions.md
+└── ...

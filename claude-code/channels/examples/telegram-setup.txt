@@ -1,0 +1,6 @@
+/plugin install telegram@claude-plugins-official
+/reload-plugins
+/telegram:configure <token>
+claude --channels plugin:telegram@claude-plugins-official
+/telegram:access pair <code>
+/telegram:access policy allowlist

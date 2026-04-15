@@ -1,0 +1,3 @@
+always use pnpm, not npm
+remember that the API tests require a local Redis instance
+add this to CLAUDE.md

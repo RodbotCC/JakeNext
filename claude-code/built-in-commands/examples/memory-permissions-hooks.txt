@@ -1,0 +1,8 @@
+/memory
+/permissions
+/hooks
+/mcp
+/agents
+/plugin
+/reload-plugins
+/skills

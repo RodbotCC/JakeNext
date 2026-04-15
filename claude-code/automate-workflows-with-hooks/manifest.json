@@ -1,0 +1,42 @@
+{
+  "name": "automate-workflows-with-hooks",
+  "title": "Automate Workflows With Hooks",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "desktop notifications",
+    "post-edit formatting",
+    "blocking protected file edits",
+    "context reinjection after compaction",
+    "configuration auditing",
+    "environment reload automation",
+    "narrow permission auto-approval"
+  ],
+  "core_objects": [
+    "Notification",
+    "PreToolUse",
+    "PostToolUse",
+    "SessionStart",
+    "ConfigChange",
+    "CwdChanged",
+    "FileChanged",
+    "PermissionRequest",
+    "CLAUDE_ENV_FILE",
+    "exit code 2"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/notification-macos.json",
+    "examples/post-edit-prettier.json",
+    "examples/protect-files-settings.json",
+    "examples/protect-files.sh",
+    "examples/sessionstart-compact-reminder.json",
+    "examples/config-change-audit.json",
+    "examples/filechanged-direnv.json",
+    "examples/permissionrequest-exit-plan-mode.json"
+  ]
+}

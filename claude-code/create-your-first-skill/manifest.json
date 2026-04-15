@@ -1,0 +1,37 @@
+{
+  "name": "create-your-first-skill",
+  "title": "Create Your First Skill",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "creating a first skill",
+    "understanding SKILL.md structure",
+    "choosing where skills should live",
+    "testing automatic and direct skill invocation"
+  ],
+  "core_objects": [
+    "SKILL.md",
+    "yaml frontmatter",
+    "description",
+    "skill body instructions",
+    "personal skills",
+    "project skills",
+    "nested skill discovery",
+    "add-dir skill loading"
+  ],
+  "required_fields": [
+    "name",
+    "description"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/explain-code/SKILL.md",
+    "examples/skill-directory-layout.txt",
+    "examples/project-skill-location.txt",
+    "examples/add-dir-skill-note.txt"
+  ]
+}

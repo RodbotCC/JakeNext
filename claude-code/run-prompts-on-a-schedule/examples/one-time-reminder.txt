@@ -1,0 +1,3 @@
+remind me at 3pm to push the release branch
+
+in 45 minutes, check whether the integration tests passed

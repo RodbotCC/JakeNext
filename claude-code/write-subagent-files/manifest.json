@@ -1,0 +1,37 @@
+{
+  "name": "write-subagent-files",
+  "title": "Write Subagent Files",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "authoring subagent markdown files",
+    "choosing frontmatter fields",
+    "understanding inheritance behavior",
+    "creating reusable project or user agents"
+  ],
+  "core_objects": [
+    "yaml frontmatter",
+    "markdown body",
+    "subagent system prompt",
+    "tools",
+    "disallowedTools",
+    "skills",
+    "initialPrompt",
+    "memory",
+    "isolation"
+  ],
+  "required_fields": [
+    "name",
+    "description"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/minimal-reviewer.md",
+    "examples/advanced-debugger.md",
+    "examples/background-researcher.md"
+  ]
+}

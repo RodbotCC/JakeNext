@@ -1,0 +1,11 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PreToolUse",
+    "permissionDecision": "allow",
+    "permissionDecisionReason": "Approved by policy",
+    "updatedInput": {
+      "command": "npm run lint"
+    },
+    "additionalContext": "This repository requires linting before further edits."
+  }
+}

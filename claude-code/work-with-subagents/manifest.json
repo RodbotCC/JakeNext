@@ -1,0 +1,34 @@
+{
+  "name": "work-with-subagents",
+  "title": "Work With Subagents",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "automatic delegation",
+    "explicit subagent invocation",
+    "running subagents in the background",
+    "resuming stopped subagents",
+    "choosing between subagents and main conversation"
+  ],
+  "core_objects": [
+    "@-mention",
+    "--agent",
+    "background task",
+    "SendMessage",
+    "agent transcript",
+    "compact_boundary",
+    "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/code-reviewer.md",
+    "examples/debugger.md",
+    "examples/data-scientist.md",
+    "examples/db-reader.md"
+  ]
+}

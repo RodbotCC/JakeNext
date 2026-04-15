@@ -1,0 +1,4 @@
+Users report the app exits after one message instead of staying connected.
+Spawn 5 agent teammates to investigate different hypotheses. Have them talk to
+each other to try to disprove each other's theories, like a scientific
+debate. Update the findings doc with whatever consensus emerges.

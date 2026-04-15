@@ -1,0 +1,9 @@
+# Deny all skill invocation
+Skill
+
+# Allow only specific skills
+Skill(commit)
+Skill(review-pr *)
+
+# Deny a specific skill prefix
+Skill(deploy *)

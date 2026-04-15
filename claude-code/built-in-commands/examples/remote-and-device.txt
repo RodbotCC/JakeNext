@@ -1,0 +1,9 @@
+/desktop
+/mobile
+/voice
+/remote-control
+/remote-env
+/chrome
+/ide
+/sandbox
+/terminal-setup

@@ -1,0 +1,35 @@
+{
+  "name": "control-agent-teams",
+  "title": "Control Agent Teams",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "choosing display mode",
+    "specifying team size and models",
+    "requiring plan approval",
+    "directing teammates manually",
+    "enforcing task quality gates",
+    "team shutdown and cleanup"
+  ],
+  "core_objects": [
+    "teammateMode",
+    "--teammate-mode",
+    "plan approval",
+    "shared task list",
+    "TeammateIdle",
+    "TaskCreated",
+    "TaskCompleted",
+    "team cleanup"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/teammate-mode-config.json",
+    "examples/plan-approval-prompt.txt",
+    "examples/task-hooks.json",
+    "examples/team-shutdown-and-cleanup.txt"
+  ]
+}

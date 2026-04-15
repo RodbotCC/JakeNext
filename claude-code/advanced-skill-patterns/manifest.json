@@ -1,0 +1,35 @@
+{
+  "name": "advanced-skill-patterns",
+  "title": "Advanced Skill Patterns",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "injecting live shell context into skills",
+    "running skills in forked subagents",
+    "controlling Claude's access to skills",
+    "bundling scripts for artifact-producing skills"
+  ],
+  "core_objects": [
+    "shell injection",
+    "context: fork",
+    "agent",
+    "disableSkillShellExecution",
+    "Skill permission rules",
+    "visual output skills",
+    "SLASH_COMMAND_TOOL_CHAR_BUDGET"
+  ],
+  "required_fields": [],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/pr-summary/SKILL.md",
+    "examples/deep-research/SKILL.md",
+    "examples/disable-skill-shell-execution.json",
+    "examples/skill-permission-rules.txt",
+    "examples/codebase-visualizer/SKILL.md",
+    "examples/codebase-visualizer/scripts/visualize.py"
+  ]
+}

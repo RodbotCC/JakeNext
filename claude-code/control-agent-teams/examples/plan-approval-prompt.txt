@@ -1,0 +1,3 @@
+Spawn an architect teammate to refactor the authentication module.
+Require plan approval before they make any changes.
+Only approve plans that include test coverage and reject plans that modify the database schema.

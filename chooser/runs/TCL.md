@@ -63,3 +63,7 @@
 ### 2026-04-14 ~21:47 EDT — Chooser run receipt added
 
 **Action**: Added chooser receipt `run_20260415T014721Z.md` for winner `09_action_selection_storytelling`, confirming truthful packet reuse because no queue movement changed the live Jake blocker.
+
+### 2026-04-14 ~22:47 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260415T024717Z.md` for winner `09_action_selection_storytelling`, confirming the same Jake-lane blocker still outranks the shared reflection review.

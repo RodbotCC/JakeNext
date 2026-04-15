@@ -1,0 +1,3 @@
+~/.claude/rules/
+├── preferences.md
+└── workflows.md

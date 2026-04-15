@@ -1,0 +1,35 @@
+{
+  "name": "tools-reference",
+  "title": "Tools Reference",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "looking up built-in tool names",
+    "checking which tools require permission",
+    "writing permission rules and hook matchers correctly",
+    "understanding Bash, LSP, and PowerShell behavior"
+  ],
+  "core_objects": [
+    "Bash",
+    "Read",
+    "Edit",
+    "Write",
+    "Skill",
+    "Agent",
+    "LSP",
+    "PowerShell"
+  ],
+  "required_fields": [],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/no-permission-tools.txt",
+    "examples/permission-required-tools.txt",
+    "examples/bash-behavior.txt",
+    "examples/powershell-enable.json",
+    "examples/permission-rule-snippets.txt"
+  ]
+}

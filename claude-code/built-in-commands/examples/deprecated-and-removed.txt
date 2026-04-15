@@ -1,0 +1,3 @@
+/pr-comments [PR]   # removed in v2.1.91
+/review             # deprecated; use the code-review plugin
+/vim                # removed in v2.1.92

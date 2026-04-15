@@ -1,0 +1,4 @@
+Spawn a security reviewer teammate with the prompt: "Review the authentication module
+at src/auth/ for security vulnerabilities. Focus on token handling, session
+management, and input validation. The app uses JWT tokens stored in
+httpOnly cookies. Report any issues with severity ratings."

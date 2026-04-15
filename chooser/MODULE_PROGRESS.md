@@ -4,7 +4,7 @@
 > This file tracks how close the system is to each Sylvia module becoming real.
 > Last updated: 2026-04-15
 
-Refresh note: Reviewed again in `run_20260415T014721Z`; no queue movement or owner-truth change altered the module ordering, so the current priority stack remains intact.
+Refresh note: Reviewed again in `run_20260415T024717Z`; no queue movement, owner-truth change, or packet-state change altered the module ordering, so the current priority stack remains intact.
 
 ---
 

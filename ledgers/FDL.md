@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Master map of the JakeNext workspace topology.
-> Last updated: 2026-04-14
+> Last updated: 2026-04-15
 
 ---
 
@@ -46,6 +46,7 @@ All other meaningful artifacts must live inside directories with both:
 | `orchestrator/` | `FCL.md`, `TCL.md`, `RLL.md`, `index.html`, `styles.css`, `app.js` | Frontend control surface and UI ranking baseline | ✅ Live |
 | `templates/` | `FCL.md`, `TCL.md` plus packet templates | Reusable packet shapes | ✅ Live |
 | `scripts/` | `FCL.md`, `TCL.md`, script files, `lib/` | Automation and validation tendons | ✅ Live |
+| `claude-code/` | `FCL.md`, `TCL.md`, `RLL.md`, `NSL.md`, 25 capability entries | Claude Code substrate capability library for Sylvia — hooks, memory, subagents, skills, teams | ✅ Live |
 
 ---
 

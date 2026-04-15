@@ -1,0 +1,36 @@
+{
+  "name": "built-in-commands",
+  "title": "Built-in Commands",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "finding built-in slash commands",
+    "understanding command visibility and platform gating",
+    "separating built-ins from bundled skills and MCP prompts",
+    "looking up deprecated or removed commands"
+  ],
+  "core_objects": [
+    "/clear",
+    "/config",
+    "/memory",
+    "/permissions",
+    "/plan",
+    "/plugin",
+    "/resume",
+    "/mcp__<server>__<prompt>"
+  ],
+  "required_fields": [],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/session-and-context.txt",
+    "examples/config-and-status.txt",
+    "examples/memory-permissions-hooks.txt",
+    "examples/planning-and-workflow.txt",
+    "examples/remote-and-device.txt",
+    "examples/deprecated-and-removed.txt"
+  ]
+}

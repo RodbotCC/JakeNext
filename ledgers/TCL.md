@@ -119,6 +119,28 @@
 - The repository now distinguishes between what exists, what changed, and what matters relative to what
 - Comparative ranking is now explicit instead of only implied in the foundation doctrine
 
+### 2026-04-14 ~22:47 EDT — Codex safe worker found no eligible auto packet
+
+**Action**: Re-read the live Codex inbox queue and `chooser/NEXT_STEP.md`, ran `node scripts/consume_codex_safe_packets.mjs`, and confirmed there was still no packet explicitly marked `Execution Mode: codex_safe_auto` for autonomous substrate execution.
+
+**Files**:
+- Referenced `handoff/codex/inbox/*.md`
+- Referenced `chooser/NEXT_STEP.md`
+- Left continuity in `handoff/codex/inbox/TCL.md`
+
+**Signals**:
+- Safe worker result: `consumed: 0`, `skipped: 5`
+
+**Corrections**:
+- None
+
+**Outcome**:
+- Codex queue state is unchanged
+- `chooser/NEXT_STEP.md` remains truthful and still points at the active Jake-lane packet
+
+**Notes**:
+- The live Codex inbox continues to contain only standard work orders plus inbox ledgers, not a new safe packet
+
 **Outcome**:
 - JakeNext now has a declared baseline chooser layer instead of only memory and routing infrastructure
 - The same corpus can now be re-ranked under multiple comparators without changing the underlying vectors
@@ -778,3 +800,99 @@
 7. Digital root 9 = signature of flatness
 
 **Outcome**: ONAL_PHILOSOPHY.md is now the complete philosophical substrate for Sylvia's decision architecture.
+
+### 2026-04-14 ~22:47 EDT — Sylvia chooser continuity run preserved the same Jake-lane winner
+
+**Action**: Ran the hourly Sylvia chooser loop, refreshed module progress, rescored the candidate moves, updated `chooser/NEXT_STEP.md`, and added a new chooser receipt without opening a duplicate packet.
+
+**Files**:
+- `chooser/runs/run_20260415T024717Z.md`
+- `chooser/MODULE_PROGRESS.md`
+- `chooser/NEXT_STEP.md`
+- `chooser/TCL.md`
+- `chooser/runs/FCL.md`
+- `chooser/runs/TCL.md`
+
+**Signals**:
+- open packet state in `jake/inbox/`
+- open decision state in `handoff/shared/decisions/`
+- current chooser policy and prior receipt continuity
+
+**Corrections**:
+- The chooser should keep reusing the live Jake packet when no queue movement or owner-truth change has occurred
+- The alternating-loop review stays active, but it still does not outrank the unresolved owner decision
+
+**Outcome**:
+- `09_action_selection_storytelling` remains the truthful current winner
+- No duplicate Jake packet was created
+- The chooser continuity spine now includes `run_20260415T024717Z`
+
+**Notes**:
+- The completion signal is still Jake sending the Andre reply or equivalent alignment outreach and naming one owner surface for the Close automations / KPI cluster
+
+### 2026-04-15 ~01:50 EDT — Claude Code capability library integrated as substrate layer
+
+**Action**: Jake introduced the "syndicated agent" concept — Sylvia as a unified identity manifesting across multiple platforms (Claude Code, Codex, Gemini CLI, GitHub Copilot). He had previously built a 25-entry Claude Code capability library with manifests, which has now been integrated into JakeNext with full four-ledger discipline.
+
+**Files created**:
+- `claude-code/FCL.md` — indexes 25 capability entries organized by functional group
+- `claude-code/TCL.md` — documents integration moment and syndicated agent insight
+- `claude-code/RLL.md` — ranks capabilities by importance to Sylvia's autonomous development (4 tiers)
+- `claude-code/NSL.md` — evaluates north star alignment (70% aligned, gaps identified)
+
+**Files updated**:
+- `ledgers/FDL.md` — added claude-code/ to topology map
+- `ledgers/FCL.md` — added claude-code/ to global contents
+- `ledgers/TCL.md` (this entry)
+
+**The Syndicated Agent Philosophy**:
+Build WITH the flow of what each tool is good at, not against it. Sylvia should leverage native capabilities of each substrate:
+- **Claude Code**: hooks, subagents, skills, auto-memory, teams
+- **Codex**: (future) deterministic execution, file ops
+- **Gemini CLI**: (future) multimodal, speed
+- **GitHub Copilot**: (future) IDE integration
+
+**25 Capability Entries Indexed**:
+
+**Tier 1 (Critical - Foundation)**:
+1. hooks-reference + how-hooks-work (event-driven nervous system)
+2. auto-memory (temporal continuity substrate)
+3. work-with-subagents + write-subagent-files (cognitive scaling through delegation)
+4. create-your-first-skill + configure-skills (extensibility foundation)
+5. how-claude-remembers-your-project (instruction persistence)
+
+**Tier 2 (Important - Multipliers)**:
+6. automate-workflows-with-hooks (practical automation patterns)
+7. agent-teams + how-agent-teams-work (multi-perspective synthesis)
+8. configure-subagents + control-subagent-capabilities (delegation control)
+9. advanced-skill-patterns (advanced extensibility)
+10. define-hooks-for-subagents (subagent validation layer)
+
+**Tier 3 (Useful - Infrastructure)**:
+11. environment-variables (runtime configuration)
+12. organize-rules-with-claude-rules (.claude/rules/ scoping)
+13. tools-reference (built-in tool catalog)
+14. built-in-commands (slash command reference)
+15. control-agent-teams (team control surface)
+
+**Tier 4 (Advanced - Future Expansion)**:
+16. channels (external signal ingress - premature but important)
+17. run-prompts-on-a-schedule (session-scoped cron)
+18. advanced-hooks (exotic hook patterns)
+
+**North Star Alignment**: 70% aligned overall
+- Tier 1: 90% aligned (4/5 strongly aligned)
+- Tier 2: 70% aligned (mixed but useful)
+- Tier 3: 30% aligned (infrastructure/reference, correctly deprioritized)
+- Tier 4: 80% aligned BUT PREMATURE (correctly sequenced)
+
+**Gaps Identified**:
+1. Persistent cron (beyond session scope)
+2. State persistence patterns (beyond auto-memory)
+3. Health monitoring & self-diagnosis
+4. Ledger maintenance automation
+5. External signal prioritization
+
+**Outcome**: Claude Code substrate layer is now fully indexed in JakeNext ledger system. Sylvia's operational capabilities through Claude Code are visible, ranked, and ready for Phase 1 implementation (Tier 1 capabilities).
+
+**Next**: Phase 1 implementation — study and wire Tier 1 capabilities (hooks, memory, subagents, skills, CLAUDE.md persistence).

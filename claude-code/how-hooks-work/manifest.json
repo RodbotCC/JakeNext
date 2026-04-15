@@ -1,0 +1,38 @@
+{
+  "name": "how-hooks-work",
+  "title": "How Hooks Work",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "minimum_version_for_if_field": "2.1.85",
+  "primary_use_cases": [
+    "understanding hook event timing",
+    "parsing hook stdin input",
+    "returning structured hook decisions",
+    "filtering hooks with matchers and if",
+    "choosing the right hook location"
+  ],
+  "core_objects": [
+    "hook_event_name",
+    "tool_name",
+    "tool_input",
+    "stdout",
+    "stderr",
+    "exit code 0",
+    "exit code 2",
+    "permissionDecision",
+    "matcher",
+    "if"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/pretooluse-input.json",
+    "examples/block-drop-table.sh",
+    "examples/pretooluse-decision.json",
+    "examples/if-filter-bash-git.json",
+    "examples/disable-all-hooks.json"
+  ]
+}

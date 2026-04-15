@@ -1,0 +1,5 @@
+Working directory persists across Bash commands.
+Environment variables do not persist across Bash commands.
+
+Use CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1 to reset to the project directory after each command.
+Use CLAUDE_ENV_FILE or hooks to persist environment setup.

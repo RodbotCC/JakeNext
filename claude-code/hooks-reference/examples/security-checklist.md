@@ -1,0 +1,5 @@
+- validate and sanitize inputs
+- always quote shell variables
+- block path traversal
+- use absolute paths
+- skip sensitive files like `.env`, `.git/`, keys, and secrets

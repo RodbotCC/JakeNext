@@ -1,0 +1,9 @@
+/config
+/status
+/theme
+/color cyan
+/effort high
+/model sonnet
+/fast on
+/statusline
+/keybindings

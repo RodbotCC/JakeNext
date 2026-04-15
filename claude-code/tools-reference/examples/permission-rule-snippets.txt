@@ -1,0 +1,6 @@
+Bash(git diff *)
+Read
+Edit
+Write
+Skill(review-pr *)
+Agent(my-custom-agent)

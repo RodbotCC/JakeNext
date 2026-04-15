@@ -1,0 +1,35 @@
+{
+  "name": "advanced-hooks",
+  "title": "Advanced Hooks",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "using prompt-based hooks",
+    "using agent-based hooks",
+    "sending hook data to external HTTP services",
+    "debugging hook failures",
+    "understanding hook limits and permission precedence"
+  ],
+  "core_objects": [
+    "type: prompt",
+    "type: agent",
+    "type: http",
+    "ok",
+    "reason",
+    "allowedEnvVars",
+    "stop_hook_active",
+    "debug-file"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/prompt-stop-check.json",
+    "examples/agent-stop-test-verifier.json",
+    "examples/http-posttooluse.json",
+    "examples/stop-hook-active-guard.sh",
+    "examples/interactive-shell-guard.sh"
+  ]
+}

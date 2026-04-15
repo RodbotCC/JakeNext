@@ -1,0 +1,8 @@
+/plan fix the auth bug
+/security-review
+/schedule check the deployment every hour
+/ultraplan redesign the sync pipeline
+/tasks
+/init
+/insights
+/powerup

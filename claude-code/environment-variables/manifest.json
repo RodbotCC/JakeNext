@@ -1,0 +1,36 @@
+{
+  "name": "environment-variables",
+  "title": "Environment Variables",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "finding the right Claude Code environment variable",
+    "configuring provider, model, and auth behavior",
+    "tuning memory, permissions, MCP, and plugins",
+    "debugging networking, telemetry, and runtime behavior"
+  ],
+  "core_objects": [
+    "ANTHROPIC_API_KEY",
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS",
+    "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB",
+    "ENABLE_TOOL_SEARCH",
+    "CLAUDE_CODE_SIMPLE",
+    "API_TIMEOUT_MS",
+    "DISABLE_TELEMETRY"
+  ],
+  "required_fields": [],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/auth-and-provider.env",
+    "examples/memory-and-context.env",
+    "examples/mcp-and-plugins.env",
+    "examples/debug-and-telemetry.env",
+    "examples/security-hardening.env",
+    "examples/ui-and-runtime.env"
+  ]
+}

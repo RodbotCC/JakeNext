@@ -1,0 +1,9 @@
+Bash
+Edit
+ExitPlanMode
+NotebookEdit
+PowerShell
+Skill
+WebFetch
+WebSearch
+Write

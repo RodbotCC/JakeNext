@@ -1,0 +1,10 @@
+/clear
+/compact
+/resume auth-refactor
+/rename my-feature-session
+/branch experiment-a
+/rewind
+/context
+/diff
+/copy 2
+/export session.txt

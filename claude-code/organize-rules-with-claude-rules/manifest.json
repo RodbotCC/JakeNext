@@ -1,0 +1,35 @@
+{
+  "name": "organize-rules-with-claude-rules",
+  "title": "Organize Rules With .claude/rules/",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "splitting large instruction sets into rule files",
+    "scoping instructions to matching file paths",
+    "sharing rules across projects with symlinks",
+    "understanding user vs project rule precedence"
+  ],
+  "core_objects": [
+    ".claude/rules/",
+    "paths frontmatter",
+    "glob patterns",
+    "unconditional rules",
+    "path-scoped rules",
+    "symlinked rules",
+    "~/.claude/rules/"
+  ],
+  "required_fields": [],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/rules-tree.txt",
+    "examples/testing.md",
+    "examples/api-rule.md",
+    "examples/multi-pattern-rule.md",
+    "examples/symlink-commands.sh",
+    "examples/user-rules-tree.txt"
+  ]
+}

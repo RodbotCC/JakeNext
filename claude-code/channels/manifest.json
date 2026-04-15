@@ -1,0 +1,34 @@
+{
+  "name": "channels",
+  "title": "Channels",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "minimum_version": "2.1.80",
+  "primary_use_cases": [
+    "chat bridging into a live session",
+    "receiving webhook-like events in a running session",
+    "remote interaction via Telegram, Discord, or iMessage",
+    "testing channel behavior with fakechat"
+  ],
+  "core_objects": [
+    "--channels",
+    "plugin channel",
+    "sender allowlist",
+    "pairing code",
+    "channelsEnabled",
+    "allowedChannelPlugins",
+    "fakechat"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/fakechat-quickstart.txt",
+    "examples/telegram-setup.txt",
+    "examples/channels-enabled-settings.json",
+    "examples/allowed-channel-plugins.json",
+    "examples/channels-vs-other-features.md"
+  ]
+}

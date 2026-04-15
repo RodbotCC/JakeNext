@@ -1,0 +1,35 @@
+{
+  "name": "configure-skills",
+  "title": "Configure Skills",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "configuring skill frontmatter",
+    "controlling skill invocation behavior",
+    "passing arguments into skills",
+    "splitting skills into supporting files"
+  ],
+  "core_objects": [
+    "SKILL.md",
+    "description",
+    "disable-model-invocation",
+    "user-invocable",
+    "allowed-tools",
+    "context",
+    "agent",
+    "argument substitution"
+  ],
+  "required_fields": [],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/api-conventions/SKILL.md",
+    "examples/deploy/SKILL.md",
+    "examples/fix-issue/SKILL.md",
+    "examples/migrate-component/SKILL.md",
+    "examples/supporting-files-layout.txt"
+  ]
+}

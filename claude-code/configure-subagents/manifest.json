@@ -1,0 +1,43 @@
+{
+  "name": "configure-subagents",
+  "title": "Configure Subagents",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "creating project subagents",
+    "defining session-only subagents",
+    "resolving agent precedence",
+    "understanding subagent scope"
+  ],
+  "core_commands": [
+    "/agents",
+    "claude agents",
+    "claude --agents '{...}'"
+  ],
+  "core_objects": [
+    "subagent markdown file",
+    "YAML frontmatter",
+    "scope precedence",
+    "project agents",
+    "user agents",
+    "managed agents",
+    "plugin agents"
+  ],
+  "priority_order": [
+    "managed settings",
+    "--agents CLI flag",
+    ".claude/agents/",
+    "~/.claude/agents/",
+    "plugin agents/ directory"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/project_agent.md",
+    "examples/session_agents.json",
+    "examples/session_agents.sh"
+  ]
+}

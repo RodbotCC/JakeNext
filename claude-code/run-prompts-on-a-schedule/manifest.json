@@ -1,0 +1,34 @@
+{
+  "name": "run-prompts-on-a-schedule",
+  "title": "Run Prompts On A Schedule",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "minimum_version": "2.1.72",
+  "primary_use_cases": [
+    "session-scoped polling",
+    "one-time reminders",
+    "re-running commands on an interval",
+    "short-lived cron scheduling inside a live session"
+  ],
+  "core_objects": [
+    "/loop",
+    "CronCreate",
+    "CronList",
+    "CronDelete",
+    "deterministic jitter",
+    "seven-day expiry",
+    "CLAUDE_CODE_DISABLE_CRON"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/loop-deploy-check.txt",
+    "examples/loop-review-pr.txt",
+    "examples/one-time-reminder.txt",
+    "examples/cron-reference.md",
+    "examples/disable-cron.sh"
+  ]
+}

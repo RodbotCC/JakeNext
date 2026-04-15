@@ -1,0 +1,38 @@
+{
+  "name": "hooks-reference",
+  "title": "Hooks Reference",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "looking up hook event behavior",
+    "understanding matcher and handler configuration",
+    "writing hook decision outputs correctly",
+    "debugging hook execution and scoping"
+  ],
+  "core_objects": [
+    "PreToolUse",
+    "PermissionRequest",
+    "PostToolUse",
+    "SessionStart",
+    "InstructionsLoaded",
+    "Stop",
+    "async hooks",
+    "CLAUDE_ENV_FILE"
+  ],
+  "required_fields": [],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/hook-locations.md",
+    "examples/matcher-cheatsheet.md",
+    "examples/pretooluse-decision.json",
+    "examples/permissionrequest-decision.json",
+    "examples/worktreecreate-output.json",
+    "examples/async-posttooluse.json",
+    "examples/claude-env-file.sh",
+    "examples/security-checklist.md"
+  ]
+}

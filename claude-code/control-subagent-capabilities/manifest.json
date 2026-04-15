@@ -1,0 +1,37 @@
+{
+  "name": "control-subagent-capabilities",
+  "title": "Control Subagent Capabilities",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "restricting subagent tools",
+    "limiting spawnable agents",
+    "scoping MCP servers",
+    "configuring permission modes",
+    "enabling subagent memory",
+    "adding hook-based conditional controls"
+  ],
+  "core_objects": [
+    "tools",
+    "disallowedTools",
+    "Agent(agent_type)",
+    "mcpServers",
+    "permissionMode",
+    "skills",
+    "memory",
+    "hooks",
+    "permissions.deny"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/safe-researcher.md",
+    "examples/coordinator.md",
+    "examples/browser-tester.md",
+    "examples/db-reader.md",
+    "examples/deny-settings.json"
+  ]
+}

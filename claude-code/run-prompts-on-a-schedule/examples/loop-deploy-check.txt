@@ -1,0 +1,1 @@
+/loop 5m check if the deployment finished and tell me what happened

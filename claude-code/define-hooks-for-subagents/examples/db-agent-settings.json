@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "SubagentStart": [
+      {
+        "matcher": "db-agent",
+        "hooks": [
+          { "type": "command", "command": "./scripts/setup-db-connection.sh" }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "db-agent",
+        "hooks": [
+          { "type": "command", "command": "./scripts/cleanup-db-connection.sh" }
+        ]
+      }
+    ]
+  }
+}

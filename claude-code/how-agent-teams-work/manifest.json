@@ -1,0 +1,34 @@
+{
+  "name": "how-agent-teams-work",
+  "title": "How Agent Teams Work",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "understanding team architecture",
+    "deciding when teams are worth the cost",
+    "reusing subagent definitions as teammates",
+    "troubleshooting team behavior",
+    "running teams with better decomposition"
+  ],
+  "core_objects": [
+    "team lead",
+    "teammate",
+    "shared task list",
+    "mailbox",
+    "team config",
+    "task list storage",
+    "SendMessage",
+    "broadcast"
+  ],
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/parallel-code-review.txt",
+    "examples/competing-hypotheses.txt",
+    "examples/context-rich-spawn-prompt.txt",
+    "examples/team-storage-paths.md"
+  ]
+}

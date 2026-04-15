@@ -1,0 +1,6 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "WorktreeCreate",
+    "worktreePath": "/absolute/path/to/worktree"
+  }
+}

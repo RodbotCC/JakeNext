@@ -1,0 +1,9 @@
+`--add-dir` grants file access, but `.claude/skills/` inside an added directory is a special case:
+
+- skills are loaded automatically
+- live change detection picks them up during the session
+- other `.claude/` configuration from added directories is not discovered the same way
+
+To load `CLAUDE.md` from added directories, set:
+
+CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1

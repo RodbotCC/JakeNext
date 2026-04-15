@@ -1,0 +1,3 @@
+Ask the researcher teammate to shut down.
+
+After all active teammates are stopped, clean up the team.

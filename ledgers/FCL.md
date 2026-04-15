@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Global contents ledger for the workspace root and top-level directory surfaces.
-> Last updated: 2026-04-15
+> Last updated: 2026-04-15 ~01:50 EDT
 
 ---
 
@@ -35,6 +35,7 @@
 | `orchestrator/` | `orchestrator/FCL.md`, `orchestrator/TCL.md`, `orchestrator/RLL.md` | Static frontend control surface and UI ranking baseline | ✅ Live |
 | `templates/` | `templates/FCL.md`, `templates/TCL.md` | Packet and work-order templates | ✅ Live |
 | `scripts/` | `scripts/FCL.md`, `scripts/TCL.md` | Automation and validation tendons | ✅ Live |
+| `claude-code/` | `claude-code/FCL.md`, `claude-code/TCL.md`, `claude-code/RLL.md`, `claude-code/NSL.md` | Claude Code substrate capability library — 25 indexed entries covering hooks, memory, subagents, skills, teams, and advanced patterns | ✅ Live |
 
 ---
 

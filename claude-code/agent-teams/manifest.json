@@ -1,0 +1,31 @@
+{
+  "name": "agent-teams",
+  "title": "Agent Teams",
+  "entry_type": "claude-code-reference",
+  "status": "draft",
+  "source_type": "claude-code-docs-derived-entry",
+  "product_area": "claude-code",
+  "primary_use_cases": [
+    "parallel research",
+    "multi-perspective design work",
+    "cross-layer coordination",
+    "debugging with competing hypotheses"
+  ],
+  "core_objects": [
+    "team lead",
+    "teammate",
+    "shared task list",
+    "direct teammate communication",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS",
+    "Shift+Down"
+  ],
+  "minimum_version": "2.1.32",
+  "files": {
+    "main": "README.md"
+  },
+  "examples": [
+    "examples/enable-agent-teams-settings.json",
+    "examples/first-team-prompt.txt",
+    "examples/subagents-vs-agent-teams.md"
+  ]
+}

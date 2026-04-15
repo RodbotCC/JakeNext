@@ -1,0 +1,8 @@
+{
+  "channelsEnabled": true,
+  "allowedChannelPlugins": [
+    { "marketplace": "claude-plugins-official", "plugin": "telegram" },
+    { "marketplace": "claude-plugins-official", "plugin": "discord" },
+    { "marketplace": "acme-corp-plugins", "plugin": "internal-alerts" }
+  ]
+}

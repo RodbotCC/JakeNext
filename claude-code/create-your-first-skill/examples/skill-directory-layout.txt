@@ -1,0 +1,7 @@
+my-skill/
+├── SKILL.md
+├── template.md
+├── examples/
+│   └── sample.md
+└── scripts/
+    └── validate.sh
