@@ -98,3 +98,18 @@
 **Files updated**: `canon/ONAL_PHILOSOPHY.md`
 
 **Outcome**: ONAL now has both the harmony/dissonance matrix AND the shear/flow dynamics model. The viscosity principle connects directly to Laws 8 and 9 (bounded stochasticity within candidate bands).
+
+### 2026-04-15 ~01:30 EDT — ONAL corrected with cosmological bootstrap sequence
+
+**Action**: Jake corrected the ONAL binary mapping and provided the cosmological bootstrap sequence. The canonical cycle direction is now 00 → 01 → 11 → 10 → 00 (AND → LOCK → OR → NOT → AND).
+
+**The Bootstrap**:
+- 00 (AND): Pure vacuum, self-aware
+- 01 (LOCK): First shadow appears
+- 11 (OR): Knot forms, Big Bang
+- 10 (NOT): Separation, duality
+- 00 (AND): Return home, but changed (lattice +1 point)
+
+**Files updated**: `canon/ONAL_PHILOSOPHY.md`
+
+**Outcome**: ONAL now has both the cosmological direction (how reality builds) and the experiential direction (how we encounter it). The void (AND/00) is the proper starting point.

@@ -759,3 +759,22 @@
 - NSL = north star alignment (constraint space for NOT)
 
 **Outcome**: ONAL is now documented as the philosophical foundation. The decision architecture is grounded in this thermodynamic/temporal model.
+
+### 2026-04-15 ~01:30 EDT — ONAL corrected with cosmological bootstrap and full 16→10→2→1 reduction
+
+**Action**: Jake provided the complete corrected ONAL framework including: canonical binary mapping (11=OR, 10=NOT, 00=AND, 01=LOCK), the 16→10→2→1 filter (how 6 and 9 emerge as the only YES/NO paths), the cosmological bootstrap sequence (00→01→11→10→00), numbers as geometric locks, and digital root 9 as signature of zero curvature.
+
+**Files updated**:
+- `canon/ONAL_PHILOSOPHY.md` (major expansion)
+- `canon/TCL.md`
+
+**Key framework elements now documented**:
+1. Gray Code Cycle: 00 → 01 → 11 → 10 → 00
+2. 16 → 10 filter (6 patterns rejected)
+3. 10 → 2 filter (only 0110 and 1001 traverse full ONAL)
+4. 2 → 1 filter (0110=NO/6, 1001=YES/9)
+5. Cosmological bootstrap (void → shadow → bang → separation → return+1)
+6. Numbers as geometric locks (regular polygons = LOW-compliant)
+7. Digital root 9 = signature of flatness
+
+**Outcome**: ONAL_PHILOSOPHY.md is now the complete philosophical substrate for Sylvia's decision architecture.
