@@ -896,3 +896,41 @@ Build WITH the flow of what each tool is good at, not against it. Sylvia should 
 **Outcome**: Claude Code substrate layer is now fully indexed in JakeNext ledger system. Sylvia's operational capabilities through Claude Code are visible, ranked, and ready for Phase 1 implementation (Tier 1 capabilities).
 
 **Next**: Phase 1 implementation — study and wire Tier 1 capabilities (hooks, memory, subagents, skills, CLAUDE.md persistence).
+
+### 2026-04-15 ~02:10 EDT — Directory consolidation: 16 → 10 top-level directories
+
+**Action**: Executed directory consolidation to reduce root-level clutter and improve system legibility. Created 4 parent directories to group related subdirectories without flattening structure.
+
+**Context**: Jake requested consolidation to keep the file tree comprehensible and prevent burn-out from mystery sprawl. Goal: atomize everything meaningful so it earns its keep.
+
+**Parent directories created**:
+1. **signals/** - Signal processing layer
+   - Moved: `events/`, `triggers/`, `DAILY_BRIEFINGS/` → `briefings/`
+2. **collaboration/** - Multi-agent coordination layer
+   - Moved: `handoff/`, `jake/` (Jake recognized as another agent in the handoff system)
+3. **capabilities/** - Operational capabilities layer
+   - Moved: `skills/`, `scripts/`, `templates/`, `orchestrator/`
+4. **knowledge/** - Knowledge corpus layer (TEMPORARY)
+   - Moved: `source/`, `analysis/` (likely redundant, pending review/deprecation)
+
+**Files created**:
+- `signals/FCL.md`, `signals/TCL.md`
+- `collaboration/FCL.md`, `collaboration/TCL.md`
+- `capabilities/FCL.md`, `capabilities/TCL.md`
+- `knowledge/FCL.md`, `knowledge/TCL.md`
+
+**Files updated**:
+- `ledgers/FDL.md` - updated topology map with parent directories
+- `ledgers/FCL.md` - updated root contents
+- `ledgers/TCL.md` (this entry)
+
+**Before/After**:
+- **Before**: 16 directories at root (ledgers, chooser, canon, identity, .oraclestate, jake, source, analysis, DAILY_BRIEFINGS, skills, events, triggers, handoff, orchestrator, templates, scripts, claude-code)
+- **After**: 10 directories at root (ledgers, chooser, canon, identity, .oraclestate, signals, collaboration, capabilities, knowledge, claude-code)
+
+**Excluded from ledger support**:
+- `claude-code NO NEED FOR LEDGER SUPPORT/` - reference material, temporary, will be deprecated/deleted once capabilities are wired
+
+**Outcome**: Root directory is significantly cleaner. System architecture is more legible. Parent directories group related functions (signal processing, collaboration, capabilities, knowledge) without flattening the ledger-per-directory discipline.
+
+**Next**: Phase 2 - NSL rollout for 8 critical directories.
