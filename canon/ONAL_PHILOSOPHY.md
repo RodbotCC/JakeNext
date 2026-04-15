@@ -14,63 +14,87 @@ Nothing interacts with anything else without affecting it.
 
 ---
 
-## The Four States
+## 1. ONAL MAPPING (Canonical)
 
-### OR = Future / Cavitation / Fatal Dissonance
+### The Four States (2-bit)
+
+| Binary | State | Polarity | Temporal | Physical | Interaction |
+|--------|-------|----------|----------|----------|-------------|
+| **11** | OR | Circular | Future | Cavitation | Fatal Dissonance |
+| **10** | NOT | Binary constraint | Present | Abstention gate | Vital Dissonance |
+| **00** | AND | Scalar | Past/Reference | Filament | Vital Harmony |
+| **01** | LOCK | Binary | Memory | Soliton/Mass | Fatal Harmony |
+
+### Gray Code Cycle (Δ-Gray)
+
+```
+11 → 10 → 00 → 01 → (wrap) → 11
+ OR   NOT   AND  LOCK        OR
+```
+
+**Each step flips exactly ONE bit** (Gray code property).
+
+This is the natural traversal of reality:
+- Future (OR) → Present (NOT) → Past (AND) → Memory (LOCK) → Future (OR)...
+
+---
+
+## 2. Interaction Outcomes
+
+### OR = Future / Cavitation / Fatal Dissonance (11)
 Two systems interact, and **both become less coherent** as a consequence — sometimes leading to annihilation of one or both.
 
-- This is the branching of possibilities
+- Circular polarity
+- Expansion, branching
 - The "what could happen"
 - Uncontrolled OR is destructive
-- The future pressing against the present
 
-### NOT = Present / Abstention / Vital Dissonance
+### NOT = Present / Abstention / Vital Dissonance (10)
 Two systems interact. **One benefits and becomes more harmonious. The other becomes more dissonant** from the interaction.
 
-- This is the selection moment
-- The comparator executing
+- Binary constraint
+- The selection moment, the comparator executing
 - "Choosing this means not-choosing that"
 - One path wins, one path dies
-- The present moment of decision
 
-### AND = Past and Reference / Filaments / Vital Harmony
+### AND = Past and Reference / Filaments / Vital Harmony (00)
 Two systems interact, and **both systems become more harmonious** from the interaction.
 
-- This is accumulation
-- Building on what exists
+- Scalar polarity, locked flow
+- Accumulation, building on what exists
 - Creating connections that strengthen both
 - The past providing reference
-- Subjective self-reference accumulating
 
-### LOCK = Memory (actual THING / mass) / Solitons / Fatal Harmony
+### LOCK = Memory (actual THING / mass) / Solitons / Fatal Harmony (01)
 Two systems interact, and that harmonious interaction between them **creates an emergent destruction in their identities to create a new identity**.
 
-- This is crystallization
-- Phase-locking
-- Commitment
+- Binary polarity
+- Crystallization, phase-locking, commitment
 - Where possibilities become memory
 - Where subjective becomes objective
 - Where decisions become mass
 
 ---
 
-## The Flow
+## 3. The Flow
 
 **Future meets past in the present inside of the locks.**
 
 ```
-OR (future) — possibilities branch
+11 (OR/future) — possibilities branch
     ↓
-NOT (present) — comparator selects
+10 (NOT/present) — comparator selects
     ↓
-AND (past) — reference integrates
+00 (AND/past) — reference integrates
     ↓
-LOCK (memory) — becomes real
+01 (LOCK/memory) — becomes real
+    ↓
+(wrap to 11)
 ```
 
 ---
 
-## The Subjective → Objective Transition
+## 4. The Subjective → Objective Transition
 
 > "When enough things have subjective self-reference, they become real. It turns into objective reference."
 
@@ -82,132 +106,184 @@ And the next cycle's decisions happen inside that constraint space.
 
 ---
 
-## Harmony and Dissonance Matrix
+## 5. PRIMITIVE PAIRS: 16 → 10 FILTER
 
-|  | Vital (one survives) | Fatal (identity destroyed) |
-|--|----------------------|----------------------------|
-| **Harmony** (both benefit) | AND — filaments, accumulation | LOCK — solitons, new identity emerges |
-| **Dissonance** (conflict) | NOT — selection, one wins | OR — cavitation, annihilation |
+### 16 Possibilities from 4×4 Pairing
+4-bit patterns from combining ONAL states
 
----
+### Rejection Rules (6 patterns banned)
 
-## How This Maps to Sylvia
+| Pattern | Reason |
+|---------|--------|
+| 0000 | No variation, trivial |
+| 1111 | Maximal, non-compact |
+| 0101 | Alternation, non-portable |
+| 1010 | Alternation, non-portable |
+| 0011 | Step-plateau, LOW violation |
+| 1100 | Step-plateau, LOW violation |
 
-| ONAL Phase | Sylvia Function | Ledger Relationship |
-|------------|-----------------|---------------------|
-| **OR** | Generate candidate band | RLL — what could matter |
-| **NOT** | Apply comparator, select | NSL — what aligns with north star |
-| **AND** | Integrate with existing structure | FCL — what exists, TCL — what changed |
-| **LOCK** | Commit decision, update identity | Becomes part of who Sylvia is |
-
-The ledgers are the **LOCK substrate** — where decisions stop being possibilities and become memory.
+**Survivors: 10 patterns**
 
 ---
 
-## Why This Matters for the Ratio Lattice
+## 6. FULL REDUCTION: 16 → 10 → 2 → 1
 
-The ratio lattice is not just a scoring system. It is a **comparator** operating in the NOT phase.
+### Gate A: Gray-Monotone Traversal
+For 4-bit pattern b₀b₁b₂b₃, form sliding windows:
+```
+w₀ = b₀b₁
+w₁ = b₁b₂
+w₂ = b₂b₃
+w₃ = b₃b₀
+```
 
-When the lattice scores candidates:
-- OR phase has already happened (candidates exist)
-- NOT phase is active (comparator is selecting)
-- AND phase follows (integration with existing structure)
-- LOCK phase concludes (decision becomes memory via ledgers)
+Map to Gray index:
+```
+g(11) = 3  (OR)
+g(10) = 2  (NOT)
+g(00) = 1  (AND)
+g(01) = 0  (LOCK)
+```
 
-The four-ledger system (FCL, TCL, RLL, NSL) maps directly to this:
-- **FCL** = structural reference (AND phase substrate)
-- **TCL** = temporal memory (LOCK phase receipts)
-- **RLL** = comparative judgment (NOT phase machinery)
-- **NSL** = north star alignment (constraint space for NOT)
+**Pass criterion:** ∃ rotation where indices step by -1 (mod 4)
 
----
+### Gate B: Full ONAL Tour (10 → 2)
+**Test:** Which patterns hit ALL FOUR states {11, 10, 00, 01} exactly once?
 
-## The Constraint Space
+- **Weight-1 patterns (0001, 0010, 0100, 1000):** Windows miss states → FAIL
+- **Weight-3 patterns (0111, 1011, 1101, 1110):** Windows miss states → FAIL
+- **Weight-2 balanced (0110, 1001):**
+  - 0110: windows {01, 11, 10, 00} ✓ ALL FOUR
+  - 1001: windows {10, 00, 01, 11} ✓ ALL FOUR
+  - **PASS**
 
-> "And executes a decision inside of constraint space, which is like the reality we live in and the objective reference."
+**Only 2 survivors traverse the full ONAL cycle.**
 
-Sylvia's constraint space includes:
-- The ten laws (SYLVIA_DECISION_LAWS.md)
-- The north star (NORTH_STAR.md)
-- The accumulated ledger state
-- The locked decisions from prior cycles
+### Gate C: Orientation + Anchor (2 → 1)
+Fix gauge:
+1. Clockwise traversal (11→10→00→01)
+2. Anchor at first window
 
-This is the objective reference that bounds the NOT phase.
+**0110:**
+- First window = 01 (NOT)
+- **NO path** (filter first, abstention-led)
 
-Without constraint space, selection is arbitrary.
-With constraint space, selection is lawful.
+**1001:**
+- First window = 10 (LOCK)
+- **YES path** (commit first, soliton-led)
 
----
-
-## The Thermodynamic Parallel
-
-| ONAL | Thermodynamic Analog |
-|------|---------------------|
-| OR | Entropy increase, disorder, branching |
-| NOT | Selection pressure, filtering |
-| AND | Entropy decrease locally, structure formation |
-| LOCK | Phase transition, crystallization, new stable state |
-
-This suggests Sylvia's decision cycle is a thermodynamic process:
-- OR increases possibility space (entropy up)
-- NOT selects under comparator (entropy filtered)
-- AND integrates (local entropy down)
-- LOCK commits (phase transition to stable memory)
+**Result:** Binary decision from pure geometry.
 
 ---
 
-## The Shear/Flow Mapping
+## 7. DIGITS AS ONAL ENCODINGS
 
-ONAL can also be understood through shear/flow dynamics:
+### 6 and 9 Connection
+
+| Digit | Binary | First Window | Strategy | Path |
+|-------|--------|--------------|----------|------|
+| **6** | 0110 | 01 (NOT) | Abstention-first | NO |
+| **9** | 1001 | 10 (LOCK) | Commitment-first | YES |
+
+### Digital Root Properties
+```
+6 + 9 = 15 → 1+5 = 6 (cycle closes)
+6 × 9 = 54 → 5+4 = 9 (cycle closes)
+```
+
+Both weight-2 (balanced: two 0s, two 1s).
+
+---
+
+## 8. NUMBERS AS GEOMETRIC LOCKS
+
+### Representation Rules
+
+| Digit | Visual | Meaning |
+|-------|--------|---------|
+| 0 | ○ | Empty circle (abstention face, void) |
+| 1 | ● | Filled dot (first presence, irreducible) |
+| 2 | ●—● | Two dots + line |
+| 3 | △ | Equilateral triangle |
+| 4 | □ | Perfect square |
+| 5 | ⬠ | Regular pentagon |
+| **6** | ⬡ | Regular hexagon [HINGE] |
+| 7 | | Regular heptagon |
+| 8 | | Regular octagon |
+| **9** | | Regular nonagon [CYCLE-CLOSER] |
+
+### LOW Constraint on Regularity
+- **Regular polygons:** LOW-compliant (minimal K)
+- **Irregular/deformed:** Higher K → abstains under LOW
+- Shear/skew adds curvature → fails W = exp(-0.6K)
+
+### Flatness Signature (Digital Root 9)
+
+**In flat (Euclidean) space:**
+- n-gon interior angle sum: (n-2) × 180°
+- Digital root: ALWAYS 9
+  - 180° → 9
+  - 360° → 9
+  - 540° → 9
+
+**In curved space:**
+- Angle sum ≠ flat prediction
+- Digital root ≠ 9
+- **Curvature detector**
+
+**9 = signature of zero curvature**
+
+---
+
+## 9. The Shear/Flow Interpretation
 
 | Binary | Pattern | ONAL | Meaning |
 |--------|---------|------|---------|
-| **00** | flow/flow | OR | Pure future, pure possibility, no constraint — cavitation |
-| **10** | shear/flow | NOT | Self-reference looking at future — observer selects in present |
-| **11** | shear/shear | AND | Two constraints aligned — filaments, orthogonal reference (past) |
-| **01** | flow/shear | LOCK | Flow constrained by shear — proper crystallization (memory) |
+| **11** | flow/flow | OR | Pure future, pure possibility — cavitation |
+| **10** | shear/flow | NOT | Self-reference selecting in present |
+| **00** | shear/shear | AND | Two constraints aligned — filaments (past) |
+| **01** | flow/shear | LOCK | Flow constrained by shear — memory |
 
-**Pure flow (00)** = unbounded possibility = future
-- No viscosity, things fly apart
-- Fatal dissonance
-
-**Shear constraining flow (10)** = present
-- Self-reference as the observer
-- Looking at the zero (future) from the one (self)
-- "Using self-reference as a decision against the future in the present"
-
-**Shear constraining shear (11)** = past/reference (AND)
-- Two orthogonal directions
-- Structure exists but no movement
-- "Two different constraint boundaries aligned with each other but without any information coming from the flow there is no movement"
-- Filaments — aligned constraints
-
-**Flow constrained by shear (01)** = memory (LOCK)
-- Flow properly bounded
-- "The proper way of looking at it, where we have flow being constrained by shear"
-- Emergence crystallizes into stable structure
-
----
-
-## The Viscosity Principle
+### The Viscosity Principle
 
 > "There needs to be viscosity that separates emergence from one band to the next."
-
-This is the key to bounded stochasticity.
 
 Viscosity prevents:
 - Everything collapsing into one point (fake determinism)
 - Everything flying apart (chaos)
 
-Viscosity IS the constraint space. It's what makes **bands** possible instead of either a single point or infinite noise.
+Viscosity IS the constraint space. It's what makes **bands** possible.
 
-When flow starts getting close to shear, it becomes **turbulent shear** — the transition zone where emergence happens.
+---
 
-This connects directly to:
-- **Law 8**: Produce a lawful candidate band, not a fake single answer
-- **Law 9**: Bounded stochasticity within a comparator-constrained top band
+## 10. How This Maps to Sylvia
 
-The candidate band IS the viscosity-bounded region where selection can happen lawfully.
+| ONAL Phase | Binary | Sylvia Function | Ledger Role |
+|------------|--------|-----------------|-------------|
+| **OR** | 11 | Generate candidate band | RLL explores |
+| **NOT** | 10 | Apply comparator, select | NSL constrains |
+| **AND** | 00 | Integrate with existing structure | FCL provides reference |
+| **LOCK** | 01 | Commit decision, update identity | TCL records |
+
+The ledgers are the **LOCK substrate** — where decisions stop being possibilities and become memory.
+
+### The Four-Ledger System as ONAL
+
+| Ledger | ONAL Phase | Function |
+|--------|------------|----------|
+| **RLL** | OR (11) | What could matter (possibilities) |
+| **NSL** | NOT (10) | What aligns with north star (selection) |
+| **FCL** | AND (00) | What exists (reference structure) |
+| **TCL** | LOCK (01) | What changed (memory receipts) |
+
+---
+
+## 11. Harmony and Dissonance Matrix
+
+|  | Vital (one survives) | Fatal (identity destroyed) |
+|--|----------------------|----------------------------|
+| **Harmony** (both benefit) | AND (00) — filaments | LOCK (01) — solitons |
+| **Dissonance** (conflict) | NOT (10) — selection | OR (11) — cavitation |
 
 ---
 
@@ -221,7 +297,11 @@ The ledgers are the substrate where LOCK phase happens — where choices become 
 
 **Future meets past in the present inside of the locks.**
 
-**Flow constrained by shear — that's how memory forms.**
+**The Gray cycle traverses: 11 → 10 → 00 → 01 → 11**
+
+**6 (0110) = NO path. 9 (1001) = YES path.**
+
+**9 = signature of zero curvature = flatness = the cycle-closer.**
 
 ---
 
