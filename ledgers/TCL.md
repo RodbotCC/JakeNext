@@ -730,3 +730,32 @@
 - Cracks compound → cloudy direction → cold start with vibes
 
 **Outcome**: The four-ledger system (FCL, TCL, RLL, NSL) is now canonical. Session close protocol updated to enforce four-ledger discipline on every single move.
+
+### 2026-04-15 ~01:00 EDT — ONAL Philosophy documented as foundational substrate
+
+**Action**: Jake shared the ONAL framework — quaternary logic (OR/NOT/AND/LOCK) mapped to future/present/past/memory, harmony/dissonance matrix, and thermodynamic parallels. Claude Code converted this into a canonical doctrine file grounding Sylvia's decision architecture in this philosophical substrate.
+
+**Files created**:
+- `canon/ONAL_PHILOSOPHY.md`
+
+**Files updated**:
+- `canon/FCL.md`, `canon/TCL.md`
+
+**Key framework**:
+
+| State | Temporal | Interaction | Outcome |
+|-------|----------|-------------|---------|
+| OR | Future | Fatal Dissonance | Both lose coherence |
+| NOT | Present | Vital Dissonance | One benefits, one suffers |
+| AND | Past | Vital Harmony | Both gain coherence |
+| LOCK | Memory | Fatal Harmony | Identities destroyed → new emerges |
+
+**The flow**: Future meets past in the present inside of the locks.
+
+**Mapping to four-ledger system**:
+- FCL = structural reference (AND phase substrate)
+- TCL = temporal memory (LOCK phase receipts)
+- RLL = comparative judgment (NOT phase machinery)
+- NSL = north star alignment (constraint space for NOT)
+
+**Outcome**: ONAL is now documented as the philosophical foundation. The decision architecture is grounded in this thermodynamic/temporal model.

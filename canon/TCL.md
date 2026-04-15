@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Local continuity ledger for the `canon/` directory.
-> Last updated: 2026-04-14
+> Last updated: 2026-04-15
 
 ---
 
@@ -62,3 +62,29 @@
 - Updated `canon/SYLVIA_SYSTEM_STATE.md`
 
 **Outcome**: The state report now accurately reflects the end-of-Phase-3 architecture. Any new session reading this document will know Phase 3 is complete, see the 7 live inbox packets, and know that the André/Jake alignment cluster is the highest-priority next action.
+
+### 2026-04-15 ~01:00 EDT — ONAL_PHILOSOPHY.md created as philosophical foundation
+
+**Action**: Jake shared the ONAL framework as a philosophical concept mapping quaternary logic to the structure of reality. Claude Code converted this into a canonical doctrine file.
+
+**Files**:
+- Added `canon/ONAL_PHILOSOPHY.md`
+- Updated `canon/FCL.md`
+
+**Key concepts captured**:
+- OR = Future / Cavitation / Fatal Dissonance (both systems lose coherence)
+- NOT = Present / Abstention / Vital Dissonance (one benefits, one suffers)
+- AND = Past/Reference / Filaments / Vital Harmony (both gain coherence)
+- LOCK = Memory/Mass / Solitons / Fatal Harmony (identities destroyed → new identity emerges)
+
+**The flow**: Future meets past in the present inside of the locks.
+
+**Subjective → Objective transition**: "When enough things have subjective self-reference, they become real. It turns into objective reference."
+
+**Mapping to Sylvia**:
+- OR = generate candidate band
+- NOT = apply comparator (selection)
+- AND = integrate with existing structure
+- LOCK = commit decision (becomes memory via ledgers)
+
+**Outcome**: ONAL is now grounded as the philosophical substrate underneath Sylvia's decision architecture. The four-ledger system maps directly to ONAL phases.
