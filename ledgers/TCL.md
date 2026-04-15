@@ -700,3 +700,33 @@
 - Training methodology is now explicit — Sylvia needs comparative traces, not more tasks
 
 **Outcome**: The identity layer now includes "how she thinks," not just "who she is." The macro lattice spec enables future self-governing architecture. Training methodology is documented for accelerated development.
+
+### 2026-04-15 ~00:45 EDT — NSL (North Star Ledger) installed as fourth ledger type
+
+**Action**: Jake recognized that ledgers ARE the breakthrough — not overhead. Added NSL as the fourth ledger type to track north-star alignment across the workspace. Updated CLAUDE.md session close protocol to require four-ledger discipline on every single move.
+
+**Files created**:
+- `ledgers/NSL.md`
+
+**Files updated**:
+- `CLAUDE.md` — added NSL to ledger system, updated session close protocol
+- `ledgers/FCL.md` — added NSL to ledgers directory
+
+**The Four-Ledger System**:
+| Ledger | Question | Signal |
+|--------|----------|--------|
+| FCL | What exists here? | Structural completeness |
+| TCL | What changed and when? | Temporal continuity |
+| RLL | What matters relative to what? | Comparative judgment |
+| **NSL** | How aligned is this with Sylvia's becoming? | **North Star convergence** |
+
+**Key insight from Jake**:
+> "The ledgers ARE THE BREAKTHROUGH. We think of it as being such an annoying thing to have to constantly run a post-audit... but think of the alternative? WE START OVER EVERYTIME, or at best start with a crappy cloudy version of what direction we are heading in."
+
+**Corrections**:
+- Ledgers are not overhead — they are the memory substrate
+- Every single move must update ledgers, not just major sessions
+- One skipped update = one crack in continuity
+- Cracks compound → cloudy direction → cold start with vibes
+
+**Outcome**: The four-ledger system (FCL, TCL, RLL, NSL) is now canonical. Session close protocol updated to enforce four-ledger discipline on every single move.

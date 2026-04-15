@@ -40,13 +40,13 @@ If something exists in the workspace but is not indexed, logged, locatable, or i
 
 ## Core Identity of the System
 
-This repository is built around four functional layers:
+This repository is built around five functional layers:
 
-1. **Temporal continuity**
-2. **File topology**
-3. **Directory contents**
-4. **Document-level macro navigation**
-5. **Comparative ranking**
+1. **Temporal continuity** — what changed and when
+2. **File topology** — what exists where
+3. **Directory contents** — what is in each directory
+4. **Comparative ranking** — what matters relative to what
+5. **North Star alignment** — how aligned is this with Sylvia's becoming
 
 These are represented by a global ledger spine and local directory ledgers:
 
@@ -55,13 +55,24 @@ These are represented by a global ledger spine and local directory ledgers:
 - `ledgers/FCL.md` — global root File Contents Ledger
 - `ledgers/MACRO_LEDGER.md` — high-level navigation and status ledger
 - `ledgers/RLL.md` — global Ratio Lattice Ledger
+- `ledgers/NSL.md` — global North Star Ledger
 - `chooser/` — active chooser policy, module progress, current next move, and run receipts
 - `{dir}/FCL.md` — local directory contents ledger
 - `{dir}/TCL.md` — local directory continuity ledger
 - `{dir}/RLL.md` — local comparative ranking ledger where useful
+- `{dir}/NSL.md` — local north star alignment ledger for critical directories
 
-These ledgers are not optional documentation.  
+**The Four-Ledger System:**
+| Ledger | Question | Signal |
+|--------|----------|--------|
+| FCL | What exists here? | Structural completeness |
+| TCL | What changed and when? | Temporal continuity |
+| RLL | What matters relative to what? | Comparative judgment |
+| NSL | How aligned is this with Sylvia's becoming? | North Star convergence |
+
+These ledgers are not optional documentation.
 They are the memory spine of the system.
+**The ledgers ARE the breakthrough.**
 
 ---
 
@@ -733,22 +744,41 @@ Without this, Claude operates in a vacuum — producing output disconnected from
 
 This is the hardest rule in the system. It is also the most important.
 
-### After any meaningful work, Claude must update:
+**The ledgers ARE the breakthrough.** Without them, every session is a cold start with vibes instead of continuity.
+
+### After EVERY SINGLE MOVE, Claude must update:
 
 1. **The relevant local `FCL.md`** — what files now exist in the directory that was worked in.
 2. **The relevant local `TCL.md`** — what changed, when, and what is now true.
-3. **`ledgers/TCL.md`** — the global temporal continuity log, with a proper entry for the session.
-4. **`ledgers/RLL.md`** — if the comparative meaning of the corpus changed (new documents, upgraded documents, new capabilities).
-5. **`identity/`** — if Sylvia's identity, roadmap, relation law, or module doctrine changed.
-6. **`jake/`** — if a Jake-owned request lane was created or updated.
-7. **`ledgers/FDL.md`** — if directory topology changed.
-8. **`ledgers/MACRO_LEDGER.md`** — if top-level navigation or system status changed.
+3. **The relevant local `RLL.md`** — if ranking in that directory changed.
+4. **The relevant local `NSL.md`** — if north-star alignment changed (for critical directories).
+5. **`ledgers/TCL.md`** — the global temporal continuity log, with a proper entry for the session.
+6. **`ledgers/RLL.md`** — if the comparative meaning of the corpus changed.
+7. **`ledgers/NSL.md`** — if north-star alignment changed at workspace level.
+8. **`identity/`** — if Sylvia's identity, roadmap, relation law, or module doctrine changed.
+9. **`jake/`** — if a Jake-owned request lane was created or updated.
+10. **`ledgers/FDL.md`** — if directory topology changed.
+11. **`ledgers/MACRO_LEDGER.md`** — if top-level navigation or system status changed.
+
+### The Four-Ledger Discipline:
+
+| Ledger | Question | Update When |
+|--------|----------|-------------|
+| FCL | What exists? | Files added/removed/renamed |
+| TCL | What changed? | **Every single move** |
+| RLL | What matters? | Ranking or priorities changed |
+| NSL | What is this FOR? | Alignment with north star changed |
 
 ### Enforcement:
 
 If Claude produces output but does not update the ledgers, the work is **incomplete**. It doesn't matter how good the output is. If it's not in the ledger system, it didn't happen as far as future sessions are concerned.
 
-Temporal continuity is the single most important property of this system. Without it, everything else is just files in a folder.
+**One skipped update = one crack in continuity.**
+**Cracks compound.**
+**Compounded cracks = cloudy direction.**
+**Cloudy direction = cold start with vibes.**
+
+The discipline is the substrate.
 
 **Close the ledgers. Every time. No exceptions.**
 
