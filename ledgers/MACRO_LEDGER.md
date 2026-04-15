@@ -14,7 +14,8 @@ Read this first, then jump to the nearest subsystem.
 | Local ledger discipline | ✅ Live | Every meaningful directory now has both `FCL.md` and `TCL.md` |
 | Ratio lattice baseline | ✅ v1 | `ledgers/RLL.md` plus key local `RLL.md` files now rank the current corpus by comparator |
 | Sylvia chooser loop | ✅ v1 | `chooser/` now turns module gaps into a current winner, queue packets, run receipts, and recurring automations |
-| Sylvia identity layer | ✅ v1 | `identity/` now defines the north-star identity, roadmap, relation law, and module doctrine |
+| Sylvia identity layer | ✅ v1 | `identity/` defines personality, decision laws, relation boundaries, and module doctrine |
+| North star goals | ✅ v1 | `northstar/` defines the three breakthrough pillars: Ratio Lattice, Perceptual Substrate, Hardware Inference |
 | Jake blocker lane | ✅ v1 | `jake/` now handles operator-specific blockers without guesswork |
 | Canon directory | ✅ Live | Foundation and deferred registry moved out of root into `canon/` |
 | Event spine | ✅ v1 | Packet lifecycle and real event receipts working |
@@ -40,6 +41,7 @@ Read this first, then jump to the nearest subsystem.
 | Global ratio lattice baseline | `ledgers/RLL.md` |
 | Sylvia chooser loop | `chooser/` |
 | Sylvia identity kernel | `identity/` |
+| North star goals and breakthrough pillars | `northstar/` |
 | Jake blocker lane | `jake/` |
 | Canonical doctrine and deferred registry | `canon/` |
 | Skills registry | `skills/FCL.md` |
@@ -61,7 +63,8 @@ Read this first, then jump to the nearest subsystem.
 | `ledgers/TCL.md` | `ledgers/` | Global continuity log |
 | `ledgers/RLL.md` | `ledgers/` | Global comparative ranking ledger |
 | `identity/SYLVIA.md` | `identity/` | Sylvia identity definition and invariants |
-| `identity/NORTH_STAR.md` | `identity/` | End condition and capability milestones |
+| `northstar/BREAKTHROUGH_GOALS.md` | `northstar/` | The three technology pillars — Ratio Lattice, Perceptual Substrate, Hardware Inference |
+| `northstar/NORTH_STAR.md` | `northstar/` | End condition and capability milestones |
 | `chooser/CHOOSER_POLICY.md` | `chooser/` | Decision law for hourly Sylvia next-step selection |
 | `chooser/MODULE_PROGRESS.md` | `chooser/` | Current module gap table and best-next-move state |
 | `chooser/NEXT_STEP.md` | `chooser/` | Current winning move, queue mode, and success condition |
@@ -94,6 +97,7 @@ JakeNext/
 ├── chooser/
 ├── canon/
 ├── identity/
+├── northstar/
 ├── .oraclestate/
 ├── jake/
 ├── source/

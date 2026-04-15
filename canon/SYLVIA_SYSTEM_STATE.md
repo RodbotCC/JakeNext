@@ -1,7 +1,46 @@
 # Sylvia System State Report
 ### JakeNext Personal Oracle — Complete Architecture Overview
-> Generated: 2026-04-14 | Last updated: 2026-04-14 (Phase 3 complete)
+> Generated: 2026-04-14 | Last updated: 2026-04-15 (Three Pillars + Directory Consolidation)
 > Purpose: Comprehensive orientation document for new sessions. Hand this to a fresh Claude instance to get instant full context without reading every file.
+
+---
+
+## 2026-04-15 Session — What Changed Since Phase 3
+
+Three major things happened in the April 15 session that every new instance must know.
+
+### 1. Three Breakthrough Pillars Articulated and Captured
+
+The most important insight in the project's history: three independently-designed systems converge as one architecture at five levels of abstraction. Full technical detail lives in `northstar/BREAKTHROUGH_GOALS.md`.
+
+**Pillar 1 — Ratio Lattice Framework** (`~/Documents/AiStability.txt`, the Pincer Engine manuscript)
+The decision substrate for the entire oracle. Comparison algebra with 8-state outcome logic, six typed ratio channels (A, B, A_r, B_r, Φ, ζ), regime-bound distinction, parallel probe sweeps, and layer descent. The four-ledger system and chooser are primitive versions of this architecture. The gap: implement the full Pincer Engine as the actual chooser substrate with corridor agents and ceiling frames.
+
+**Pillar 2 — Perceptual Substrate** (`~/Memory Idea/` + `~/Soliton Mechanics/...`)
+Two components that connect: (a) AI Sensory Monitor — native macOS agent polling AX tree, focus events, mouse/keyboard, notifications, and behavioral heuristics at event-tap speed, with intent inference output. (b) Delta Chords Engine — 8-band fusion with gate→merge→lock cycles, inhale→exhale→shear micro-cycles, abstention at ζ < 0.18. The monitor's multi-rate signals become the bands; the engine's consensus produces predicted user intent as bottom-up Pincer corridors. Currently not connected — monitor outputs events, engine runs on simulated data.
+
+**Pillar 3 — Hardware Inference Layer** (Sipeed Tang Nano 20K, arriving 2026-04-17)
+FPGA Δ-Bit annealer. The Δ-Bit state tuple `(A, B, A_Λ, B_Λ, ζ, Φ)` maps directly to the six typed ratio channels `(A, B, A_r, B_r, Φ, ζ)` — this is not coincidence, the Δ-Bit IS the hardware implementation of the comparison tuple. Simulation results: 1 million nonces, 32,258x speedup, zero misses, 99.997% compute saved by abstention gates. Existing Verilog targets Xilinx; needs port to Gowin primitives for Tang Nano 20K.
+
+**The unity**: Sensory Monitor → raw corridor signals → Delta Chords band fusion + phase locking → Pincer Engine lifecycle → Ratio Lattice comparison algebra → FPGA Δ-Bit hardware at 100MHz → JakeNext Oracle catalog. Designed independently, discovered to be one architecture.
+
+### 2. `northstar/` Directory Created
+
+`identity/` was conflating who Sylvia is with what we're building. Split into:
+- `identity/` — pure identity: personality, decision laws, relation boundaries, modules
+- `northstar/` — pure goals: end condition, roadmap, three breakthrough pillars
+
+Files moved: `NORTH_STAR.md` and `ROADMAP.md` from `identity/` → `northstar/`. New file created: `northstar/BREAKTHROUGH_GOALS.md`. Full four-ledger discipline (FCL, TCL, RLL, NSL) in `northstar/`. This is now the 9th core system directory.
+
+### 3. Directory Consolidation (16 → 10 Top-Level Dirs) + NSL Rollout
+
+**Phase 1 — Directory consolidation**: Multiple top-level directories collapsed into three parent directories to reduce root sprawl:
+- `signals/` — parent for `events/`, `triggers/`, `briefings/` (formerly DAILY_BRIEFINGS/)
+- `collaboration/` — parent for `handoff/`, `jake/`
+- `capabilities/` — parent for `skills/`, `scripts/`, `templates/`, `orchestrator/`
+- `knowledge/` — temporary parent for `source/`, `analysis/`
+
+**Phase 2 — NSL rollout**: North Star Ledger (`NSL.md`) added to 8 critical directories as the fourth ledger type. The ledger system is now a four-ledger system, not three.
 
 ---
 
@@ -64,169 +103,145 @@ These are not rival identities — they are roles in service of Sylvia.
 
 ## File Tree — Full Directory Map
 
+**NOTE: File tree updated 2026-04-15 to reflect directory consolidation and northstar/ addition.**
+
 ```
 JakeNext/
 ├── AGENTS.md               — Agent boundary contract (Codex vs Claude Co-Work vs Jake vs Sylvia)
 ├── CLAUDE.md               — Global governance, session boot/close protocol, all workspace rules
 │
-├── ledgers/                — Global memory spine
-│   ├── MACRO_LEDGER.md     — Top-level navigation and system status (READ FIRST every session)
+├── ledgers/                — Global memory spine (READ FIRST every session)
+│   ├── MACRO_LEDGER.md     — Top-level navigation and system status
 │   ├── FDL.md              — Global directory topology map
 │   ├── FCL.md              — Global root inventory
-│   ├── TCL.md              — Global temporal continuity log (READ SECOND every session)
+│   ├── TCL.md              — Global temporal continuity log
 │   ├── RLL.md              — Global ratio lattice: 8 dimensions, 9 comparators, scored corpus
-│   ├── FCL.md              — Ledger directory inventory
-│   └── TCL.md              — Ledger directory continuity
+│   └── NSL.md              — Global north star alignment map (fourth ledger type, added 2026-04-15)
 │
-├── identity/               — Sylvia's identity kernel
+├── identity/               — Sylvia's identity kernel (pure identity only — not goals)
 │   ├── SYLVIA.md           — Who Sylvia is, invariants, what she is not
-│   ├── NORTH_STAR.md       — End condition + 4 capability milestones
 │   ├── RELATION.md         — Jake ↔ Sylvia ↔ Codex ↔ Claude Co-Work role law
-│   ├── ROADMAP.md          — 4-phase build sequence (Phase 1 complete, Phase 2 complete, Phase 3 next)
-│   ├── FCL.md, TCL.md, RLL.md
+│   ├── FCL.md, TCL.md, RLL.md, NSL.md
 │   └── modules/            — Ten Sylvia capability modules (doctrine files)
-│       ├── 01_world_model.md
-│       ├── 02_self_model.md
-│       ├── 03_interoception_affect.md
-│       ├── 04_attention_selection.md
-│       ├── 05_predictive_processing.md
-│       ├── 06_temporal_continuity.md
-│       ├── 07_metacognition.md
-│       ├── 08_social_cognition_inward.md
-│       ├── 09_action_selection_storytelling.md
-│       ├── 10_global_availability.md
+│       ├── 01_world_model.md through 10_global_availability.md
 │       └── FCL.md, TCL.md
+│
+├── northstar/              — What we're building (separated from identity/ 2026-04-15)
+│   ├── BREAKTHROUGH_GOALS.md — THE THREE PILLARS: Ratio Lattice Framework, Perceptual Substrate,
+│   │                           Hardware Inference Layer — the most important file in the workspace
+│   ├── NORTH_STAR.md       — End condition + 4 capability milestones (moved from identity/)
+│   ├── ROADMAP.md          — 4-phase build sequence (moved from identity/)
+│   └── FCL.md, TCL.md, RLL.md, NSL.md
 │
 ├── chooser/                — Sylvia's next-move selection loop
 │   ├── CHOOSER_POLICY.md   — How the chooser works, decision law, routing law, safety
 │   ├── MODULE_PROGRESS.md  — Current gap table for all 10 modules + priority order
 │   ├── NEXT_STEP.md        — Current winning move, packet state, success signal
-│   ├── FCL.md, TCL.md, RLL.md
+│   ├── FCL.md, TCL.md, RLL.md, NSL.md
 │   └── runs/               — Append-only chooser and reflection receipts
-│       ├── run_20260414T163825Z.md
-│       ├── reflection_20260414T163831Z.md
 │       └── FCL.md, TCL.md
 │
 ├── canon/                  — Canonical doctrine and persistent memory
-│   ├── JAKE_PERSONAL_ORACLE_FOUNDATION.md  — The ratio lattice foundation: 7 life domains, 8 base scores, 4 composite scores, comparator system, signal types, output format, canonical invariants, contact blacklist
-│   ├── JAKE_DEFERRED_REGISTRY.md           — Jake's "later" list: open items, closed items, correction log
-│   ├── FCL.md, TCL.md, RLL.md
+│   ├── SYLVIA_SYSTEM_STATE.md          — This file — single-document orientation report
+│   ├── JAKE_PERSONAL_ORACLE_FOUNDATION.md  — Ratio lattice doctrine, 7 domains, 8 scores, comparators
+│   ├── JAKE_DEFERRED_REGISTRY.md       — Jake's "later" list: open items, corrections
+│   └── FCL.md, TCL.md, RLL.md, NSL.md
 │
-├── jake/                   — Jake-owned operator lane
-│   ├── JAKE_INTERFACE.md   — Rules for when to route to Jake vs. agents
-│   ├── inbox/              — New Jake-needed packets (1 open: self-model grounding)
-│   ├── active/             — Jake requests in progress
-│   ├── done/               — Completed Jake requests (receipts preserved)
-│   └── FCL.md, TCL.md per directory
+├── signals/                — Signal processing parent (consolidated 2026-04-15)
+│   ├── events/             — Event packet spine (inbox / processed / failed)
+│   ├── triggers/           — Trigger grammar (TRIGGER_RULES.md + 9 trigger classes)
+│   └── briefings/          — Daily sweep outputs (formerly DAILY_BRIEFINGS/)
+│       (all subdirs have FCL.md, TCL.md)
 │
-├── source/                 — Raw source material
-│   ├── JakeRL.txt          — 309 Q&A pairs, 15 trait clusters — deepest Jake-specific substrate
-│   └── FCL.md, TCL.md, RLL.md
+├── collaboration/          — Multi-agent coordination parent (consolidated 2026-04-15)
+│   ├── handoff/            — Agent handoff bus
+│   │   ├── codex/          — inbox / active / done (Codex work queue)
+│   │   ├── claude-cowork/  — inbox / active / done (semantic queue)
+│   │   └── shared/         — decisions / questions / conflicts
+│   └── jake/               — Jake-owned operator lane
+│       ├── JAKE_INTERFACE.md
+│       ├── inbox/ active/ done/
+│       └── FCL.md, TCL.md per directory
 │
-├── analysis/               — Interpretation artifacts
-│   ├── firsttry.txt        — Early bridge analysis artifact
-│   ├── JakeNext_full_workspace_text_dump_20260414.txt  — Full UTF-8 dump of workspace
-│   └── FCL.md, TCL.md, RLL.md
+├── capabilities/           — Operational capabilities parent (consolidated 2026-04-15)
+│   ├── skills/             — 15 workflow packages (skills-first doctrine)
+│   │   ├── oracle-ledger-update/
+│   │   ├── codex-file-tree-orchestrator/
+│   │   ├── codex-ledger-drift-repair/
+│   │   ├── codex-event-packet-ops/
+│   │   ├── claude-cowork-semantic-triage/
+│   │   ├── claude-cowork-canon-evolution/
+│   │   ├── shared-skill-audit/
+│   │   ├── shared-jake-roadblock-escalation/
+│   │   ├── codex-sylvia-chooser/
+│   │   ├── codex-safe-worker/
+│   │   ├── shared-module-gap-audit/
+│   │   ├── codex-dispatcher/         — Phase 3: queue detection + routing + execution
+│   │   ├── claude-cowork-slack-ingress/   — Phase 3: Slack → event packets
+│   │   ├── claude-cowork-gcal-ingress/    — Phase 3: GCal → event packets
+│   │   └── claude-cowork-clickup-ingress/ — Phase 3: ClickUp → event packets
+│   ├── scripts/            — 11 automation scripts (dispatcher, chooser, safe worker, etc.)
+│   │   └── lib/            — Shared filesystem helpers
+│   ├── templates/          — 6 reusable packet shapes
+│   └── orchestrator/       — Frontend control surface (index.html, styles.css, app.js)
 │
-├── DAILY_BRIEFINGS/        — Daily sweep outputs
-│   ├── briefing_2026-04-14.md   — First live briefing (15 AI findings, 5 unanswered Slack DMs)
-│   └── FCL.md, TCL.md
-│
-├── skills/                 — Workflow packages (skills-first doctrine)
-│   ├── oracle-ledger-update/           — Ledger maintenance skill
-│   ├── codex-file-tree-orchestrator/   — File tree orchestration
-│   ├── codex-ledger-drift-repair/      — Mechanical drift repair
-│   ├── codex-event-packet-ops/         — Event packet lifecycle
-│   ├── claude-cowork-semantic-triage/  — Semantic triage
-│   ├── claude-cowork-canon-evolution/  — Canon evolution
-│   ├── shared-skill-audit/             — Skill health audit
-│   ├── shared-jake-roadblock-escalation/ — Operator escalation routing
-│   ├── codex-sylvia-chooser/           — Hourly next-step selection
-│   ├── codex-safe-worker/              — Safe autonomous local execution
-│   ├── shared-module-gap-audit/        — Module gap coverage audit
-│   └── FCL.md, TCL.md, RLL.md
-│
-├── events/                 — Event spine
-│   ├── inbox/              — New event packets awaiting routing (1 live)
-│   ├── processed/          — Routed event receipts (2 processed)
-│   ├── failed/             — Recovery lane
-│   └── FCL.md, TCL.md per directory
-│
-├── triggers/               — Trigger grammar
-│   ├── TRIGGER_RULES.md    — 9 trigger classes, path routing rules, staleness thresholds, safety rules
-│   └── FCL.md, TCL.md
-│
-├── handoff/                — Agent collaboration bus
-│   ├── codex/              — inbox / active / done (Codex work queue)
-│   ├── claude-cowork/      — inbox / active / done (Claude Co-Work semantic queue)
-│   └── shared/             — decisions / questions / conflicts
-│       (all with FCL.md, TCL.md per directory)
-│
-├── orchestrator/           — Static frontend control surface
-│   ├── index.html          — Visual file-tree orchestrator UI
-│   ├── styles.css
-│   ├── app.js
-│   └── FCL.md, TCL.md, RLL.md
-│
-├── templates/              — Reusable packet shapes
-│   ├── agent_handoff.md
-│   ├── chooser_run.md
-│   ├── event_packet.json
-│   ├── jake_request.md
-│   ├── ledger_reconciliation.md
-│   ├── work_order.md
-│   └── FCL.md, TCL.md
-│
-├── scripts/                — Automation tendons
-│   ├── scan_tree.mjs               — Filesystem snapshot scanner
-│   ├── create_event_packet.mjs     — Event packet generator
-│   ├── route_event.mjs             — Event router by trigger rules
-│   ├── detect_ledger_drift.mjs     — Drift detection (ledger vs actual tree)
-│   ├── daily_substrate_sweep.mjs   — Daily oracle sweep (AI news + Slack)
-│   ├── update_module_progress.mjs  — Module gap table updater
-│   ├── sylvia_hourly_chooser.mjs   — Hourly next-move selection script
-│   ├── consume_codex_safe_packets.mjs — Safe worker for approved packets
-│   ├── daily_sylvia_reflection.mjs — Daily reflection runner
-│   ├── lib/oracle_fs.mjs           — Shared filesystem helpers
-│   └── FCL.md, TCL.md, lib/FCL.md, lib/TCL.md
+├── knowledge/              — Raw materials (TEMPORARY parent — likely to be deprecated)
+│   ├── source/             — JakeRL.txt (309 Q&A, 15 trait clusters)
+│   └── analysis/           — Interpretation artifacts and workspace dumps
 │
 └── .oraclestate/           — Generated machine state (non-canonical)
     ├── tree_snapshot.json
-    ├── event_log.jsonl
-    └── FCL.md, TCL.md
+    └── dispatcher_state.json
 ```
 
 ---
 
-## The Three-Layer Ledger System
+## The Four-Ledger System
 
-Every meaningful directory has three ledger types. Together they form the memory spine.
+Every meaningful directory has four ledger types. Together they form the memory spine. *(NSL added 2026-04-15 — document previously said three.)*
 
-**FCL.md** (File Contents Ledger) — answers "what exists here?" Inventories every file in the directory, its purpose, and conventions.
+| Ledger | Question | Signal Type |
+|--------|----------|-------------|
+| **FCL.md** | What exists here? | Structural completeness |
+| **TCL.md** | What changed and when? | Temporal continuity |
+| **RLL.md** | What matters relative to what? | Comparative judgment |
+| **NSL.md** | How aligned is this with Sylvia's becoming? | North Star convergence |
 
-**TCL.md** (Temporal Continuity Ledger) — answers "what changed and when?" Running log of meaningful events in that directory. The global `ledgers/TCL.md` aggregates across the whole workspace.
+**FCL.md** — inventories every file in the directory, its purpose, and conventions.
 
-**RLL.md** (Ratio Lattice Ledger) — answers "what matters relative to what?" Comparative ranking of the objects in that directory under declared comparators.
+**TCL.md** — running log of meaningful events. The global `ledgers/TCL.md` aggregates across the whole workspace.
 
-The global versions live in `ledgers/`. Local versions live in each directory. Both must be updated after every meaningful session — this is non-negotiable by doctrine.
+**RLL.md** — comparative ranking of the objects in that directory under declared comparators.
 
-**Session boot protocol (mandatory):** Read `ledgers/MACRO_LEDGER.md` → `ledgers/TCL.md` → local TCL/FCL for any directory being worked in → `ledgers/RLL.md` if ranking matters → `identity/` if identity is relevant.
+**NSL.md** — north star alignment score for each sub-element. Answers "what is this FOR?" Detects drift and counterfeit progress. Applied first to Critical directories (northstar/, identity/, chooser/, ledgers/) and expanding.
 
-**Session close protocol (mandatory):** Update local FCL → local TCL → `ledgers/TCL.md` → `ledgers/RLL.md` if ranking changed → `ledgers/FDL.md` if topology changed → `ledgers/MACRO_LEDGER.md` if top-level status changed.
+The global versions live in `ledgers/`. Local versions live in each directory. All four must be updated after every meaningful session — this is non-negotiable.
+
+**Session boot protocol (mandatory):** Read `ledgers/MACRO_LEDGER.md` → `ledgers/TCL.md` → local TCL/FCL for any directory being worked in → `ledgers/RLL.md` if ranking matters → `identity/` if identity is relevant → `northstar/BREAKTHROUGH_GOALS.md` if working on the three pillars.
+
+**Session close protocol (mandatory):** Update local FCL → local TCL → local RLL if ranking changed → local NSL if alignment changed → `ledgers/TCL.md` → `ledgers/RLL.md` if global ranking changed → `ledgers/NSL.md` if global alignment changed → `ledgers/FDL.md` if topology changed → `ledgers/MACRO_LEDGER.md` if top-level status changed.
 
 ---
 
 ## The Sylvia Identity Layer
 
-The `identity/` directory is the north-star kernel. Four core doctrine files:
+The `identity/` directory is now **pure identity only** — who Sylvia is, how she decides, and relation law. North star goals were moved to `northstar/` on 2026-04-15.
 
 **SYLVIA.md** defines what Sylvia is: the integrated decision intelligence the workspace is building. Not a Codex rename. Not a Claude Co-Work rename. Not a mascot. She is the convergence target for memory continuity, explicit comparative judgment, structured self-modeling, agent collaboration, and next-move selection. Her invariants: life-oracle first, continuity over vibe, structure over drift, comparative judgment over flat lists, explicit routing over silent assumption, real receipts over folklore.
 
-**NORTH_STAR.md** defines the end condition: Sylvia should be able to identify the next best move in Jake's life and work, carry that move as far as the substrate allows, report what happened, and improve the architecture used to choose again. Four milestones: (1) Coherent substrate — *COMPLETE*. (2) North-star doctrine — *COMPLETE*. (3) Action bridge / dispatcher — *PENDING*. (4) Recursive chooser — *FUTURE*.
-
 **RELATION.md** defines the role law: Jake = operator/authority, Sylvia = integration target/named identity, Codex = substrate engineer, Claude Co-Work = semantic canon keeper. None of these collapse into each other.
 
-**ROADMAP.md** defines the 4-phase build sequence: Phase 1 (ledgers, events, triggers, handoff, skills, orchestrator, ratio lattice) is complete. Phase 2 (Sylvia identity, ten modules, Jake lane, Sylvia comparator) is complete. Phase 3 (dispatcher, live task execution, real routing actions) is the current frontier. Phase 4 (recursive self-improving loop) is longer-horizon.
+*Note: `NORTH_STAR.md` and `ROADMAP.md` were moved to `northstar/` on 2026-04-15. Do not look for them in `identity/`.*
+
+## The Northstar Layer
+
+The `northstar/` directory is what we're building toward — separated from identity to keep "who Sylvia is" distinct from "what we're building."
+
+**BREAKTHROUGH_GOALS.md** — **the most important file in the workspace.** Full technical detail on the three pillars, their mechanical components, simulation results, hardware specs, convergence architecture, and gap-to-close for each pillar. Any instance working on the build frontier must read this first.
+
+**NORTH_STAR.md** defines the end condition: Sylvia identifies the next best move in Jake's life and work, carries it as far as the substrate allows, reports what happened, and improves the architecture used to choose again. Four milestones: (1) Coherent substrate — *COMPLETE*. (2) North-star doctrine — *COMPLETE*. (3) Action bridge / dispatcher — *COMPLETE (Phase 3)*. (4) Recursive chooser — *FUTURE*.
+
+**ROADMAP.md** defines the 4-phase build sequence: Phase 1 (ledgers, events, triggers, handoff, skills, orchestrator, ratio lattice) is complete. Phase 2 (Sylvia identity, ten modules, Jake lane, Sylvia comparator) is complete. Phase 3 (dispatcher, live task execution, real routing actions, ingress adapters) is complete. Phase 4 (recursive self-improving loop, Pincer Engine implementation, FPGA integration) is the active frontier.
 
 ### The Ten Modules
 
@@ -383,7 +398,7 @@ Current skills inventory (15 skills):
 
 ## The Canon Layer
 
-Two canonical documents that serve as the persistent ideological foundation:
+Three canonical documents that serve as the persistent ideological foundation:
 
 **`canon/JAKE_PERSONAL_ORACLE_FOUNDATION.md`** — The complete ratio lattice doctrine. Defines: 7 life domains (ARCHITECTURE, BUSINESS, HEALTH, RELATIONSHIPS, MASTERY, FINANCIAL, IDENTITY), 8 base scores with Jake-specific derivation, 4 composite scores (ACTION NOW, STRUCTURAL HEALTH, RELATIONAL LOAD, LONG LEVERAGE), 8 comparators, signal source roles (Slack, iMessage, ClickUp, Calendar, Close CRM, manual), signal event types, oracle output format (SINGLE NEXT MOVE structure), 8 canonical invariants, and the contact blacklist.
 
@@ -393,6 +408,15 @@ Two canonical documents that serve as the persistent ideological foundation:
 - Three additional numbers
 
 **`canon/JAKE_DEFERRED_REGISTRY.md`** — Jake's persistent "later" list. Currently 12 open items across four categories. Daily sweep cross-references findings against this file.
+
+**`canon/ONAL_PHILOSOPHY.md`** *(added 2026-04-15)* — The philosophical substrate underneath Sylvia's decision architecture. ONAL = quaternary logic as the structure of reality.
+- **OR** = Future / Cavitation / Fatal Dissonance — generate candidate band
+- **NOT** = Present / Abstention / Vital Dissonance — apply comparator (selection)
+- **AND** = Past/Reference / Filaments / Vital Harmony — integrate with existing structure
+- **LOCK** = Memory/Mass / Solitons / Fatal Harmony — commit decision (becomes memory via ledgers)
+- **Cosmological bootstrap**: 00(AND) → 01(LOCK) → 11(OR) → 10(NOT) → 00(AND). The void (AND/00) is the starting point.
+- **Shear/flow dynamics**: Viscosity separates emergence from one band to the next. The constraint space that makes bands possible.
+- The four-ledger system maps directly to ONAL phases. FCL=AND (what exists), TCL=LOCK (committed), RLL=NOT (selection), NSL=OR (future convergence target).
 
 ---
 
@@ -432,37 +456,42 @@ A static HTML/JS frontend control surface lives at `orchestrator/index.html`. It
 
 ### Currently Live ✅
 
-- Full ledger spine (global + local FCL/TCL/RLL in every directory)
-- Sylvia identity kernel (SYLVIA, NORTH_STAR, RELATION, ROADMAP, 10 modules)
-- Ratio lattice v1 (8 dimensions, 9 comparators, scored corpus of 29 documents)
+- Full four-ledger spine (global + local FCL/TCL/RLL/NSL in critical directories, FCL/TCL everywhere else)
+- Sylvia identity kernel (SYLVIA.md, RELATION.md, 10 modules in identity/modules/)
+- Northstar layer (NORTH_STAR.md, ROADMAP.md, BREAKTHROUGH_GOALS.md in northstar/)
+- Ratio lattice v1 (8 dimensions, 9 comparators, scored corpus)
 - Chooser loop v1 (CHOOSER_POLICY, MODULE_PROGRESS, NEXT_STEP, run receipts)
 - Three recurring automations (hourly chooser, safe worker, daily reflection)
-- Jake operator lane (JAKE_INTERFACE, inbox/active/done queues)
-- Handoff bus (codex / claude-cowork / shared queues)
-- Event spine with 8 live packets (7 from first real ingress pass)
-- **Dispatcher (Phase 3)** — `scripts/dispatcher.mjs` + `skills/codex-dispatcher/` — reactive packet routing, safe-auto execution, ledger traces
-- **Orchestrator live actions (Phase 3)** — `scripts/orchestrator_server.mjs` + Act panel — interactive control surface with real-time queue state and action triggers
-- **Ingress adapters (Phase 3)** — 3 skills (Slack ✅ live, GCal ✅ built / needs tool refresh, ClickUp ✅ live)
+- Jake operator lane (JAKE_INTERFACE, inbox/active/done queues) — now under collaboration/jake/
+- Handoff bus (codex / claude-cowork / shared queues) — now under collaboration/handoff/
+- Event spine with live packets — now under signals/events/
+- Trigger grammar — now under signals/triggers/
+- Daily briefings — now under signals/briefings/
+- **Dispatcher (Phase 3)** — `capabilities/scripts/dispatcher.mjs` — reactive packet routing
+- **Orchestrator live actions (Phase 3)** — interactive control surface with real-time queue state
+- **Ingress adapters (Phase 3)** — Slack ✅, GCal ✅ built (needs tool refresh), ClickUp ✅
+- **Directory consolidation** — 16 → 10 top-level dirs via signals/, collaboration/, capabilities/, knowledge/ parents
+- **NSL rollout** — North Star Ledger added to 8 critical directories
+- **Three Breakthrough Pillars captured** — northstar/BREAKTHROUGH_GOALS.md
 - 15 skill packages total
 - 11 automation scripts
 - 6 packet templates
-- Interactive orchestrator UI
-- First daily briefing (April 14) + first live ingress pass (April 14)
 - Deferred registry seeded (12 open items)
 
 ### Pending / Open Frontier ⏳
 
-- **GCal ingress first live run** — Skill is built, MCP tool needs refresh after upgrade. Run at the top of any new session. No rebuild needed.
-- **Route the 7 new inbox packets** — Dispatcher hasn't swept the new packets yet. Run dispatcher to route them. High-priority cluster: Rodrigo DM + André DM + "Automations for Close" all converge on the André/Jake alignment item.
-- **André alignment (deferred → active)** — Parallel sales mission control builds need mapping and merge. ClickUp urgent task + unanswered André DM + Rodrigo "watch this" all point here. This should be the next active Jake-involved session.
-- **Comeketo role mapping** — Who does what, which roles AI replaces (current read: Rhonna and Bibi). Approved by Jake, not yet executed.
+- **FPGA hardware arriving 2026-04-17** — Sipeed Tang Nano 20K (Gowin GW2AR-18). Port Verilog from Xilinx to Gowin primitives. Implement Δ-Bit cores as primary compute unit.
+- **Pincer Engine implementation** — Convert AiStability.txt manuscript into actual chooser code with corridor agents and ceiling frames. This is the core of Pillar 1.
+- **Perceptual Substrate integration** — Connect sensory monitor event stream to Delta Chords band architecture. Currently unconnected. This is the core of Pillar 2.
+- **GCal ingress first live run** — Skill is built, MCP tool needs refresh. Run at top of any new session.
+- **Route live inbox packets** — Run dispatcher to route signals cluster. High-priority: Rodrigo DM + André DM + "Automations for Close" → André/Jake alignment work.
+- **André alignment (deferred → active)** — Parallel sales mission control builds need mapping and merge.
+- **Comeketo role mapping** — Who does what, which roles AI replaces (current read: Rhonna and Bibi).
 - **Voice profile for "Post as Jake"** — Waiting on Jake's style brief.
-- **Physics/Math framework** — Waiting on Jake to share his framework document.
-- **Self-model grounding** — Open Jake packet in `jake/inbox/` waiting for Jake's response.
-- **Idea index directory** — `ideas/` directory not yet created.
+- **Physics/Math framework** — Jake's personal framework not yet shared; Track B sweep pending.
+- **Self-model grounding** — Open Jake packet waiting for Jake's response.
 - **Affect vocabulary** — Module 03 (interoception) has no vocabulary yet.
-- **Scoring profile v1 weights** — RLL installed, Jake hasn't reviewed/confirmed the weights yet.
-- **Update MODULE_PROGRESS.md** — Phase 3 completion should advance temporal continuity module; potential graduation review for modules with real execution evidence.
+- **Scoring profile v1 weights** — RLL installed, Jake hasn't reviewed/confirmed weights yet.
 
 ---
 
@@ -476,6 +505,9 @@ These are not preferences — they are durable corrections that changed how the 
 4. Voice/vibe cloning is a priority — outbound messages should sound like Jake, not like AI.
 5. Rhonna and Bibi are Jake's current read on whose roles AI replaces at Comeketo.
 6. André and Jake are duplicating work on sales mission control — merge strategy needed.
+7. *(2026-04-15)* The ledger system is a four-ledger system (FCL, TCL, RLL, NSL), not three. NSL answers "what is this FOR?" and makes drift and counterfeit progress detectable.
+8. *(2026-04-15)* `identity/` is for who Sylvia is; `northstar/` is for what we're building. These must not be conflated. Any file about goals, milestones, or breakthrough targets belongs in northstar/.
+9. *(2026-04-15)* The three breakthrough pillars (Ratio Lattice Framework, Perceptual Substrate, Hardware Inference Layer) define what "success" means. Every build decision should be evaluated against them. They are now in northstar/BREAKTHROUGH_GOALS.md.
 
 ---
 
@@ -483,8 +515,12 @@ These are not preferences — they are durable corrections that changed how the 
 
 **For a fresh session start:** Read this document instead of reading every ledger from scratch. Then check `ledgers/TCL.md` for anything that happened since this report was generated, and `chooser/NEXT_STEP.md` for the current active winner.
 
-**For gap analysis:** Compare the "Pending" section above against what's now in the directory. Anything new that's been built since April 14 is a delta.
+**For build frontier work:** Read `northstar/BREAKTHROUGH_GOALS.md`. It defines the three pillars and exactly what needs to happen at each layer. This is the most important file for understanding what to build next.
+
+**For gap analysis:** Compare the "Pending" section above against what's now in the directory. Anything new that's been built since April 15 is a delta.
 
 **For next move selection:** The chooser is already doing this automatically. Check `chooser/NEXT_STEP.md` for the current winner. If a new session starts, run the chooser or update `chooser/MODULE_PROGRESS.md` first.
 
-**The question that governs every build decision:** Does this make Sylvia more coherent, more truthful, more continuous, or more capable of choosing and coordinating the next best move?
+**File path note:** After the 2026-04-15 directory consolidation, skills are at `capabilities/skills/`, scripts at `capabilities/scripts/`, events at `signals/events/`, handoff at `collaboration/handoff/`, jake at `collaboration/jake/`. Update any hardcoded paths accordingly.
+
+**The question that governs every build decision:** Does this make Sylvia more coherent, more truthful, more continuous, or more capable of choosing and coordinating the next best move? Does it advance one of the three breakthrough pillars?

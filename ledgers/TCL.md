@@ -543,6 +543,48 @@
 
 **Action**: Jake-required packet `evt_20260414T200600Z_clickup_task_stalled_payments.md` (module `external_signal_activation`, blocker `operator_truth`) is an open operator bottleneck.
 
+### 2026-04-15 (session) — SYLVIA_SYSTEM_STATE.md brought current for April 15 architecture
+
+**Action**: Updated the single-document orientation report in `canon/SYLVIA_SYSTEM_STATE.md` to capture everything that changed on April 15: three breakthrough pillars, northstar/ directory, four-ledger system (NSL), directory consolidation (16→10 top-level dirs), identity/northstar split, ONAL_PHILOSOPHY.md.
+
+**Files**:
+- Updated `canon/SYLVIA_SYSTEM_STATE.md`
+- Updated `canon/TCL.md`
+
+**Outcome**: Any fresh Claude session reading the state report will now have accurate context including the three breakthrough pillars, new directory topology, four-ledger discipline, and ONAL philosophical grounding.
+
+### 2026-04-15 ~00:45 EDT — North star directory created; three breakthrough pillars captured
+
+**Action**: Created `northstar/` as a dedicated directory for specific breakthrough goals and convergence targets. Moved `NORTH_STAR.md` and `ROADMAP.md` from `identity/` to `northstar/`. Created `BREAKTHROUGH_GOALS.md` capturing the three technology pillars articulated during this session.
+
+**Files created**:
+- `northstar/BREAKTHROUGH_GOALS.md` — the three pillars: Ratio Lattice Framework, Perceptual Substrate, Hardware Inference Layer
+- `northstar/FCL.md`, `TCL.md`, `RLL.md`, `NSL.md` — full four-ledger discipline
+
+**Files moved**:
+- `identity/NORTH_STAR.md` → `northstar/NORTH_STAR.md`
+- `identity/ROADMAP.md` → `northstar/ROADMAP.md`
+
+**Files updated**:
+- `identity/FCL.md` — removed moved files, updated description
+- `identity/TCL.md` — logged the move
+- `identity/NSL.md` — updated to reflect pure-identity scope
+- `ledgers/FDL.md` — added `northstar/` to topology (9 core directories)
+- `ledgers/NSL.md` — added `northstar/` to global alignment map at Critical tier
+- `ledgers/MACRO_LEDGER.md` — added north star status, navigation, key documents, workspace tree
+
+**Rationale**: `identity/` was conflating who Sylvia is with what we're building. The three breakthrough pillars (Ratio Lattice Framework, Perceptual Substrate, Hardware Inference Layer) were articulated for the first time this session and had no home in the system. They are now the most important document in the workspace.
+
+**Key insight preserved**: The three pillars were designed independently over months (one as physics validation, one as engineering spec, one as a sensory capture tool) and slot together as one architecture at five levels of abstraction. The Δ-Bit state tuple `(A, B, A_Λ, B_Λ, ζ, Φ)` maps directly to the six typed ratio channels from the manuscript `(A, B, A_r, B_r, Φ, ζ)`. The sensory monitor feeds the Delta Chords engine which feeds the Pincer Engine which runs on the FPGA which validates the ratio lattice which governs the JakeNext oracle.
+
+**Hardware note**: Sipeed Tang Nano 20K (Gowin GW2AR-18) arriving Thursday 2026-04-17.
+
+**Outcome**:
+- North star goals are now captured, ranked, and housed in their own directory
+- Identity is pure identity (who Sylvia is, how she decides)
+- The three-pillar convergence insight won't be lost to session end
+- All ledgers updated
+
 ### 2026-04-14 ~13:35 EDT — Dispatcher flagged Jake bottleneck
 
 **Action**: Jake-required packet `req_20260414T070500Z_self-model-grounding.md` (module ``, blocker ``) is an open operator bottleneck.

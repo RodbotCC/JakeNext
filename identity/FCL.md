@@ -1,7 +1,8 @@
 # FCL — Identity
 ### Jake Personal Oracle Project
 
-> Sylvia identity kernel and north-star doctrine for the JakeNext workspace.
+> Sylvia identity kernel — who she is, how she decides, and her relationship boundaries.
+> North star goals and roadmap have moved to `northstar/`.
 > Last updated: 2026-04-15
 
 ---
@@ -11,9 +12,7 @@
 | File | Purpose | Status |
 |---|---|---|
 | `SYLVIA.md` | Declares Sylvia as the named agent identity and governing invariant layer | ✅ Live |
-| `NORTH_STAR.md` | Defines the end condition and capability milestones for Sylvia | ✅ Live |
 | `RELATION.md` | Defines Jake, Sylvia, Codex, and Claude Co-Work relationship boundaries | ✅ Live |
-| `ROADMAP.md` | Phased roadmap from substrate to active next-move intelligence | ✅ Live |
 | `SYLVIA_DECISION_LAWS.md` | **The Ten Laws** — dynamic completeness, comparator discipline, bounded stochasticity, alignment constraints | ✅ Live |
 | `TRAINING_INPUTS.md` | How to accelerate Sylvia development beyond fixed sweeps — 4 training streams, 10 input types | ✅ Live |
 | `RLL.md` | Local Ratio Lattice Ledger for identity documents | ✅ Live |

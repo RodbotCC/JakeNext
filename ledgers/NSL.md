@@ -63,10 +63,11 @@ Each directory or document can be scored on:
 
 ## Global Alignment Map
 
-### Core Identity Layer
+### Core Identity & Goal Layer
 | Directory | NSL Score | Rationale |
 |-----------|-----------|-----------|
-| `identity/` | **Critical** | Sylvia's kernel — who she is, how she thinks, what she's becoming |
+| `northstar/` | **Critical** | The three breakthrough pillars — defines what "success" means for the entire project |
+| `identity/` | **Critical** | Sylvia's kernel — who she is, how she decides, relationship boundaries |
 | `identity/modules/` | **Critical** | The ten capabilities Sylvia needs |
 | `chooser/` | **Critical** | The decision loop — where emergence actually happens |
 

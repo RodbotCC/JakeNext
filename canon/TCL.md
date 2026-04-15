@@ -99,6 +99,15 @@
 
 **Outcome**: ONAL now has both the harmony/dissonance matrix AND the shear/flow dynamics model. The viscosity principle connects directly to Laws 8 and 9 (bounded stochasticity within candidate bands).
 
+### 2026-04-15 (session) — SYLVIA_SYSTEM_STATE.md updated for April 15 architecture changes
+
+**Action**: Updated `SYLVIA_SYSTEM_STATE.md` to reflect all April 15 work: three breakthrough pillars captured in northstar/, four-ledger system (NSL added), directory consolidation (16→10 top-level dirs), identity/northstar split, ONAL_PHILOSOPHY.md added to canon. Updated file tree map, ledger system section, identity layer section, northstar layer section, what's live/pending, key corrections, and how-to-use instructions.
+
+**Files**:
+- Updated `canon/SYLVIA_SYSTEM_STATE.md`
+
+**Outcome**: State report now reflects current architecture as of 2026-04-15. Any new session reading this will know about the three pillars, the directory consolidation, the four-ledger system, and where things live after the restructure.
+
 ### 2026-04-15 ~01:30 EDT — ONAL corrected with cosmological bootstrap sequence
 
 **Action**: Jake corrected the ONAL binary mapping and provided the cosmological bootstrap sequence. The canonical cycle direction is now 00 → 01 → 11 → 10 → 00 (AND → LOCK → OR → NOT → AND).

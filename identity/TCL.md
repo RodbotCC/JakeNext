@@ -28,3 +28,15 @@
 - **Training inputs**: Choice logs, friction logs, regret logs, voice memo ingress, pairwise comparisons, consequence journals, etc.
 
 **Outcome**: Sylvia now has explicit philosophical grounding for how decisions work. The identity layer is no longer just "who she is" but also "how she thinks."
+
+### 2026-04-15 ~00:45 EDT — NORTH_STAR.md and ROADMAP.md moved to northstar/
+
+**Action**: Moved `NORTH_STAR.md` and `ROADMAP.md` out of `identity/` into the new `northstar/` directory. Identity is now pure identity — who Sylvia is, how she decides, her relationship boundaries. North star goals (what we're building toward, specific breakthrough targets) now live in `northstar/`.
+
+**Rationale**: Identity was conflating "who Sylvia is" with "what we're building." These are different questions. Identity should be stable and personality-defining. North star goals are about convergence targets, technology pillars, and measurable milestones.
+
+**Files moved**:
+- `identity/NORTH_STAR.md` → `northstar/NORTH_STAR.md`
+- `identity/ROADMAP.md` → `northstar/ROADMAP.md`
+
+**Outcome**: Identity is now purely about Sylvia's character, decision laws, training inputs, relation boundaries, and modules. Goal-setting lives in `northstar/`.

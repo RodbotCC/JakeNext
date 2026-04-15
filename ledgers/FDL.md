@@ -28,14 +28,15 @@ All other meaningful artifacts must live inside directories with both:
 
 ## Topology Map
 
-### Core System Directories (8)
+### Core System Directories (9)
 
 | Directory | Primary Ledger Files | Purpose | Status |
 |---|---|---|---|
 | `ledgers/` | `FCL.md`, `TCL.md`, `FDL.md`, `MACRO_LEDGER.md`, `RLL.md`, `NSL.md` | Global memory spine, navigation, comparative ranking, and north star alignment | ✅ Live |
 | `chooser/` | `FCL.md`, `TCL.md`, `RLL.md`, `NSL.md` | Sylvia decision loop, module gap state, next-step selection | ✅ Live |
 | `canon/` | `FCL.md`, `TCL.md`, `RLL.md`, `NSL.md` | Canonical oracle doctrine, deferred registry, ONAL philosophy | ✅ Live |
-| `identity/` | `FCL.md`, `TCL.md`, `RLL.md`, `NSL.md` | Sylvia identity kernel, north-star doctrine, relation law, modules | ✅ Live |
+| `identity/` | `FCL.md`, `TCL.md`, `RLL.md`, `NSL.md` | Sylvia identity kernel — personality, decision laws, relation boundaries, modules | ✅ Live |
+| `northstar/` | `FCL.md`, `TCL.md`, `RLL.md`, `NSL.md` | North star goals, breakthrough pillars, roadmap, convergence targets | ✅ Live |
 | `.oraclestate/` | `FCL.md`, `TCL.md` | Generated machine state snapshots | ✅ Live |
 | `signals/` | `FCL.md`, `TCL.md` | **PARENT** - Signal processing layer (events, triggers, briefings) | ✅ Live |
 | `collaboration/` | `FCL.md`, `TCL.md` | **PARENT** - Multi-agent coordination layer (handoff, jake) | ✅ Live |

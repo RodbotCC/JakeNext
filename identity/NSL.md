@@ -27,20 +27,7 @@
 
 ---
 
-### 2. North Star Doctrine Defines the Target State
-
-`NORTH_STAR.md` defines:
-- What "autonomous" means
-- What "event-driven" means
-- What "self-maintaining" means
-
-**Without this**: "Becoming" is vague aspiration. With it, it's a testable target state.
-
-**Alignment**: 🟢 **PERFECT** - This file literally defines the north star that all other NSLs reference.
-
----
-
-### 3. Relation Law Defines Jake ↔ Sylvia Boundaries
+### 2. Relation Law Defines Jake ↔ Sylvia Boundaries
 
 `RELATION.md` defines:
 - What Jake owns (operator truth, manual intervention)
@@ -53,20 +40,7 @@
 
 ---
 
-### 4. Roadmap Provides Development Trajectory
-
-`ROADMAP.md` defines:
-- Module priorities
-- Capability gaps
-- Next implementation targets
-
-**Without this**: Development is reactive. With it, Sylvia's evolution has direction.
-
-**Alignment**: 🟢 **STRONG** - Roadmap = intentional development toward north star, not drift.
-
----
-
-### 5. Module Doctrine Normalizes 10-Module Architecture
+### 4. Module Doctrine Normalizes 10-Module Architecture
 
 `modules/` directory holds:
 - Module-level decision laws
@@ -81,9 +55,9 @@
 
 ## What This Directory IS
 
-Identity is the **definition of what Sylvia is becoming**.
+Identity is the **definition of who Sylvia IS** — her personality, decision philosophy, relationship boundaries, and cognitive modules.
 
-It's not operational state (that's in chooser/). It's not current work (that's in collaboration/). It's the **target** that all operational state converges toward.
+It's not operational state (that's in `chooser/`). It's not current work (that's in `collaboration/`). It's not goal-setting (that's now in `northstar/`). Identity defines the *agent*. North star defines the *target*.
 
 ---
 
