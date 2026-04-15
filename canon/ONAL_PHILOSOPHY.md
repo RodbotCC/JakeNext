@@ -164,8 +164,8 @@ ONAL can also be understood through shear/flow dynamics:
 |--------|---------|------|---------|
 | **00** | flow/flow | OR | Pure future, pure possibility, no constraint — cavitation |
 | **10** | shear/flow | NOT | Self-reference looking at future — observer selects in present |
-| **01** | flow/shear | AND | Two constraints aligned, no movement — orthogonal reference (past) |
-| **11** | shear/shear | LOCK | Flow constrained by shear — proper crystallization (memory) |
+| **11** | shear/shear | AND | Two constraints aligned — filaments, orthogonal reference (past) |
+| **01** | flow/shear | LOCK | Flow constrained by shear — proper crystallization (memory) |
 
 **Pure flow (00)** = unbounded possibility = future
 - No viscosity, things fly apart
@@ -176,12 +176,13 @@ ONAL can also be understood through shear/flow dynamics:
 - Looking at the zero (future) from the one (self)
 - "Using self-reference as a decision against the future in the present"
 
-**Flow meeting shear (01)** = past/reference
+**Shear constraining shear (11)** = past/reference (AND)
 - Two orthogonal directions
 - Structure exists but no movement
 - "Two different constraint boundaries aligned with each other but without any information coming from the flow there is no movement"
+- Filaments — aligned constraints
 
-**Shear constraining shear (11)** = memory
+**Flow constrained by shear (01)** = memory (LOCK)
 - Flow properly bounded
 - "The proper way of looking at it, where we have flow being constrained by shear"
 - Emergence crystallizes into stable structure
