@@ -88,3 +88,13 @@
 - LOCK = commit decision (becomes memory via ledgers)
 
 **Outcome**: ONAL is now grounded as the philosophical substrate underneath Sylvia's decision architecture. The four-ledger system maps directly to ONAL phases.
+
+### 2026-04-15 ~01:15 EDT — Shear/flow dynamics added to ONAL
+
+**Action**: Jake added the shear/flow mapping to ONAL. Pure flow = 00 = future. Shear/flow = 10 = present (self-reference selecting). Flow/shear = 01 = past (orthogonal reference). Shear/shear = 11 = memory (flow constrained by shear).
+
+**Key insight**: "There needs to be viscosity that separates emergence from one band to the next." Viscosity is the constraint space that makes bands possible.
+
+**Files updated**: `canon/ONAL_PHILOSOPHY.md`
+
+**Outcome**: ONAL now has both the harmony/dissonance matrix AND the shear/flow dynamics model. The viscosity principle connects directly to Laws 8 and 9 (bounded stochasticity within candidate bands).
