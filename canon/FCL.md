@@ -17,3 +17,5 @@
 | `canon/ONAL_PHILOSOPHY.md` | **ONAL as the structure of reality** — OR/NOT/AND/LOCK mapped to future/present/past/memory, harmony/dissonance matrix, thermodynamic parallels, and how this grounds Sylvia's decision architecture. Philosophical foundation. | ✅ 2026-04-15 |
 | `FCL.md` | This file — contents ledger for the canon directory | ✅ Live |
 | `TCL.md` | Local continuity ledger for canon changes | ✅ Live |
+| `RLL.md` | Local ratio lattice ledger for canon priorities | ✅ Live |
+| `NSL.md` | **Local north star ledger** — How this directory advances Sylvia's becoming | ✅ 2026-04-15 |
