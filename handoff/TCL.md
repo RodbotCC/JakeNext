@@ -19,3 +19,7 @@
 ### 2026-04-14 ~03:05 EDT — Sylvia brief and Jake-lane routing added to collaboration bus
 
 **Action**: Added new Claude Co-Work packets covering Sylvia as the north-star identity and the rule that Jake-specific blockers should route to `jake/inbox/` instead of getting buried in shared ambiguity.
+
+### 2026-04-14 ~20:01 EDT — Shared chooser-loop review packet added to collaboration bus
+
+**Action**: Added a shared decision packet to review whether alternating chooser winners should escalate sooner when the same unresolved blocker keeps returning.

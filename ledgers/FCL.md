@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Global contents ledger for the workspace root and top-level directory surfaces.
-> Last updated: 2026-04-14
+> Last updated: 2026-04-15
 
 ---
 
@@ -19,7 +19,7 @@
 
 | Directory | Primary Ledgers | Purpose | Status |
 |---|---|---|---|
-| `ledgers/` | `ledgers/FDL.md`, `ledgers/FCL.md`, `ledgers/TCL.md`, `ledgers/MACRO_LEDGER.md`, `ledgers/RLL.md` | Global memory spine, navigation control, and ratio lattice baseline | ✅ Live |
+| `ledgers/` | `ledgers/FDL.md`, `ledgers/FCL.md`, `ledgers/TCL.md`, `ledgers/MACRO_LEDGER.md`, `ledgers/RLL.md`, `ledgers/MACRO_RLL.md` | Global memory spine, navigation control, ratio lattice baseline, and **macro lattice spec** | ✅ Live |
 | `chooser/` | `chooser/FCL.md`, `chooser/TCL.md`, `chooser/RLL.md` | Sylvia chooser subsystem, module progress, next-step winner, and run receipts | ✅ Live |
 | `canon/` | `canon/FCL.md`, `canon/TCL.md`, `canon/RLL.md` | Canonical doctrine, deferred registry, and canon-level ranking | ✅ Live |
 | `identity/` | `identity/FCL.md`, `identity/TCL.md`, `identity/RLL.md` | Sylvia identity kernel, north-star doctrine, and module roadmap | ✅ Live |

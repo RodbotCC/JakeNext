@@ -1,7 +1,7 @@
 # Work Order
 
 Owner: `codex`
-Status: `inbox`
+Status: `done`
 Created: `2026-04-14T22:44:57.603Z`
 
 ## Source Artifact
@@ -51,3 +51,9 @@ The same winning move is legible in chooser state and in the corresponding queue
 
 - Packet path: `handoff/codex/inbox/auto_04_attention_selection_keep-chooser-next-step-authoritative-and-tie-it-.md`
 - Duplicate reuse: `no`
+
+
+## Worker Receipt
+
+- Safe Action Executed: `refresh_chooser_state`
+- Completed At: `2026-04-14T23:46:56.201Z`

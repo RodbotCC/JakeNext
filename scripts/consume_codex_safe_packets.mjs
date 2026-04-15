@@ -94,7 +94,11 @@ async function updateNextStepQueueState(fromRel, toRel, base) {
   const current = await readText(nextStepPath, null);
   if (!current || !current.includes(base)) return;
 
-  let updated = current.replace(fromRel, toRel);
+  let updated = current;
+  const inboxRel = `handoff/codex/inbox/${base}`;
+  const activeRel = `handoff/codex/active/${base}`;
+  updated = updated.replace(inboxRel, toRel);
+  updated = updated.replace(activeRel, toRel);
   if (updated.includes("- Packet Status:")) {
     updated = updated.replace(/- Packet Status: `[^`]+`/, "- Packet Status: `done`");
   } else {

@@ -12,6 +12,7 @@ Completed packets are continuity receipts and should not be deleted casually.
 
 | File | Purpose | Status |
 |---|---|---|
+| `auto_04_attention_selection_keep-chooser-next-step-authoritative-and-tie-it-_run_20260414T224457Z.md` | Keep chooser/NEXT_STEP authoritative and tie it directly to queue state. | ✅ Live |
 | `auto_04_attention_selection_keep-chooser-next-step-authoritative-and-tie-it-.md` | Keep chooser/NEXT_STEP authoritative and tie it directly to queue state. | ✅ Live |
 | `auto_04_attention_selection_keep-chooser-next-step-authoritative-and-tie-it-_run_20260414T184501Z.md` | Repeat safe-worker receipt for the refreshed `04_attention_selection` chooser winner | ✅ Live |
 | `auto_04_attention_selection_keep-chooser-next-step-authoritative-and-tie-it-_run_20260414T204456Z.md` | Repeat safe-worker receipt for the refreshed `04_attention_selection` chooser winner | ✅ Live |

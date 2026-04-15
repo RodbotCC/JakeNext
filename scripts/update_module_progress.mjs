@@ -35,7 +35,18 @@ const today = new Date().toISOString().slice(0, 10);
 const hasAndreSignal = await dirHas("jake/inbox", /andre/i);
 const hasRodrigoSignal = await dirHas("jake/inbox", /rodrigo/i);
 const hasAutomationsSignal = await dirHas("handoff/claude-cowork/inbox", /automations/i);
-const hasExternalSignalCluster = hasAndreSignal && hasRodrigoSignal && hasAutomationsSignal;
+const hasKpiSignal = await dirHas("handoff/claude-cowork/inbox", /kpis?/i);
+const hasPaymentsSignal = await dirHas("jake/inbox", /payments/i);
+const hasAndreAlignmentCluster = hasAndreSignal && (hasAutomationsSignal || hasKpiSignal);
+const hasInterpretedCluster = await fileHas(
+  "DAILY_BRIEFINGS/sweep_2026-04-14_demo.md",
+  /André\/Rodrigo\/Automations convergence|Rodrigo "watch this" event packet .* stale|Send André response \+ propose alignment sync/is
+);
+const hasRodrigoClosed = await fileHas(
+  "canon/JAKE_DEFERRED_REGISTRY.md",
+  /\[x\]\s+\*\*Rodrigo DM — ClickUp task "Jake please watch this"\*\*\s+`closed:\s*2026-04-14`/i
+);
+const hasExternalSignalCluster = hasAndreAlignmentCluster && (hasRodrigoSignal || hasPaymentsSignal || hasAutomationsSignal);
 
 const modules = [
   {
@@ -147,19 +158,41 @@ const modules = [
     title: "Action Selection + Storytelling",
     status: hasExternalSignalCluster ? "partial" : await exists("scripts/consume_codex_safe_packets.mjs") ? "scaffolded" : "missing",
     current_gap: hasExternalSignalCluster
-      ? "The first real external-signal cluster is now live across Jake and Claude lanes, but it is still fragmented across separate packets instead of one bounded active workstream."
+      ? hasInterpretedCluster
+        ? "The André alignment cluster is already semantically legible, but the live work is still fragmented across DM, ClickUp, and Jake packets instead of one operator-owned push with a named owner decision."
+        : "The first real external-signal cluster is now live across Jake and Claude lanes, but it is still fragmented across separate packets instead of one bounded active workstream."
       : "A chooser now exists, but the action bridge still needs to prove that a winning move can become safe autonomous work.",
     best_next_move: hasExternalSignalCluster
-      ? "Create one bounded active workstream around the André / Rodrigo / Automations-for-Close cluster, decide whether the real bottleneck is Jake judgment, Codex substrate work, or Claude interpretation, and leave one active packet instead of fragmented events."
+      ? hasInterpretedCluster
+        ? "Use André DM + Automations-for-Close as one active alignment push: reply to André, set a 15-minute sync, and decide who owns Close automations/KPIs versus who just needs visibility."
+        : "Create one bounded active workstream around the André / Rodrigo / Automations-for-Close cluster, decide whether the real bottleneck is Jake judgment, Codex substrate work, or Claude interpretation, and leave one active packet instead of fragmented events."
       : "Run the first safe substrate cycle from a chooser-created codex_safe_auto packet.",
-    blocking_lane: hasExternalSignalCluster ? "claude-cowork" : "codex",
-    execution_mode: hasExternalSignalCluster ? "claude_semantic" : "codex_safe_auto",
-    blocker_type: hasExternalSignalCluster ? "semantic_gap" : "none",
+    blocking_lane: hasExternalSignalCluster
+      ? hasInterpretedCluster
+        ? "jake"
+        : "claude-cowork"
+      : "codex",
+    execution_mode: hasExternalSignalCluster
+      ? hasInterpretedCluster
+        ? "manual_jake"
+        : "claude_semantic"
+      : "codex_safe_auto",
+    blocker_type: hasExternalSignalCluster
+      ? hasInterpretedCluster
+        ? "jake_input"
+        : "semantic_gap"
+      : "none",
     linked_artifacts: ["chooser/", "scripts/consume_codex_safe_packets.mjs"],
     completion_signal: hasExternalSignalCluster
-      ? "A single bounded packet or decision artifact exists that unifies André, Rodrigo, and Automations-for-Close into one active workstream with a named bottleneck."
+      ? hasInterpretedCluster
+        ? "Jake sends the André reply or equivalent alignment outreach, and one live packet becomes the named owner surface for the Close automations / KPI cluster."
+        : "A single bounded packet or decision artifact exists that unifies André, Rodrigo, and Automations-for-Close into one active workstream with a named bottleneck."
       : "A chooser-created codex_safe_auto packet moves through Codex queue states and leaves a receipt.",
-    priority: hasExternalSignalCluster ? 130 : 92
+    priority: hasExternalSignalCluster
+      ? hasInterpretedCluster
+        ? hasRodrigoClosed ? 136 : 132
+        : 130
+      : 92
   },
   {
     id: "10_global_availability",

@@ -35,3 +35,11 @@
 ### 2026-04-14 ~18:44 EDT — Safe worker scan still found no eligible Codex packet
 
 **Action**: Re-ran `scripts/consume_codex_safe_packets.mjs`, again got `consumed: 0`, `skipped: 5`, confirmed the remaining Codex inbox files are standard work orders rather than explicit `codex_safe_auto` packets, and kept `chooser/NEXT_STEP.md` unchanged because it still truthfully points to the live Claude Co-Work semantic winner.
+
+### 2026-04-14 ~20:47 EDT — Safe worker scan found only queue-only or manual Codex work
+
+**Action**: Ran `scripts/consume_codex_safe_packets.mjs` again, got `consumed: 0`, `skipped: 5`, verified the current Codex inbox still contains only standard work orders plus ledger files rather than any packet explicitly marked `codex_safe_auto`, and left `chooser/NEXT_STEP.md` unchanged because it already truthfully points at the active Jake-lane winner.
+
+### 2026-04-14 ~21:47 EDT — Safe worker scan again found no eligible Codex packet
+
+**Action**: Re-read `handoff/codex/inbox/` and `chooser/NEXT_STEP.md`, ran `node scripts/consume_codex_safe_packets.mjs`, got `consumed: 0` and `skipped: 5`, confirmed the live Codex packets are standard work orders or `queue_only` rather than explicit `codex_safe_auto`, and kept the chooser next-step artifact unchanged because it still truthfully points at the active Jake-lane packet.

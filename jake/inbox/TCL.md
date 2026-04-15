@@ -15,3 +15,7 @@
 ### 2026-04-14 ~03:05 EDT — Self-model grounding request added
 
 **Action**: Added the first Jake request asking for the minimum personal and relational truth needed to ground Sylvia's self-model and relation doctrine.
+
+### 2026-04-14 ~19:48 EDT — Chooser elevated André alignment to Jake lane
+
+**Action**: Added `auto_09_action_selection_storytelling_use-andr-dm-automations-for-close-as-one-active-.md` so the André DM plus Close automations cluster now has one operator-owned packet instead of living only as fragmented event signals.

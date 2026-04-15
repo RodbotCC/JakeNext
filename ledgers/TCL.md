@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Running log of significant events across the entire workspace.
-> Last updated: 2026-04-14
+> Last updated: 2026-04-15
 
 ---
 
@@ -208,6 +208,28 @@
 - One item is marked CORE: agent identity continuity
 - Next immediate action: Comeketo role mapping research via Slack + ClickUp (Jake approved this approach)
 
+### 2026-04-14 ~21:47 EDT — Codex safe worker verified queue truth without consuming a packet
+
+**Action**: Re-read the live Codex inbox packets, verified `chooser/NEXT_STEP.md`, and ran `node scripts/consume_codex_safe_packets.mjs`.
+
+**Files**:
+- `handoff/codex/inbox/evt_20260414T044721509Z_daily-substrate-sweep_5e7b45e2.md`
+- `handoff/codex/inbox/evt_20260414T163828571Z_daily-substrate-sweep_155a28ee.md`
+- `handoff/codex/inbox/wo_20260414T070700Z_dispatcher-roadmap-breakdown.md`
+- `handoff/codex/inbox/TCL.md`
+- `chooser/NEXT_STEP.md`
+
+**Signals**:
+- `node scripts/consume_codex_safe_packets.mjs` returned `consumed: 0`, `skipped: 5`
+
+**Outcome**:
+- No live packet in `handoff/codex/inbox/` is explicitly marked `Execution Mode: codex_safe_auto`
+- The current chooser winner remains the Jake-lane packet in `jake/inbox/`
+- No queue move was performed because there was nothing safe to consume
+
+**Notes**:
+- This run was a verification-and-receipt pass only; queue state remains unchanged by design
+
 ### 2026-04-14 ~03:05 EDT — Sylvia identity layer and Jake blocker lane installed
 
 **Action**: Added the `identity/` subsystem as Sylvia's north-star kernel, normalized the ten module doctrine files, created the top-level `jake/` blocker lane, added the Jake escalation skill and template, updated doctrine and handoff rules, and extended the lattice plus orchestrator around Sylvia.
@@ -218,6 +240,58 @@
 - `templates/jake_request.md`
 - `skills/shared-jake-roadblock-escalation/SKILL.md`
 - starter packets for Jake, Codex, and Claude Co-Work
+
+### 2026-04-14 ~20:47 EDT — Safe worker no-op scan preserved truthful queue state
+
+**Action**: Ran `scripts/consume_codex_safe_packets.mjs` for the Codex Safe Worker automation and confirmed there were no inbox packets explicitly marked `codex_safe_auto` to consume.
+
+**Files**:
+- Verified `handoff/codex/inbox/*.md`
+- Verified `chooser/NEXT_STEP.md`
+- Updated `handoff/codex/inbox/TCL.md`
+- Updated `$CODEX_HOME/automations/codex-safe-worker/memory.md`
+
+**Signals**: Safe worker output `consumed: 0`, `skipped: 5`
+
+**Outcome**:
+- Codex queue state is unchanged
+- `chooser/NEXT_STEP.md` remains truthful and still points to the current Jake-lane winner
+- This automation run now has a continuity receipt instead of an invisible no-op
+
+**Notes**:
+- The live Codex inbox items remain queue-only/manual work orders, not safe-auto packets
+
+### 2026-04-14 ~21:47 EDT — Sylvia chooser reused the live Jake blocker honestly
+
+**Action**: Ran the hourly Sylvia chooser loop, refreshed module progress against the current queue state, scored the active candidate moves again, and recorded a new chooser receipt without opening any duplicate packets.
+
+**Files**:
+- Updated `chooser/MODULE_PROGRESS.md`
+- Updated `chooser/NEXT_STEP.md`
+- Added `chooser/runs/run_20260415T014721Z.md`
+- Updated `chooser/runs/FCL.md`
+- Updated `chooser/runs/TCL.md`
+- Updated `chooser/TCL.md`
+
+**Signals**:
+- `chooser/CHOOSER_POLICY.md`
+- `chooser/MODULE_PROGRESS.md`
+- `chooser/NEXT_STEP.md`
+- `handoff/shared/decisions/auto_20260415T000138Z_alternating-winner-loop-review.md`
+- `jake/inbox/auto_09_action_selection_storytelling_use-andr-dm-automations-for-close-as-one-active-.md`
+- Queue directory state for `jake/inbox/`, `handoff/shared/decisions/`, `handoff/claude-cowork/inbox/`, and `handoff/codex/inbox/`
+
+**Corrections**:
+- Duplicate suppression was honored again: unchanged winner plus unchanged open packet means continuity, not a clone.
+- The alternating-loop review remains a live second-priority artifact, not a reason to fake a lane switch before the owner-truth bottleneck moves.
+
+**Outcome**:
+- `09_action_selection_storytelling` remains the truthful winner
+- `chooser/NEXT_STEP.md` now reflects the latest continuity basis explicitly
+- The chooser has a fresh append-only receipt for the unchanged Jake-lane state
+
+**Notes**:
+- The next real chooser change still depends on either Jake answering the owner-decision packet or the shared loop-review ratifying a stronger escalation rule
 
 **Files modified**:
 - root doctrine, global ledgers, handoff ledgers, skills ledgers, and orchestrator control surface
@@ -258,6 +332,20 @@
 ### 2026-04-14 — Phase 3: Orchestrator live actions wired
 
 **Action**: Made the orchestrator control surface interactive. Created `scripts/orchestrator_server.mjs` (lightweight HTTP server, no external deps). Updated `orchestrator/index.html` (Act nav button), `orchestrator/styles.css` (action panel styles), and `orchestrator/app.js` (full dispatch view with live queue state, current winner, action buttons, and console output). Updated local orchestrator FCL and TCL. Updated scripts FCL and TCL. Updated MACRO_LEDGER (orchestrator live actions: ⏳ → ✅).
+
+### 2026-04-14 ~20:01 EDT — Sylvia daily reflection escalated alternating winner loop
+
+**Action**: Reviewed nine chooser runs, refreshed `chooser/MODULE_PROGRESS.md`, wrote `chooser/runs/reflection_20260415T000138Z.md`, and opened `handoff/shared/decisions/auto_20260415T000138Z_alternating-winner-loop-review.md` because `09_action_selection_storytelling` keeps returning unresolved while `04_attention_selection` closes cleanly.
+
+**Files**:
+- Updated `chooser/MODULE_PROGRESS.md`
+- Added `chooser/runs/reflection_20260415T000138Z.md`
+- Added `handoff/shared/decisions/auto_20260415T000138Z_alternating-winner-loop-review.md`
+- Updated chooser and handoff local ledgers
+
+**Outcome**:
+- The daily reflection now reflects the real chooser pattern instead of only checking for three identical winners in a row
+- A bounded shared review now exists for deciding whether alternating stale loops should escalate earlier
 
 ### 2026-04-14 ~14:45 EDT — Codex safe worker left queue unchanged
 
@@ -530,3 +618,85 @@
 ### 2026-04-14 ~18:44 EDT — Sylvia hourly chooser advanced
 
 **Action**: Hourly chooser selected 04_attention_selection with execution mode codex_safe_auto and opened a new packet.
+
+### 2026-04-14 ~19:46 EDT — Codex safe worker executed packet
+
+**Action**: Executed safe action `refresh_chooser_state` from `auto_04_attention_selection_keep-chooser-next-step-authoritative-and-tie-it-.md` and archived receipt `auto_04_attention_selection_keep-chooser-next-step-authoritative-and-tie-it-_run_20260414T224457Z.md` in Codex done.
+
+### 2026-04-14 ~19:47 EDT — Chooser state truthfulness patched
+
+**Action**: Reconciled `chooser/NEXT_STEP.md` with the finished Codex packet so the active winner now points at the done receipt instead of the stale inbox path, and tightened `scripts/consume_codex_safe_packets.mjs` to rewrite inbox or active packet paths on future safe completions.
+
+### 2026-04-14 ~19:48 EDT — Sylvia hourly chooser advanced
+
+**Action**: Hourly chooser selected 09_action_selection_storytelling with execution mode manual_jake and opened a new packet.
+
+### 2026-04-14 ~20:47 EDT — Sylvia hourly chooser reused the live Jake blocker
+
+**Action**: Ran the hourly Sylvia chooser, refreshed module progress and candidate scoring, kept `09_action_selection_storytelling` as the winner, and reused `jake/inbox/auto_09_action_selection_storytelling_use-andr-dm-automations-for-close-as-one-active-.md` instead of opening a duplicate packet.
+
+**Files**:
+- `chooser/MODULE_PROGRESS.md`
+- `chooser/RLL.md`
+- `chooser/NEXT_STEP.md`
+- `chooser/runs/run_20260415T004711Z.md`
+- `chooser/runs/FCL.md`
+- `chooser/runs/TCL.md`
+- `chooser/TCL.md`
+
+**Corrections**:
+- The chooser now explicitly treats the alternating `04` / `09` loop as real state, not just background noise.
+- `04_attention_selection` remains important maintenance, but it no longer outranks the unresolved owner-decision bottleneck simply because it closes cleanly.
+
+**Outcome**:
+- The live next step remains the existing Jake packet for the André / Close automations ownership push.
+- `08_social_cognition_inward` is now the honest second-priority track because the shared loop-review packet is active.
+
+**Notes**:
+- No new Jake packet was opened this run; duplicate suppression held.
+
+### 2026-04-15 ~00:30 EDT — Decision Laws and Macro Lattice architecture installed
+
+**Action**: Jake provided a comprehensive driving-session dialogue covering Sylvia's decision philosophy. Claude Code converted this into three canonical architecture documents: `SYLVIA_DECISION_LAWS.md` (the Ten Laws), `TRAINING_INPUTS.md` (accelerated development methodology), and `MACRO_RLL.md` (meta-lattice architecture spec).
+
+**Files created**:
+- `identity/SYLVIA_DECISION_LAWS.md`
+- `identity/TRAINING_INPUTS.md`
+- `ledgers/MACRO_RLL.md`
+
+**Files updated**:
+- `identity/FCL.md`, `identity/TCL.md`
+- `ledgers/FCL.md`
+
+**Key doctrine additions**:
+
+**The Ten Laws**:
+1. Dynamic completeness over timeless completion
+2. Every choice requires an active comparator
+3. Decisions against stability baseline + residue
+4. When ambiguous, take easiest valid next move
+5. Easy must be North-Star-convergent
+6. Arbitrariness = alignment risk
+7. Fake infinite precision must constrain back to loop
+8. Produce lawful candidate band, not fake single answer
+9. Bounded stochasticity within comparator-constrained top band
+10. Surprise only when lawful, weighted, auditable
+
+**Macro Lattice**:
+- FCL = structural signal
+- TCL = temporal signal
+- RLL = judgment signal
+- Macro lattice = meta-comparator over all three
+- Formula: structure + change + priority → architectural self-steering
+
+**Training Streams**:
+- Passive capture, active micro-judgment, calibration, architecture reflection
+- 10 training input types: choice logs, friction logs, regret logs, voice memo ingress, pairwise comparisons, consequence journals, etc.
+
+**Corrections**:
+- Sylvia's decision architecture is now explicitly philosophical, not just procedural
+- The chooser can now output a lawful candidate band, not just a fake single winner
+- Bounded stochasticity is authorized inside comparator-constrained regimes
+- Training methodology is now explicit — Sylvia needs comparative traces, not more tasks
+
+**Outcome**: The identity layer now includes "how she thinks," not just "who she is." The macro lattice spec enables future self-governing architecture. Training methodology is documented for accelerated development.

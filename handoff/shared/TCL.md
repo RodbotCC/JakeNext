@@ -12,3 +12,6 @@
 
 **Action**: Added a local temporal ledger for shared decision/question/conflict coordination.
 
+### 2026-04-14 ~20:01 EDT — Shared decision opened for chooser loop review
+
+**Action**: Added an architecture review packet for the repeating `04_attention_selection` / `09_action_selection_storytelling` alternation so the loop can be judged explicitly instead of hand-waved.

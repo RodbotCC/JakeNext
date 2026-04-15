@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Local ratio lattice ledger for `chooser/`.
-> Last updated: 2026-04-14
+> Last updated: 2026-04-15
 
 ---
 
@@ -27,15 +27,14 @@
 
 ## Current module gap priority
 
-1. `04_attention_selection` — Keep chooser/NEXT_STEP authoritative and tie it directly to queue state.
-2. `09_action_selection_storytelling` — Create one bounded active workstream around the André / Rodrigo / Automations-for-Close cluster, decide whether the real bottleneck is Jake judgment, Codex substrate work, or Claude interpretation, and leave one active packet instead of fragmented events.
-3. `02_self_model` — Get Jake's grounding response and integrate it into identity doctrine.
-4. `05_predictive_processing` — Use daily reflection to turn repeated chooser results into explicit mismatch signal.
-5. `01_world_model` — Define a chooser-facing scene summary in hourly run receipts.
+1. `09_action_selection_storytelling` — Use André DM + Automations-for-Close as one active alignment push: reply to André, set a 15-minute sync, and decide who owns Close automations/KPIs versus who just needs visibility.
+2. `08_social_cognition_inward` — Resolve the alternating-winner shared decision into one explicit escalation rule for chooser reflection.
+3. `05_predictive_processing` — Use daily reflection to turn repeated chooser results into explicit mismatch signal.
+4. `04_attention_selection` — Keep chooser/NEXT_STEP authoritative and tied to queue truth, without letting repeat maintenance wins outrank the unresolved owner decision.
+5. `02_self_model` — Get Jake's grounding response and integrate it into identity doctrine.
 
 ---
 
 ## Current winner
 
-`04_attention_selection` wins locally because it is the strongest combination of module gap closure, actionability, and low current-blocker drag.
-
+`09_action_selection_storytelling` still wins locally because it is the only move that directly closes the owner-truth bottleneck; duplicate suppression lowers its score, but not below the loop-analysis work that now sits behind it.

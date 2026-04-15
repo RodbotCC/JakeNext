@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Local continuity ledger for the `chooser/` subsystem.
-> Last updated: 2026-04-14
+> Last updated: 2026-04-15
 
 ---
 
@@ -49,3 +49,23 @@
 ### 2026-04-14 ~18:44 EDT — Hourly chooser run recorded
 
 **Action**: Recorded run_20260414T224457Z, selected 04_attention_selection, and opened the corresponding packet.
+
+### 2026-04-14 ~19:47 EDT — NEXT_STEP queue path reconciled after safe completion
+
+**Action**: Updated `chooser/NEXT_STEP.md` so the live winner now points at done receipt `handoff/codex/done/auto_04_attention_selection_keep-chooser-next-step-authoritative-and-tie-it-_run_20260414T224457Z.md` and explicitly shows packet status `done`.
+
+### 2026-04-14 ~19:48 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260414T234833Z, selected 09_action_selection_storytelling, and opened the corresponding packet.
+
+### 2026-04-14 ~20:01 EDT — Daily Sylvia reflection recorded
+
+**Action**: Reviewed nine chooser runs, identified an alternating stale-loop pattern between `04_attention_selection` and `09_action_selection_storytelling`, and opened a shared improvement proposal.
+
+### 2026-04-14 ~20:47 EDT — Hourly chooser run recorded
+
+**Action**: Recorded `run_20260415T004711Z`, kept `09_action_selection_storytelling` as the winner, reused the live Jake packet, and refreshed module priority so the alternating-loop review now sits above repeat maintenance work.
+
+### 2026-04-14 ~21:47 EDT — Hourly chooser run recorded
+
+**Action**: Recorded `run_20260415T014721Z`, refreshed module progress without changing the winner, and kept the same live Jake packet authoritative because no queue truth changed.
