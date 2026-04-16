@@ -384,9 +384,59 @@ else if (scoreSpread < 15) mood = "ambiguous";
 else if (scaffoldedCount >= 4) mood = "early";
 else if (jakeBlockedCount === 0 && duplicateCount <= 1) mood = "flowing";
 
+// ─── Four-Beat Rhythm: Expand → Compress → Expand → Compress ─────────────
+// Determine which beat we're on based on what changed this cycle.
+// Beat 1 (EXPAND):   New input arrived — world changed
+// Beat 2 (COMPRESS): Reflect on what's new — prediction, confidence
+// Beat 3 (EXPAND):   Connect reflection to prior knowledge — identity, continuity, debate
+// Beat 4 (COMPRESS): Make a durable block — action, broadcast, canonize
+
+const prevBeat = previousWorld.rhythm?.beat || 0;
+const prevPhase = previousWorld.rhythm?.phase || "compress";
+const somethingNew = (previousWorld.world?.winner?.id || null) !== winner.id
+  || mood !== (previousWorld.affect?.mood || null)
+  || (previousWorld.prediction?.surprise === true);
+// Advance the beat: after compress→expand, after expand→compress
+// But if nothing genuinely new happened, stay on beat 4 (idle compress) until something arrives
+let nextBeat;
+let nextPhase;
+if (somethingNew && prevPhase === "compress") {
+  // Something new arrived while we were compressing → time to expand
+  nextBeat = 1;
+  nextPhase = "expand";
+} else if (prevBeat === 1) {
+  nextBeat = 2;
+  nextPhase = "compress";
+} else if (prevBeat === 2) {
+  nextBeat = 3;
+  nextPhase = "expand";
+} else if (prevBeat === 3) {
+  nextBeat = 4;
+  nextPhase = "compress";
+} else {
+  // Beat 4 or idle — stay compressed until something new triggers beat 1
+  nextBeat = somethingNew ? 1 : 4;
+  nextPhase = somethingNew ? "expand" : "compress";
+}
+
+const beatNames = {
+  1: "EXPAND: Take in something genuinely new",
+  2: "COMPRESS: Reflect on what changed",
+  3: "EXPAND: Connect reflection to prior knowledge",
+  4: "COMPRESS: Make a durable block — canonize",
+};
+
 const worldSnapshot = {
   cycle_id: runId,
   timestamp: iso,
+  // Cognitive rhythm
+  rhythm: {
+    beat: nextBeat,
+    phase: nextPhase,
+    label: beatNames[nextBeat],
+    something_new: somethingNew,
+    idle: nextBeat === 4 && !somethingNew,
+  },
   // Module 01: World Model
   world: {
     winner: { id: winner.id, score: winner.score, lane: winner.blocking_lane, mode: winner.execution_mode },
