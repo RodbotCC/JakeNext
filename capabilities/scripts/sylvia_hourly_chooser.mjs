@@ -421,9 +421,9 @@ if (somethingNew && prevPhase === "compress") {
 
 const beatNames = {
   1: "EXPAND: Take in something genuinely new",
-  2: "COMPRESS: Reflect on what changed",
-  3: "EXPAND: Connect reflection to prior knowledge",
-  4: "COMPRESS: Make a durable block — canonize",
+  2: "COMPRESS: Reflect on what just came in",
+  3: "RELATE: Connect reflection to what you already know",
+  4: "COMPOSE: Make something durable from the previous three",
 };
 
 const worldSnapshot = {
