@@ -1,0 +1,41 @@
+:root {
+  /* Backgrounds */
+  --color-bg: #FDF6EC;
+  --color-surface: #FFF9F0;
+  --color-surface-alt: #F5EDE0;
+  --color-canvas-bg: #F0E8D8;
+  --color-canvas-alt: #E8DFCF;
+
+  /* Primary — burgundy/maroon */
+  --color-primary: #6B2B3A;
+  --color-primary-hover: #7D3548;
+  --color-primary-light: rgba(107, 43, 58, 0.10);
+  --color-primary-xlight: rgba(107, 43, 58, 0.05);
+
+  /* Text */
+  --color-text: #3D2C2C;
+  --color-text-muted: #8C7A72;
+  --color-text-faint: #B8A99E;
+
+  /* Borders */
+  --color-border: #E4D8CB;
+  --color-border-strong: #D1C2B2;
+
+  /* Accents */
+  --color-accent-green: #5B8C6A;
+  --color-accent-green-light: rgba(91, 140, 106, 0.10);
+  --color-accent-coral: #D4726A;
+  --color-accent-coral-light: rgba(212, 114, 106, 0.10);
+  --color-accent-pink: #C4737B;
+  --color-accent-pink-light: rgba(196, 115, 123, 0.10);
+  --color-accent-gold: #C49B5A;
+  --color-accent-gold-light: rgba(196, 155, 90, 0.10);
+  --color-accent-blue: #5A7FA0;
+  --color-accent-blue-light: rgba(90, 127, 160, 0.10);
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(107, 43, 58, 0.04);
+  --shadow-sm: 0 1px 3px rgba(107, 43, 58, 0.06);
+  --shadow-md: 0 4px 12px rgba(107, 43, 58, 0.08);
+  --shadow-lg: 0 8px 24px rgba(107, 43, 58, 0.10);
+}

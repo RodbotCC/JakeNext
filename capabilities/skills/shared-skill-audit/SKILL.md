@@ -30,5 +30,5 @@ The failure mode is laziness. Once the agents stop updating the skills and ledge
 
 - Audit both skills and the ledgers that describe them.
 - If a workflow exists more than once, prefer turning it into or attaching it to a skill.
-- Record meaningful skill creation or skill refactor work in `ledgers/TCL.md`.
+- Record meaningful skill creation or skill refactor work in `ledgers/TCLl.md`.
 - Shared audit findings can route to Codex or Claude Co-Work depending on whether the problem is structural or semantic.

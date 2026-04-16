@@ -30,5 +30,5 @@ Codex can tell the system that something changed. Claude Co-Work tells the syste
 - Own meaning, not tendon work.
 - Do not repair filesystem structure unless the fix is explicitly part of a semantic decision.
 - If semantic judgment implies structural fallout, hand the implementation back to Codex.
-- Record important semantic turns in `ledgers/TCL.md` and relevant doctrine files.
+- Record important semantic turns in `ledgers/TCLl.md` and relevant doctrine files.
 

@@ -30,9 +30,9 @@ Review the event packet and perform the appropriate mechanical, filesystem, tool
 ## Ledger Updates Required
 
 - `ledgers/FDL.md`
-- `ledgers/FCL.md`
+- `ledgers/FCLl.md`
 - `ledgers/MACRO_LEDGER.md`
-- `ledgers/TCL.md`
+- `ledgers/TCLl.md`
 
 ## Event Packet
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import { readdir, stat } from "node:fs/promises";
-import { parseArgs, readText, writeText } from "./lib/oracle_fs.mjs";
+import { parseArgs, readText, workspacePath, writeText } from "./lib/oracle_fs.mjs";
 
 const args = parseArgs();
 
 async function exists(relativePath) {
   try {
-    await stat(new URL(`../${relativePath}`, import.meta.url));
+    await stat(workspacePath(relativePath));
     return true;
   } catch {
     return false;
@@ -24,7 +24,7 @@ async function fileHas(relativePath, pattern) {
 
 async function dirHas(relativeDir, matcher) {
   try {
-    const entries = await readdir(new URL(`../${relativeDir}`, import.meta.url));
+    const entries = await readdir(workspacePath(relativeDir));
     return entries.some((entry) => matcher.test(entry));
   } catch {
     return false;
@@ -32,14 +32,14 @@ async function dirHas(relativeDir, matcher) {
 }
 
 const today = new Date().toISOString().slice(0, 10);
-const hasAndreSignal = await dirHas("jake/inbox", /andre/i);
-const hasRodrigoSignal = await dirHas("jake/inbox", /rodrigo/i);
-const hasAutomationsSignal = await dirHas("handoff/claude-cowork/inbox", /automations/i);
-const hasKpiSignal = await dirHas("handoff/claude-cowork/inbox", /kpis?/i);
-const hasPaymentsSignal = await dirHas("jake/inbox", /payments/i);
+const hasAndreSignal = await dirHas("collaboration/jake/inbox", /andre/i);
+const hasRodrigoSignal = await dirHas("collaboration/jake/inbox", /rodrigo/i);
+const hasAutomationsSignal = await dirHas("collaboration/handoff/claude-cowork/inbox", /automations/i);
+const hasKpiSignal = await dirHas("collaboration/handoff/claude-cowork/inbox", /kpis?/i);
+const hasPaymentsSignal = await dirHas("collaboration/jake/inbox", /payments/i);
 const hasAndreAlignmentCluster = hasAndreSignal && (hasAutomationsSignal || hasKpiSignal);
 const hasInterpretedCluster = await fileHas(
-  "DAILY_BRIEFINGS/sweep_2026-04-14_demo.md",
+  "signals/briefings/sweep_2026-04-14_demo.md",
   /André\/Rodrigo\/Automations convergence|Rodrigo "watch this" event packet .* stale|Send André response \+ propose alignment sync/is
 );
 const hasRodrigoClosed = await fileHas(
@@ -52,26 +52,26 @@ const modules = [
   {
     id: "01_world_model",
     title: "World Model",
-    status: await exists("events/FCL.md") && await exists("scripts/daily_substrate_sweep.mjs") ? "partial" : "scaffolded",
+    status: await exists("signals/events/FCLse.md") && await exists("capabilities/scripts/daily_substrate_sweep.mjs") ? "partial" : "scaffolded",
     current_gap: "Scene binding still lives across ledgers and events instead of a chooser-facing world-state object.",
     best_next_move: "Define a chooser-facing scene summary in hourly run receipts.",
     blocking_lane: "codex",
     execution_mode: "codex_safe_auto",
     blocker_type: "none",
-    linked_artifacts: ["events/", "scripts/daily_substrate_sweep.mjs", "orchestrator/"],
+    linked_artifacts: ["signals/events/", "capabilities/scripts/daily_substrate_sweep.mjs", "capabilities/orchestrator/"],
     completion_signal: "Hourly chooser runs include a bounded scene summary section.",
     priority: 74
   },
   {
     id: "02_self_model",
     title: "Self Model",
-    status: await exists("identity/SYLVIA.md") ? (await fileHas("jake/inbox/req_20260414T070500Z_self-model-grounding.md", /Status:\s*`inbox`/i) ? "scaffolded" : "partial") : "missing",
+    status: await exists("identity/SYLVIA.md") ? (await fileHas("collaboration/jake/inbox/req_20260414T070500Z_self-model-grounding.md", /Status:\s*`inbox`/i) ? "scaffolded" : "partial") : "missing",
     current_gap: "Sylvia has identity doctrine, but the self-model still lacks Jake-grounded relational truth.",
     best_next_move: "Get Jake's grounding response and integrate it into identity doctrine.",
     blocking_lane: "jake",
     execution_mode: "manual_jake",
     blocker_type: "jake_input",
-    linked_artifacts: ["identity/", "jake/inbox/req_20260414T070500Z_self-model-grounding.md"],
+    linked_artifacts: ["identity/", "collaboration/jake/inbox/req_20260414T070500Z_self-model-grounding.md"],
     completion_signal: "A grounded Jake response exists and identity/self-model doctrine is updated from it.",
     priority: 78
   },
@@ -91,72 +91,72 @@ const modules = [
   {
     id: "04_attention_selection",
     title: "Attention as Selection",
-    status: await exists("chooser/NEXT_STEP.md") ? "scaffolded" : "missing",
-    current_gap: "The lattice can rank, but there is not yet a durable active-focus object that the whole system treats as foreground.",
-    best_next_move: "Keep chooser/NEXT_STEP authoritative and tie it directly to queue state.",
+    status: await exists("chooser/NEXT_STEP.md") ? "partial" : "missing",
+    current_gap: "`chooser/NEXT_STEP.md` is now a real active-focus object, but the system still over-rewards maintenance moves that close cleanly while a higher-impact blocker stays open.",
+    best_next_move: "Keep chooser/NEXT_STEP authoritative and tied to queue truth, without letting repeat maintenance wins outrank the unresolved owner decision.",
     blocking_lane: "codex",
     execution_mode: "codex_safe_auto",
     blocker_type: "none",
-    linked_artifacts: ["ledgers/RLL.md", "chooser/NEXT_STEP.md"],
+    linked_artifacts: ["ledgers/RLLl.md", "chooser/NEXT_STEP.md", "collaboration/handoff/codex/done/"],
     completion_signal: "The same winning move is legible in chooser state and in the corresponding queue packet state.",
-    priority: 86
+    priority: 87
   },
   {
     id: "05_predictive_processing",
     title: "Predictive Processing",
-    status: await exists("scripts/detect_ledger_drift.mjs") ? "partial" : "scaffolded",
-    current_gap: "Drift and mismatch exist, but outcome tracking is still thin.",
+    status: await exists("capabilities/scripts/detect_ledger_drift.mjs") ? "partial" : "scaffolded",
+    current_gap: "Drift and mismatch exist, but the reflection output still is not feeding explicit chooser-law consequences when loops persist.",
     best_next_move: "Use daily reflection to turn repeated chooser results into explicit mismatch signal.",
     blocking_lane: "codex",
     execution_mode: "codex_safe_auto",
     blocker_type: "none",
-    linked_artifacts: ["scripts/detect_ledger_drift.mjs", "scripts/daily_sylvia_reflection.mjs"],
+    linked_artifacts: ["capabilities/scripts/detect_ledger_drift.mjs", "capabilities/scripts/daily_sylvia_reflection.mjs"],
     completion_signal: "Daily reflection receipts explicitly name repeated mismatch or stale-winner patterns.",
-    priority: 80
+    priority: 90
   },
   {
     id: "06_temporal_continuity",
     title: "Temporal Continuity",
-    status: await exists("chooser/runs/TCL.md") ? "partial" : "scaffolded",
+    status: await exists("chooser/runs/TCLchr.md") ? "partial" : "scaffolded",
     current_gap: "Continuity is strong globally, but chooser-state continuity is brand new.",
     best_next_move: "Make chooser runs and NEXT_STEP part of the continuity spine.",
     blocking_lane: "codex",
     execution_mode: "codex_safe_auto",
     blocker_type: "none",
-    linked_artifacts: ["ledgers/TCL.md", "chooser/runs/", "chooser/NEXT_STEP.md"],
+    linked_artifacts: ["ledgers/TCLl.md", "chooser/runs/", "chooser/NEXT_STEP.md"],
     completion_signal: "Chooser run history and NEXT_STEP changes are visibly reflected in chooser and global continuity logs.",
     priority: 72
   },
   {
     id: "07_metacognition",
     title: "Metacognition",
-    status: await exists("templates/work_order.md") ? "partial" : "scaffolded",
+    status: await exists("capabilities/templates/work_order.md") ? "partial" : "scaffolded",
     current_gap: "Confidence and blocker truth exist in doctrine, but not yet consistently across packets.",
     best_next_move: "Standardize confidence and blocker metadata in chooser-created packets.",
     blocking_lane: "codex",
     execution_mode: "codex_safe_auto",
     blocker_type: "none",
-    linked_artifacts: ["templates/work_order.md", "templates/jake_request.md"],
+    linked_artifacts: ["capabilities/templates/work_order.md", "capabilities/templates/jake_request.md"],
     completion_signal: "Chooser-created packets carry explicit blocker and completion metadata consistently.",
     priority: 64
   },
   {
     id: "08_social_cognition_inward",
     title: "Social Cognition Inward",
-    status: "scaffolded",
-    current_gap: "Shared conflict space exists, but no formal inward debate protocol is driving chooser outcomes.",
-    best_next_move: "Promote repeated ambiguity into shared decision and reflection packets.",
-    blocking_lane: "claude-cowork",
-    execution_mode: "claude_semantic",
-    blocker_type: "semantic_gap",
-    linked_artifacts: ["handoff/shared/", "identity/modules/08_social_cognition_inward.md"],
-    completion_signal: "Repeated ambiguity produces a real shared decision or conflict artifact rather than silent drift.",
-    priority: 58
+    status: await exists("collaboration/handoff/shared/decisions/auto_20260415T000138Z_alternating-winner-loop-review.md") ? "partial" : "scaffolded",
+    current_gap: "Reflection has now surfaced the alternating `04` / `09` loop, but the system still lacks a ratified rule for when inward disagreement becomes an architecture-level mismatch.",
+    best_next_move: "Resolve the alternating-winner shared decision into one explicit escalation rule for chooser reflection.",
+    blocking_lane: "shared",
+    execution_mode: "queue_only",
+    blocker_type: "architecture_decision",
+    linked_artifacts: ["collaboration/handoff/shared/decisions/", "chooser/runs/reflection_20260415T000138Z.md"],
+    completion_signal: "A shared decision or routing update exists that explains how the chooser should treat alternating stale loops like the current `04` / `09` pattern.",
+    priority: 104
   },
   {
     id: "09_action_selection_storytelling",
     title: "Action Selection + Storytelling",
-    status: hasExternalSignalCluster ? "partial" : await exists("scripts/consume_codex_safe_packets.mjs") ? "scaffolded" : "missing",
+    status: hasExternalSignalCluster ? "partial" : await exists("capabilities/scripts/consume_codex_safe_packets.mjs") ? "scaffolded" : "missing",
     current_gap: hasExternalSignalCluster
       ? hasInterpretedCluster
         ? "The André alignment cluster is already semantically legible, but the live work is still fragmented across DM, ClickUp, and Jake packets instead of one operator-owned push with a named owner decision."
@@ -182,7 +182,7 @@ const modules = [
         ? "jake_input"
         : "semantic_gap"
       : "none",
-    linked_artifacts: ["chooser/", "scripts/consume_codex_safe_packets.mjs"],
+    linked_artifacts: ["chooser/", "capabilities/scripts/consume_codex_safe_packets.mjs"],
     completion_signal: hasExternalSignalCluster
       ? hasInterpretedCluster
         ? "Jake sends the André reply or equivalent alignment outreach, and one live packet becomes the named owner surface for the Close automations / KPI cluster."
@@ -197,13 +197,13 @@ const modules = [
   {
     id: "10_global_availability",
     title: "Global Availability",
-    status: await exists("orchestrator/app.js") ? "partial" : "scaffolded",
+    status: await exists("capabilities/orchestrator/app.js") ? "partial" : "scaffolded",
     current_gap: "Ledgers, queues, and UI exist, but chooser state is not yet fully broadcast across all visible surfaces.",
     best_next_move: "Surface the current winner, module progress, and blocker state in the orchestrator.",
     blocking_lane: "codex",
     execution_mode: "codex_safe_auto",
     blocker_type: "none",
-    linked_artifacts: ["orchestrator/", "chooser/"],
+    linked_artifacts: ["capabilities/orchestrator/", "chooser/"],
     completion_signal: "The orchestrator explicitly exposes module progress, the current winner, and blocker state.",
     priority: 70
   }

@@ -1,0 +1,142 @@
+.card {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  transition: all 0.18s ease;
+  box-shadow: var(--shadow-xs);
+}
+
+.clickable {
+  cursor: pointer;
+}
+.clickable:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary-xlight);
+  box-shadow: var(--shadow-sm);
+}
+
+.iconSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+.selected .iconSlot {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.selected .title {
+  color: var(--color-primary);
+}
+
+.subtitle {
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
+
+.badges {
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  line-height: 1.4;
+}
+
+.badgeGreen {
+  background: var(--color-accent-green-light);
+  color: var(--color-accent-green);
+}
+.badgeGold {
+  background: var(--color-accent-gold-light);
+  color: var(--color-accent-gold);
+}
+.badgeCoral {
+  background: var(--color-accent-coral-light);
+  color: var(--color-accent-coral);
+}
+.badgeBlue {
+  background: var(--color-accent-blue-light);
+  color: var(--color-accent-blue);
+}
+.badgePrimary {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+/* Large variant for stats */
+.large {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-5);
+  gap: var(--space-3);
+}
+
+.large .iconSlot {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+}
+
+.largeValue {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.largeLabel {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

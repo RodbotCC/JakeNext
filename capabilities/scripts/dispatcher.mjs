@@ -16,7 +16,7 @@
  *   codex_safe_auto   → invoke consume_codex_safe_packets.mjs immediately
  *   queue_only        → log arrival, surface for Codex review (never auto-run)
  *   claude_semantic   → log arrival, surface for Claude Co-Work (never auto-run)
- *   manual_jake       → log as operator bottleneck, surface in jake/TCL.md
+ *   manual_jake       → log as operator bottleneck, surface in collaboration/jake/TCLclj.md
  *
  * Safety invariants:
  *   - Never silently rewrites semantic canon.
@@ -45,7 +45,12 @@ const QUEUES = [
 ];
 
 // Ledger files that live in queue directories — never treat as packets.
-const LEDGER_FILENAMES = new Set(["FCL.md", "TCL.md", "RLL.md"]);
+const LEDGER_FILENAMES = new Set(["FCL.md", "TCL.md", "RLL.md", "NSL.md"]);
+// Also match barcoded ledger filenames (e.g. FCLclhcoi.md, TCLclj.md)
+function isLedgerFile(name) {
+  if (LEDGER_FILENAMES.has(name)) return true;
+  return /^(?:FCL|TCL|RLL|NSL)[a-z]*\.md$/.test(name);
+}
 
 // ─── Markdown field parser ────────────────────────────────────────────────────
 
@@ -128,12 +133,12 @@ async function dispatchPacket(queueDir, filename, lane) {
       record.safeWorkerOutput = workerOutput;
 
       await appendTcl(
-        "ledgers/TCL.md",
+        "ledgers/TCLl.md",
         "Dispatcher → safe worker executed",
         `Auto-dispatched \`codex_safe_auto\` packet \`${filename}\` (module \`${moduleTarget}\`). Safe worker consumed it. Worker result: consumed=${workerOutput.consumed ?? "?"}.`,
       );
       await appendTcl(
-        "handoff/codex/TCL.md",
+        "collaboration/handoff/codex/TCLclhco.md",
         "Dispatcher triggered safe execution",
         `Packet \`${filename}\` dispatched and consumed by safe worker.`,
       );
@@ -141,7 +146,7 @@ async function dispatchPacket(queueDir, filename, lane) {
       record.outcome = "error";
       record.error   = err.message;
       await appendTcl(
-        "ledgers/TCL.md",
+        "ledgers/TCLl.md",
         "Dispatcher safe worker error",
         `Safe worker failed for \`${filename}\` (module \`${moduleTarget}\`): ${err.message}`,
       );
@@ -152,12 +157,12 @@ async function dispatchPacket(queueDir, filename, lane) {
     record.action  = "surface_for_codex_review";
     record.outcome = "queued_awaiting_codex";
     await appendTcl(
-      "handoff/codex/TCL.md",
+      "collaboration/handoff/codex/TCLclhco.md",
       "Dispatcher surfaced codex packet",
       `New \`${executionMode}\` packet \`${filename}\` detected (module \`${moduleTarget}\`). Not auto-executed — requires Codex review.`,
     );
     await appendTcl(
-      "ledgers/TCL.md",
+      "ledgers/TCLl.md",
       "Dispatcher surfaced codex queue packet",
       `Packet \`${filename}\` in Codex inbox is \`${executionMode}\` — surfaced for Codex, not auto-run.`,
     );
@@ -167,12 +172,12 @@ async function dispatchPacket(queueDir, filename, lane) {
     record.action  = "surface_for_semantic_review";
     record.outcome = "queued_awaiting_claude_cowork";
     await appendTcl(
-      "handoff/claude-cowork/TCL.md",
+      "collaboration/handoff/claude-cowork/TCLclhcc.md",
       "Dispatcher surfaced semantic packet",
       `New \`${executionMode}\` packet \`${filename}\` detected (module \`${moduleTarget}\`). Semantic work queued only — not auto-executed by design.`,
     );
     await appendTcl(
-      "ledgers/TCL.md",
+      "ledgers/TCLl.md",
       "Dispatcher queued semantic work",
       `Claude Co-Work packet \`${filename}\` (module \`${moduleTarget}\`) is live in inbox and awaiting semantic review.`,
     );
@@ -182,12 +187,12 @@ async function dispatchPacket(queueDir, filename, lane) {
     record.action  = "surface_as_operator_bottleneck";
     record.outcome = "awaiting_jake";
     await appendTcl(
-      "jake/TCL.md",
+      "collaboration/jake/TCLclj.md",
       "Dispatcher flagged Jake request",
       `Operator request \`${filename}\` detected. Module: \`${moduleTarget}\`. Blocker: \`${blockerType}\`. Awaiting Jake input — not reroutable.`,
     );
     await appendTcl(
-      "ledgers/TCL.md",
+      "ledgers/TCLl.md",
       "Dispatcher flagged Jake bottleneck",
       `Jake-required packet \`${filename}\` (module \`${moduleTarget}\`, blocker \`${blockerType}\`) is an open operator bottleneck.`,
     );
@@ -249,7 +254,7 @@ async function runDispatchPass(state, verbose = true) {
       ),
     );
     await appendTcl(
-      "events/processed/TCL.md",
+      "signals/events/processed/TCLsep.md",
       "Dispatch receipt written",
       `Dispatcher processed ${dispatched.length} new packet(s). Receipt: \`${receiptPath}\`.`,
     );

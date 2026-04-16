@@ -15,15 +15,18 @@ The first implementation is scan-based. Scripts compare snapshots and create eve
 
 | Event Type | Detection | Default Route | AI Review | Ledger Rule |
 |---|---|---|---|---|
-| `file_created` | Path exists in current scan but not previous snapshot | `codex` for structure/scripts; `claude-cowork` for source/canon | Required for source/canon | Update the relevant local `FCL.md`, append the relevant local `TCL.md`, and append `ledgers/TCL.md` if significant |
-| `file_edited` | Path hash or size changed | `codex` for scripts/ledgers; `claude-cowork` for foundation/source/analysis | Required for semantic files | Update the relevant local `TCL.md`; update local `FCL.md` if purpose/status changed; append `ledgers/TCL.md` when the edit materially changes workspace state |
-| `file_moved` | Previous hash appears at a new path | `codex`; shared conflict if meaning changed | Conditional | Update `ledgers/FDL.md`, both affected local `FCL.md` files, both affected local `TCL.md` files, and `ledgers/TCL.md` |
-| `staleness` | Packet remains in inbox/active beyond declared threshold | `codex` for queue hygiene; `claude-cowork` for priority meaning | Conditional | Append the local queue `TCL.md` and `ledgers/TCL.md` if it changes priority or queue state |
+| `file_created` | Path exists in current scan but not previous snapshot | `codex` for structure/scripts; `claude-cowork` for source/canon | Required for source/canon | Update the relevant local `FCL.md`, append the relevant local `TCL.md`, and append `ledgers/TCLl.md` if significant |
+| `file_edited` | Path hash or size changed | `codex` for scripts/ledgers; `claude-cowork` for foundation/source/analysis | Required for semantic files | Update the relevant local `TCL.md`; update local `FCL.md` if purpose/status changed; append `ledgers/TCLl.md` when the edit materially changes workspace state |
+| `file_moved` | Previous hash appears at a new path | `codex`; shared conflict if meaning changed | Conditional | Update `ledgers/FDL.md`, both affected local `FCL.md` files, both affected local `TCL.md` files, and `ledgers/TCLl.md` |
+| `staleness` | Packet remains in inbox/active beyond declared threshold | `codex` for queue hygiene; `claude-cowork` for priority meaning | Conditional | Append the local queue `TCL.md` and `ledgers/TCLl.md` if it changes priority or queue state |
 | `ledger_drift` | Ledger references disagree with actual filesystem | `codex` for mechanical drift; shared conflict for semantic mismatch | Conditional | Repair ledgers after review |
 | `correction` | Jake correction or explicit contradiction enters system | `claude-cowork` first | Required | Update correction log and any affected doctrine |
-| `density` | Related files accumulate enough to deserve synthesis | `claude-cowork` for synthesis; `codex` for packet creation | Required | Append the relevant local `TCL.md`, append `ledgers/TCL.md`, and update macro-level status if accepted |
-| `jake_blocker` | A candidate move or live task needs Jake-specific truth, approval, or manual action | `jake/inbox/` | Required | Append the relevant local queue `TCL.md`, append `chooser/TCL.md` if emitted by the chooser, and append `ledgers/TCL.md` if the blocker changes active priority |
-| `chooser_run` | Hourly chooser pass re-evaluates module gaps and selects a current winner | `chooser/` plus the winning queue lane | Required | Write a chooser run receipt, update `chooser/NEXT_STEP.md`, append `chooser/TCL.md`, and append `ledgers/TCL.md` if the winner changed or packets were opened |
+| `density` | Related files accumulate enough to deserve synthesis | `claude-cowork` for synthesis; `codex` for packet creation | Required | Append the relevant local `TCL.md`, append `ledgers/TCLl.md`, and update macro-level status if accepted |
+| `jake_blocker` | A candidate move or live task needs Jake-specific truth, approval, or manual action | `jake/inbox/` | Required | Append the relevant local queue `TCL.md`, append `chooser/TCLch.md` if emitted by the chooser, and append `ledgers/TCLl.md` if the blocker changes active priority |
+| `chooser_run` | Hourly chooser pass re-evaluates module gaps and selects a current winner | `chooser/` plus the winning queue lane | Required | Write a chooser run receipt, update `chooser/NEXT_STEP.md`, append `chooser/TCLch.md`, and append `ledgers/TCLl.md` if the winner changed or packets were opened |
+| `pieces_behavioral_pattern` | Pieces sweep identifies recurring behavioral signal | `claude-cowork` | Required | Append `pieces/TCLp.md` and `ledgers/TCLl.md` |
+| `pieces_workstream_summary` | Pieces sweep captures synthesized session summary | `claude-cowork` | Required | Append `pieces/TCLp.md` |
+| `pieces_topic_signal` | Pieces historical topic match to active oracle concern | `claude-cowork` | Required | Append `pieces/TCLp.md` and `ledgers/TCLl.md` |
 
 ---
 
@@ -45,8 +48,9 @@ The first implementation is scan-based. Scripts compare snapshots and create eve
 | `analysis/**` | `claude-cowork` | Interpretation and synthesis |
 | `canon/JAKE_PERSONAL_ORACLE_FOUNDATION.md` | `claude-cowork` | Canonical oracle doctrine |
 | `canon/JAKE_DEFERRED_REGISTRY.md` | `claude-cowork` | Priority and correction meaning |
+| `pieces/**` | `claude-cowork` | Behavioral memory interpretation |
 | `AGENTS.md` | `codex` with shared review | Agent boundary contract |
-| `ledgers/FDL.md`, `ledgers/FCL.md`, `ledgers/MACRO_LEDGER.md`, `ledgers/TCL.md`, local `FCL.md`, local `TCL.md` | `codex` for mechanical edits; shared if semantic status changes | Ledger spine |
+| `ledgers/FDL.md`, `ledgers/FCLl.md`, `ledgers/MACRO_LEDGER.md`, `ledgers/TCLl.md`, local `FCL.md`, local `TCL.md` | `codex` for mechanical edits; shared if semantic status changes | Ledger spine |
 
 ---
 

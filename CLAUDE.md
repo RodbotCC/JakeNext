@@ -50,17 +50,17 @@ This repository is built around five functional layers:
 
 These are represented by a global ledger spine and local directory ledgers:
 
-- `ledgers/TCL.md` — global Temporal Continuity Ledger
+- `ledgers/TCLl.md` — global Temporal Continuity Ledger
 - `ledgers/FDL.md` — global File Directory Ledger
-- `ledgers/FCL.md` — global root File Contents Ledger
+- `ledgers/FCLl.md` — global root File Contents Ledger
 - `ledgers/MACRO_LEDGER.md` — high-level navigation and status ledger
-- `ledgers/RLL.md` — global Ratio Lattice Ledger
-- `ledgers/NSL.md` — global North Star Ledger
+- `ledgers/RLLl.md` — global Ratio Lattice Ledger
+- `ledgers/NSLl.md` — global North Star Ledger
 - `chooser/` — active chooser policy, module progress, current next move, and run receipts
-- `{dir}/FCL.md` — local directory contents ledger
-- `{dir}/TCL.md` — local directory continuity ledger
-- `{dir}/RLL.md` — local comparative ranking ledger where useful
-- `{dir}/NSL.md` — local north star alignment ledger for critical directories
+- `{dir}/FCL{barcode}.md` — local directory contents ledger
+- `{dir}/TCL{barcode}.md` — local directory continuity ledger
+- `{dir}/RLL{barcode}.md` — local comparative ranking ledger where useful
+- `{dir}/NSL{barcode}.md` — local north star alignment ledger for critical directories
 
 **The Four-Ledger System:**
 | Ledger | Question | Signal |
@@ -84,13 +84,13 @@ This means:
 
 - no orphaned files,
 - no ambiguous root clutter,
-- no directories without an `FCL.md`,
-- no directories without a `TCL.md`,
-- no major session without a global `ledgers/TCL.md` entry,
-- no meaningful directory work without a local `TCL.md` entry,
+- no directories without an `FCL{barcode}.md`,
+- no directories without a `TCL{barcode}.md`,
+- no major session without a global `ledgers/TCLl.md` entry,
+- no meaningful directory work without a local `TCL{barcode}.md` entry,
 - no structural change without `ledgers/FDL.md` updates,
-- no meaningful ranking layer without `ledgers/RLL.md`,
-- no Jake-specific blocker handled through guesswork when `jake/inbox/` should exist,
+- no meaningful ranking layer without `ledgers/RLLl.md`,
+- no Jake-specific blocker handled through guesswork when `collaboration/jake/inbox/` should exist,
 - no important document without macro-level visibility somewhere in the ledger stack.
 - no active next-step loop without chooser receipts and a visible current winner.
 
@@ -195,11 +195,11 @@ When reasoning about the workspace, Claude should treat truth as layered:
 - `ledgers/FDL.md`
 
 ### L2 — Directory-local truth
-- each directory’s `FCL.md`
-- each directory’s `TCL.md`
+- each directory’s `FCL{barcode}.md`
+- each directory’s `TCL{barcode}.md`
 
 ### L3 — Temporal truth
-- `ledgers/TCL.md`
+- `ledgers/TCLl.md`
 
 ### L4 — Domain documents
 - foundation docs, registries, briefings, source files, analyses, schemas
@@ -217,16 +217,16 @@ If conflicts exist:
 ### Rule 1 — No orphan files
 No meaningful file should sit unclassified or unexplained.
 
-### Rule 2 — Every directory needs an `FCL.md`
-The moment a new directory is created, it must receive an `FCL.md` stub describing:
+### Rule 2 — Every directory needs an `FCL{barcode}.md`
+The moment a new directory is created, it must receive an `FCL{barcode}.md` stub describing:
 - purpose of the directory,
 - contents,
 - conventions,
 - known dependencies,
 - and how it relates to the larger system.
 
-### Rule 2b — Every directory needs a `TCL.md`
-The moment a new directory is created, it must also receive a `TCL.md` stub describing:
+### Rule 2b — Every directory needs a `TCL{barcode}.md`
+The moment a new directory is created, it must also receive a `TCL{barcode}.md` stub describing:
 - what continuity in that directory means,
 - how changes should be logged locally,
 - and the first initialization entry.
@@ -235,14 +235,14 @@ The moment a new directory is created, it must also receive a `TCL.md` stub desc
 Only `AGENTS.md` and `CLAUDE.md` belong at root.  
 Everything else must live in a meaningful directory.
 
-### Rule 3b — Jake-specific blockers go to `jake/inbox/`
-If a question depends on Jake's personal truth, taste, approval, manual action, or relationship nuance, route it into `jake/inbox/` instead of guessing or hiding it in vague agent discussion.
+### Rule 3b — Jake-specific blockers go to `collaboration/jake/inbox/`
+If a question depends on Jake's personal truth, taste, approval, manual action, or relationship nuance, route it into `collaboration/jake/inbox/` instead of guessing or hiding it in vague agent discussion.
 
-### Rule 4 — Major work must enter `ledgers/TCL.md`
+### Rule 4 — Major work must enter `ledgers/TCLl.md`
 Every significant session, structural change, new architecture decision, research move, or important correction must be logged in the global Temporal Continuity Ledger.
 
-### Rule 4b — Local work must enter the local `TCL.md`
-Every meaningful change inside a directory must be followed by a local continuity entry in that directory’s `TCL.md`.
+### Rule 4b — Local work must enter the local `TCL{barcode}.md`
+Every meaningful change inside a directory must be followed by a local continuity entry in that directory’s `TCL{barcode}.md`.
 
 ### Rule 5 — Structural changes must update `ledgers/FDL.md`
 If directories are added, renamed, repurposed, or removed, `ledgers/FDL.md` must change.
@@ -253,13 +253,13 @@ When files are added to a directory, that directory’s `FCL.md` must reflect it
 ### Rule 6b — Actions must update both global and local ledgers
 The default expectation after meaningful work is:
 - update `ledgers/FDL.md` if topology changed,
-- update `ledgers/TCL.md`,
+- update `ledgers/TCLl.md`,
 - update the relevant local `FCL.md`,
 - update the relevant local `TCL.md`,
 - and update `ledgers/MACRO_LEDGER.md` if top-level navigation or status changed.
 
 ### Rule 6d — Ranking changes must update `RLL.md`
-If the comparative meaning of the corpus changes, update `ledgers/RLL.md` and any relevant local `RLL.md` so the chooser remains explicit and auditable.
+If the comparative meaning of the corpus changes, update `ledgers/RLLl.md` and any relevant local `RLL.md` so the chooser remains explicit and auditable.
 
 ### Rule 6f — Chooser changes must update `chooser/`
 If module gap state changes, the current winning move changes, or a chooser pass opens or suppresses packets, update the relevant chooser artifacts and append chooser continuity.
@@ -560,7 +560,7 @@ Where should it live in the file tree?
 Update the correct local `FCL.md`, the correct local `TCL.md`, and any required global ledgers.
 
 ### 4. Log it
-If significant, add a `ledgers/TCL.md` entry.
+If significant, add a `ledgers/TCLl.md` entry.
 
 ### 5. Connect it
 Determine whether it affects:
@@ -629,7 +629,7 @@ When uncertain, prioritize:
 
 ## Expected File Behaviors
 
-### `ledgers/TCL.md`
+### `ledgers/TCLl.md`
 Use for:
 - major sessions
 - architecture decisions
@@ -637,7 +637,7 @@ Use for:
 - operational turning points
 - significant new documents or capabilities
 
-### `ledgers/RLL.md`
+### `ledgers/RLLl.md`
 Use for:
 - declared scoring dimensions
 - comparator law
@@ -723,9 +723,9 @@ This is not optional. This is the first action of every session, every sweep, ev
 ### Boot sequence:
 
 1. Read `ledgers/MACRO_LEDGER.md` — understand the current system status and navigation map.
-2. Read `ledgers/TCL.md` — understand what happened most recently and where continuity stands.
+2. Read `ledgers/TCLl.md` — understand what happened most recently and where continuity stands.
 3. Read the local `TCL.md` and `FCL.md` for any directory you are about to work in — understand what exists and what changed there.
-4. If the work involves comparative reasoning or prioritization, read `ledgers/RLL.md`.
+4. If the work involves comparative reasoning or prioritization, read `ledgers/RLLl.md`.
 5. If the work touches Sylvia identity, role boundaries, or the north-star roadmap, read `identity/`.
 
 Only after completing this boot sequence should Claude begin substantive work.
@@ -752,9 +752,9 @@ This is the hardest rule in the system. It is also the most important.
 2. **The relevant local `TCL.md`** — what changed, when, and what is now true.
 3. **The relevant local `RLL.md`** — if ranking in that directory changed.
 4. **The relevant local `NSL.md`** — if north-star alignment changed (for critical directories).
-5. **`ledgers/TCL.md`** — the global temporal continuity log, with a proper entry for the session.
-6. **`ledgers/RLL.md`** — if the comparative meaning of the corpus changed.
-7. **`ledgers/NSL.md`** — if north-star alignment changed at workspace level.
+5. **`ledgers/TCLl.md`** — the global temporal continuity log, with a proper entry for the session.
+6. **`ledgers/RLLl.md`** — if the comparative meaning of the corpus changed.
+7. **`ledgers/NSLl.md`** — if north-star alignment changed at workspace level.
 8. **`identity/`** — if Sylvia's identity, roadmap, relation law, or module doctrine changed.
 9. **`jake/`** — if a Jake-owned request lane was created or updated.
 10. **`ledgers/FDL.md`** — if directory topology changed.

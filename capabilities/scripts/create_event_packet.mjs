@@ -21,7 +21,6 @@ const packet = buildEventPacket({
 if (args["dry-run"]) {
   console.log(JSON.stringify(packet, null, 2));
 } else {
-  const file = await writeEvent(packet, args.dir || "events/inbox");
+  const file = await writeEvent(packet, args.dir || "signals/events/inbox");
   console.log(JSON.stringify({ wrote: file, packet }, null, 2));
 }
-

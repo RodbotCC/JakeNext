@@ -1,0 +1,21 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.button:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-xlight);
+}
+
+.danger:hover {
+  color: var(--color-accent-pink);
+  background: var(--color-accent-pink-light);
+}

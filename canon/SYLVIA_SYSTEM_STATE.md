@@ -209,7 +209,7 @@ Every meaningful directory has four ledger types. Together they form the memory 
 
 **FCL.md** — inventories every file in the directory, its purpose, and conventions.
 
-**TCL.md** — running log of meaningful events. The global `ledgers/TCL.md` aggregates across the whole workspace.
+**TCL.md** — running log of meaningful events. The global `ledgers/TCLl.md` aggregates across the whole workspace.
 
 **RLL.md** — comparative ranking of the objects in that directory under declared comparators.
 
@@ -217,9 +217,9 @@ Every meaningful directory has four ledger types. Together they form the memory 
 
 The global versions live in `ledgers/`. Local versions live in each directory. All four must be updated after every meaningful session — this is non-negotiable.
 
-**Session boot protocol (mandatory):** Read `ledgers/MACRO_LEDGER.md` → `ledgers/TCL.md` → local TCL/FCL for any directory being worked in → `ledgers/RLL.md` if ranking matters → `identity/` if identity is relevant → `northstar/BREAKTHROUGH_GOALS.md` if working on the three pillars.
+**Session boot protocol (mandatory):** Read `ledgers/MACRO_LEDGER.md` → `ledgers/TCLl.md` → local TCL/FCL for any directory being worked in → `ledgers/RLLl.md` if ranking matters → `identity/` if identity is relevant → `northstar/BREAKTHROUGH_GOALS.md` if working on the three pillars.
 
-**Session close protocol (mandatory):** Update local FCL → local TCL → local RLL if ranking changed → local NSL if alignment changed → `ledgers/TCL.md` → `ledgers/RLL.md` if global ranking changed → `ledgers/NSL.md` if global alignment changed → `ledgers/FDL.md` if topology changed → `ledgers/MACRO_LEDGER.md` if top-level status changed.
+**Session close protocol (mandatory):** Update local FCL → local TCL → local RLL if ranking changed → local NSL if alignment changed → `ledgers/TCLl.md` → `ledgers/RLLl.md` if global ranking changed → `ledgers/NSLl.md` if global alignment changed → `ledgers/FDL.md` if topology changed → `ledgers/MACRO_LEDGER.md` if top-level status changed.
 
 ---
 
@@ -513,7 +513,7 @@ These are not preferences — they are durable corrections that changed how the 
 
 ## How to Use This Document
 
-**For a fresh session start:** Read this document instead of reading every ledger from scratch. Then check `ledgers/TCL.md` for anything that happened since this report was generated, and `chooser/NEXT_STEP.md` for the current active winner.
+**For a fresh session start:** Read this document instead of reading every ledger from scratch. Then check `ledgers/TCLl.md` for anything that happened since this report was generated, and `chooser/NEXT_STEP.md` for the current active winner.
 
 **For build frontier work:** Read `northstar/BREAKTHROUGH_GOALS.md`. It defines the three pillars and exactly what needs to happen at each layer. This is the most important file for understanding what to build next.
 

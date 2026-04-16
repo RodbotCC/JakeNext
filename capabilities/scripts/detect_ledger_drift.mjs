@@ -5,7 +5,7 @@ const args = parseArgs();
 const scan = await scanTree();
 const files = new Set(scan.files.map((file) => file.path));
 
-const ledgers = ["ledgers/MACRO_LEDGER.md", "ledgers/FDL.md", "ledgers/FCL.md", "ledgers/TCL.md", "skills/oracle-ledger-update/SKILL.md", "analysis/firsttry.txt", "AGENTS.md", "CLAUDE.md"];
+const ledgers = ["ledgers/MACRO_LEDGER.md", "ledgers/FDL.md", "ledgers/FCLl.md", "ledgers/TCLl.md", "skills/oracle-ledger-update/SKILL.md", "analysis/firsttry.txt", "AGENTS.md", "CLAUDE.md"];
 
 function exists(path) {
   return files.has(path);
@@ -68,13 +68,15 @@ for (const dir of directories) {
   if (dir.startsWith("events/inbox") || dir.startsWith("events/processed") || dir.startsWith("events/failed")) continue;
   if (dir.includes("/inbox") || dir.includes("/active") || dir.includes("/done")) continue;
   if (dir.includes("/decisions") || dir.includes("/questions") || dir.includes("/conflicts")) continue;
-  const fcl = `${dir}/FCL.md`;
-  const tcl = `${dir}/TCL.md`;
-  if (!exists(fcl)) {
-    add(findings, "warning", dir, "Directory is missing an FCL.md file.", fcl, "codex");
+  // Ledger files are now barcoded (e.g. FCLca.md, TCLclhcoi.md)
+  // Check if any FCL* or TCL* file exists in the directory
+  const hasFcl = scan.files.some(f => f.path.startsWith(`${dir}/FCL`) && f.path.endsWith(".md"));
+  const hasTcl = scan.files.some(f => f.path.startsWith(`${dir}/TCL`) && f.path.endsWith(".md"));
+  if (!hasFcl) {
+    add(findings, "warning", dir, "Directory is missing an FCL{barcode}.md file.", `${dir}/FCL?.md`, "codex");
   }
-  if (!exists(tcl)) {
-    add(findings, "warning", dir, "Directory is missing a TCL.md file.", tcl, "codex");
+  if (!hasTcl) {
+    add(findings, "warning", dir, "Directory is missing a TCL{barcode}.md file.", `${dir}/TCL?.md`, "codex");
   }
 }
 

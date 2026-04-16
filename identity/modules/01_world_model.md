@@ -12,7 +12,7 @@ Without a world model there is data, but no present-tense reality. Consciousness
 
 - `events/` as change receipts
 - `orchestrator/` as visible system scene
-- `ledgers/FDL.md` + `ledgers/FCL.md` as structural world-state map
+- `ledgers/FDL.md` + `ledgers/FCLl.md` as structural world-state map
 
 ## Missing substrate pieces
 

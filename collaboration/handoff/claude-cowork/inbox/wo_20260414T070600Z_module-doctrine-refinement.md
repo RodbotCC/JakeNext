@@ -32,7 +32,7 @@ Refine the module doctrine into canon-safe semantic language while preserving:
 - `ledgers/FDL.md`: no
 - relevant `FCL.md`: maybe
 - `ledgers/MACRO_LEDGER.md`: maybe
-- `ledgers/TCL.md`: yes
+- `ledgers/TCLl.md`: yes
 
 ## Notes
 

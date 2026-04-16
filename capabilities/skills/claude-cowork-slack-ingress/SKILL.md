@@ -15,7 +15,7 @@ Use this skill to sweep Slack for signals that matter to Jake and write them as 
 - Classifies each signal by type: `slack_dm_unanswered`, `slack_mention_unanswered`, `slack_action_opportunity`.
 - Applies the contact blacklist — blacklisted contacts are silently discarded.
 - Writes one event packet per actionable signal to `events/inbox/`.
-- Appends to `events/inbox/TCL.md` and `ledgers/TCL.md`.
+- Appends to `events/inbox/TCL.md` and `ledgers/TCLl.md`.
 
 ## Why this skill exists
 
@@ -54,4 +54,4 @@ One packet per actionable signal. Packet naming follows the event spine conventi
 
 - `events/inbox/FCL.md` — list new packets
 - `events/inbox/TCL.md` — log the ingress pass
-- `ledgers/TCL.md` — global continuity entry
+- `ledgers/TCLl.md` — global continuity entry

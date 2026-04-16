@@ -15,7 +15,7 @@ Use this skill when queue packets need to be detected and acted on immediately, 
 - For `manual_jake` packets: surfaces them as operator bottlenecks in `jake/TCL.md` without rerouting.
 - Tracks all seen packets in `.oraclestate/dispatcher_state.json` to prevent double-dispatch.
 - Writes a JSON dispatch receipt to `events/processed/` after each pass.
-- Appends to relevant TCL.md files and the global `ledgers/TCL.md` for every dispatch action.
+- Appends to relevant TCL.md files and the global `ledgers/TCLl.md` for every dispatch action.
 
 ## Why this skill exists
 
@@ -50,13 +50,13 @@ Without a dispatcher, packets sit in queues indefinitely unless a human manually
 - Never auto-executes `claude_semantic` or `manual_jake` packets. Queueing is the ceiling.
 - Never silently rewrites semantic canon.
 - Never deletes or moves packets for non-safe modes.
-- If the safe worker fails, logs the error to `ledgers/TCL.md` and continues.
+- If the safe worker fails, logs the error to `ledgers/TCLl.md` and continues.
 - Duplicate suppression is durable — state persists across script restarts.
 
 ## Ledger discipline
 
 After every dispatch pass, the dispatcher must have left traces in:
-- `ledgers/TCL.md` — for every packet dispatched (safe-executed, surfaced, or flagged)
+- `ledgers/TCLl.md` — for every packet dispatched (safe-executed, surfaced, or flagged)
 - The relevant queue TCL (`handoff/codex/TCL.md`, `handoff/claude-cowork/TCL.md`, or `jake/TCL.md`)
 - `events/processed/TCL.md` — for the dispatch receipt written that pass
 

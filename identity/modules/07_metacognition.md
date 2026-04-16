@@ -10,7 +10,7 @@ Metacognition makes experience reportable. It is how the system can say "I know,
 
 ## Current JakeNext analogue
 
-- confidence notes in `ledgers/RLL.md`
+- confidence notes in `ledgers/RLLl.md`
 - drift abstention behavior
 - explicit boundary rules in `AGENTS.md`
 

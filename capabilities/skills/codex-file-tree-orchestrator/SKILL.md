@@ -46,7 +46,7 @@ The architecture collapses when files drift into “wherever” and nobody remem
 - Every meaningful directory gets a `TCL.md`.
 - Directories with enough meaningful objects to compare should get an `RLL.md`.
 - If routing or ownership is ambiguous, escalate to shared conflict space.
-- Structural changes update `ledgers/FDL.md`, relevant local ledgers, and `ledgers/TCL.md` when significant.
-- Comparative ranking changes update `ledgers/RLL.md` and affected local `RLL.md` files.
+- Structural changes update `ledgers/FDL.md`, relevant local ledgers, and `ledgers/TCLl.md` when significant.
+- Comparative ranking changes update `ledgers/RLLl.md` and affected local `RLL.md` files.
 - Jake-specific blockers should route to `jake/inbox/` rather than getting solved by mechanical confidence theater.
 - Changes that affect what the user should see about the system must also update `orchestrator/`.

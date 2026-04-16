@@ -10,7 +10,7 @@ Attention creates ownership and coherence by making some content vivid enough to
 
 ## Current JakeNext analogue
 
-- `ledgers/RLL.md`
+- `ledgers/RLLl.md`
 - local `RLL.md` files
 - current comparator-driven ranking
 

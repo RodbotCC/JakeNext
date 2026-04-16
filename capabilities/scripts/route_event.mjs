@@ -7,7 +7,7 @@ const args = parseArgs();
 const packetPath = args.path || args._[0];
 
 if (!packetPath) {
-  console.error("Usage: node scripts/route_event.mjs events/inbox/evt.json [--dry-run]");
+  console.error("Usage: node capabilities/scripts/route_event.mjs signals/events/inbox/evt.json [--dry-run]");
   process.exit(1);
 }
 
@@ -18,12 +18,12 @@ if (!packet) {
 }
 
 function destinationFor(route) {
-  if (route === "jake") return "jake/inbox";
-  if (route === "claude-cowork") return "handoff/claude-cowork/inbox";
-  if (route === "codex") return "handoff/codex/inbox";
-  if (route === "shared/questions") return "handoff/shared/questions";
-  if (route === "shared/decisions") return "handoff/shared/decisions";
-  return "handoff/shared/conflicts";
+  if (route === "jake") return "collaboration/jake/inbox";
+  if (route === "claude-cowork") return "collaboration/handoff/claude-cowork/inbox";
+  if (route === "codex") return "collaboration/handoff/codex/inbox";
+  if (route === "shared/questions") return "collaboration/handoff/shared/questions";
+  if (route === "shared/decisions") return "collaboration/handoff/shared/decisions";
+  return "collaboration/handoff/shared/conflicts";
 }
 
 function packetMetadata(packet) {
@@ -128,7 +128,7 @@ ${packet.action_hint || "Review the linked source and decide the real next move.
 
 ## Downstream Files / Ledgers To Update
 
-${(packet.ledger_updates || []).map((item) => `- \`${item}\``).join("\n") || "- `ledgers/TCL.md`"}
+${(packet.ledger_updates || []).map((item) => `- \`${item}\``).join("\n") || "- `ledgers/TCLl.md`"}
 
 ## Event Packet
 
@@ -143,7 +143,7 @@ ${packet.notes || "No notes provided."}
 const destDir = destinationFor(packet.recommended_route);
 const base = path.basename(packetPath, ".json");
 const orderPath = `${destDir}/${base}.md`;
-const processedPath = `events/processed/${path.basename(packetPath)}`;
+const processedPath = `signals/events/processed/${path.basename(packetPath)}`;
 
 if (args["dry-run"]) {
   console.log(JSON.stringify({
@@ -157,7 +157,7 @@ if (args["dry-run"]) {
     ? jakeRequest(packet, processedPath)
     : workOrder(packet, processedPath);
   await writeText(orderPath, content);
-  await ensureDir("events/processed");
+  await ensureDir("signals/events/processed");
   await rename(workspacePath(packetPath), workspacePath(processedPath));
   packet.status = "routed";
   await appendEventLog(packet, orderPath);

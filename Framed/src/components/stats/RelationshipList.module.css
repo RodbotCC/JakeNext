@@ -1,0 +1,79 @@
+.section {
+  margin-top: var(--space-6);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.empty {
+  color: var(--color-text-faint);
+  font-size: var(--text-sm);
+  text-align: center;
+  padding: var(--space-4);
+}
+
+.pairCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+.arrow {
+  color: var(--color-text-faint);
+  flex-shrink: 0;
+}
+
+.blockName {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stats {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.stat {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  line-height: 1.4;
+}
+
+.statTransitions {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.statSuccess {
+  background: var(--color-accent-green-light);
+  color: var(--color-accent-green);
+}
+
+.statFailure {
+  background: var(--color-accent-pink-light);
+  color: var(--color-accent-pink);
+}

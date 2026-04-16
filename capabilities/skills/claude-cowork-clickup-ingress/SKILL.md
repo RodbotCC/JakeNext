@@ -15,7 +15,7 @@ Use this skill to sweep ClickUp for task signals that affect Jake's operational 
 - Flags tasks where Jake is blocking others.
 - Scores each signal's urgency using the ratio lattice dimensions (closure potential, counterfeit risk, momentum alignment).
 - Writes one event packet per actionable signal to `events/inbox/`.
-- Appends to `events/inbox/TCL.md` and `ledgers/TCL.md`.
+- Appends to `events/inbox/TCL.md` and `ledgers/TCLl.md`.
 
 ## Why this skill exists
 
@@ -48,4 +48,4 @@ ClickUp is Jake's project/task state. It feeds the BUSINESS domain of the ratio 
 
 - `events/inbox/FCL.md`
 - `events/inbox/TCL.md`
-- `ledgers/TCL.md`
+- `ledgers/TCLl.md`

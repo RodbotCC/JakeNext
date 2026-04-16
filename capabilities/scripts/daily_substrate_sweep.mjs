@@ -24,7 +24,7 @@ const edited = current.files.filter((file) => {
 });
 const removed = (previous.files || []).filter((file) => !isGeneratedState(file) && !currentByPath.has(file.path));
 
-const driftRaw = await execFileAsync(process.execPath, ["scripts/detect_ledger_drift.mjs"], { cwd: current.workspace });
+const driftRaw = await execFileAsync(process.execPath, ["capabilities/scripts/detect_ledger_drift.mjs"], { cwd: current.workspace });
 const drift = JSON.parse(driftRaw.stdout);
 
 const packet = buildEventPacket({
@@ -34,8 +34,8 @@ const packet = buildEventPacket({
   recommended_route: drift.finding_count > 0 ? "codex" : "shared/decisions",
   needs_ai_review: drift.finding_count > 0,
   ledger_updates: drift.finding_count > 0
-    ? ["ledgers/FDL.md", "ledgers/FCL.md", "ledgers/MACRO_LEDGER.md", "ledgers/TCL.md"]
-    : ["ledgers/TCL.md"],
+    ? ["ledgers/FDL.md", "ledgers/FCLl.md", "ledgers/MACRO_LEDGER.md", "ledgers/TCLl.md"]
+    : ["ledgers/TCLl.md"],
   notes: [
     `Files scanned: ${current.files.length}.`,
     `Created since previous snapshot: ${created.length}.`,
@@ -55,7 +55,7 @@ packet.sweep = {
 if (args["dry-run"]) {
   console.log(JSON.stringify(packet, null, 2));
 } else {
-  const file = await writeEvent(packet, "events/inbox");
+  const file = await writeEvent(packet, "signals/events/inbox");
   await writeJson(".oraclestate/tree_snapshot.json", current);
   console.log(JSON.stringify({
     wrote_event: file,

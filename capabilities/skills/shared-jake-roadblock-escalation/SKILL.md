@@ -31,5 +31,5 @@ The system gets counterfeit-smart when it keeps working past the point where onl
 
 - Use `jake/inbox/` as the primary lane for Jake-needed blockers.
 - Use `handoff/shared/questions/` only when the question is also a cross-agent architecture issue.
-- Update the relevant local `FCL.md` and `TCL.md`, plus `ledgers/TCL.md`, when a meaningful Jake request is created.
+- Update the relevant local `FCL.md` and `TCL.md`, plus `ledgers/TCLl.md`, when a meaningful Jake request is created.
 - Keep the ask minimal and specific.

@@ -1,0 +1,48 @@
+.admonition {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border-left: 3px solid;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: var(--weight-semibold);
+  margin-bottom: 2px;
+}
+
+.info {
+  background: var(--color-accent-blue-light);
+  border-color: var(--color-accent-blue);
+}
+.info .icon, .info .title { color: var(--color-accent-blue); }
+
+.warning {
+  background: var(--color-accent-coral-light);
+  border-color: var(--color-accent-coral);
+}
+.warning .icon, .warning .title { color: var(--color-accent-coral); }
+
+.tip {
+  background: var(--color-accent-green-light);
+  border-color: var(--color-accent-green);
+}
+.tip .icon, .tip .title { color: var(--color-accent-green); }
+
+.note {
+  background: var(--color-accent-gold-light);
+  border-color: var(--color-accent-gold);
+}
+.note .icon, .note .title { color: var(--color-accent-gold); }

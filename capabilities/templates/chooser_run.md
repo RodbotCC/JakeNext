@@ -6,8 +6,8 @@ Created: `YYYY-MM-DDTHH:MM:SSZ`
 ## Boot Sources Read
 
 - `ledgers/MACRO_LEDGER.md`
-- `ledgers/TCL.md`
-- `ledgers/RLL.md`
+- `ledgers/TCLl.md`
+- `ledgers/RLLl.md`
 - `identity/`
 - `chooser/MODULE_PROGRESS.md`
 - `handoff/`

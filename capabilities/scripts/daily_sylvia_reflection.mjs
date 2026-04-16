@@ -18,7 +18,7 @@ async function appendTcl(relativePath, heading, action) {
   await appendText(relativePath, `\n### ${now.toISOString().slice(0, 10)} ~${now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: false })} EDT — ${heading}\n\n**Action**: ${action}\n`);
 }
 
-await execFileAsync(process.execPath, ["scripts/update_module_progress.mjs"], { cwd: workspacePath("") });
+await execFileAsync(process.execPath, ["capabilities/scripts/update_module_progress.mjs"], { cwd: workspacePath("") });
 
 const runDir = workspacePath("chooser/runs");
 const files = (await readdir(runDir)).filter((file) => /^run_.*\.md$/.test(file)).sort();
@@ -43,7 +43,7 @@ if (parsed.length >= 3) {
 }
 
 if (repeated) {
-  const decisionPath = "handoff/shared/decisions/auto_duplicate_winner_review.md";
+  const decisionPath = "collaboration/handoff/shared/decisions/auto_duplicate_winner_review.md";
   const body = `# Work Order
 
 Owner: \`shared\`
@@ -95,9 +95,9 @@ ${repeated
 `;
 
 await writeText(`chooser/runs/reflection_${stamp}.md`, `${reflection}\n`);
-await appendTcl("chooser/TCL.md", "Daily Sylvia reflection recorded", `Reviewed recent chooser runs and ${repeated ? "opened" : "did not need"} a repeated-winner improvement proposal.`);
-await appendTcl("chooser/runs/TCL.md", "Reflection receipt added", `Added daily reflection receipt \`reflection_${stamp}.md\`.`);
-await appendTcl("ledgers/TCL.md", "Sylvia daily reflection recorded", `Daily reflection reviewed recent chooser runs and ${repeated ? "opened a shared improvement proposal" : "found no repeated stale-winner escalation"} .`);
+await appendTcl("chooser/TCLch.md", "Daily Sylvia reflection recorded", `Reviewed recent chooser runs and ${repeated ? "opened" : "did not need"} a repeated-winner improvement proposal.`);
+await appendTcl("chooser/runs/TCLchr.md", "Reflection receipt added", `Added daily reflection receipt \`reflection_${stamp}.md\`.`);
+await appendTcl("ledgers/TCLl.md", "Sylvia daily reflection recorded", `Daily reflection reviewed recent chooser runs and ${repeated ? "opened a shared improvement proposal" : "found no repeated stale-winner escalation"} .`);
 
 console.log(JSON.stringify({
   reviewed_runs: parsed.length,

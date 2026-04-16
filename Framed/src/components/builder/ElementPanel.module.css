@@ -1,0 +1,51 @@
+.panel {
+  width: 370px;
+  border-left: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.scroll {
+  flex: 1;
+  overflow: auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.sectionLabel {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.elementList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.emptyHint {
+  color: var(--color-text-faint);
+  font-size: var(--text-sm);
+  padding: var(--space-3) 0;
+  text-align: center;
+}
+
+.librarySelect {
+  width: auto;
+  padding: var(--space-1) var(--space-6) var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+}

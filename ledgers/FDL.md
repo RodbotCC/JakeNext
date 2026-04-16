@@ -59,12 +59,33 @@ All other meaningful artifacts must live inside directories with both:
 - `capabilities/templates/` - Reusable packet templates
 - `capabilities/orchestrator/` - Frontend control surface (UI)
 
+### Breakthrough Research Directories
+
+| Directory | Primary Ledger Files | Purpose | Status |
+|---|---|---|---|
+| `breakthrough/` | `FCL.md`, `TCL.md`, `RLL.md`, `NSL.md` | Theoretical frameworks — confident but not yet bedrock for Sylvia (ONAL, delta physics, thermodynamic annealing) | ✅ Live |
+
+### Integration Directories
+
+| Directory | Primary Ledger Files | Purpose | Status |
+|---|---|---|---|
+| `pieces/` | `FCL.md`, `TCL.md`, `RLL.md`, `NSL.md` | Pieces behavioral memory integration — sweep outputs, pattern synthesis, oracle training signal | ✅ Live |
+| `pieces/sweeps/` | `FCL.md`, `TCL.md` | Dated sweep output files from Pieces ingress | ✅ Live |
+| `pieces/patterns/` | `FCL.md`, `TCL.md` | Promoted durable behavioral patterns (3+ sweep confirmations) | ✅ Live |
+
+### Product Directories
+
+| Directory | Primary Ledger Files | Purpose | Status |
+|---|---|---|---|
+| `Framed/` | `FCL.md`, `TCL.md` | Visual operating-manual system — React/Vite app for executable frames, block relationships, command bridge, agent orchestration glue layer | ✅ Live |
+
 ### Temporary / Reference Directories
 
 | Directory | Purpose | Status |
 |---|---|---|
 | `knowledge/` | **TEMPORARY PARENT** - Raw materials (source/) and outputs (analysis/) - likely to be deprecated | ⚠️ Review needed |
 | `claude-code NO NEED FOR LEDGER SUPPORT/` | **REFERENCE ONLY** - Claude Code capability index (175 files) - will be deprecated/deleted once capabilities are wired | 📚 Temporary |
+| `claude-memory` | **SYMLINK / READ-ONLY** — Points to Claude Code auto-memory (`~/.claude/projects/.../memory/`); orientation context, not ground truth; maintained by Claude Code harness | 🔗 Read-only |
 
 ---
 
@@ -115,6 +136,7 @@ All other meaningful artifacts must live inside directories with both:
 | `capabilities/skills/claude-cowork-slack-ingress/` | `FCL.md`, `TCL.md`, `SKILL.md` | Phase 3 ingress — Slack signals → event packets (unanswered DMs, mentions, action opportunities) | ✅ v1 |
 | `capabilities/skills/claude-cowork-gcal-ingress/` | `FCL.md`, `TCL.md`, `SKILL.md` | Phase 3 ingress — GCal events → event packets (commitments, deadlines, scheduling gaps) | ✅ v1 |
 | `capabilities/skills/claude-cowork-clickup-ingress/` | `FCL.md`, `TCL.md`, `SKILL.md` | Phase 3 ingress — ClickUp tasks → event packets (stalled, overdue, blocking, new) | ✅ v1 |
+| `capabilities/skills/claude-cowork-pieces-ingress/` | `FCL.md`, `TCL.md`, `SKILL.md` | Behavioral memory ingress — Pieces MCP → sweep reports + event packets (work patterns, clipboard, screenshots, audio) | ✅ v1 |
 
 ### Other nested directories
 | Directory | Ledgers | Purpose | Status |
@@ -130,9 +152,9 @@ All other meaningful artifacts must live inside directories with both:
 |---|---|---|
 | Global topology | `ledgers/FDL.md` | Whole workspace structure |
 | Global navigation | `ledgers/MACRO_LEDGER.md` | Whole workspace status and entry points |
-| Global continuity | `ledgers/TCL.md` | Cross-workspace event history |
-| Global comparative ranking | `ledgers/RLL.md` | Whole workspace scoring basis and ranked corpus |
-| **Global north star alignment** | **`ledgers/NSL.md`** | **Whole workspace alignment with Sylvia's becoming** |
+| Global continuity | `ledgers/TCLl.md` | Cross-workspace event history |
+| Global comparative ranking | `ledgers/RLLl.md` | Whole workspace scoring basis and ranked corpus |
+| **Global north star alignment** | **`ledgers/NSLl.md`** | **Whole workspace alignment with Sylvia's becoming** |
 | Identity kernel | `identity/` | Sylvia doctrine, relation law, and roadmap |
 | Local contents | `{dir}/FCL.md` | One directory's inventory and purpose |
 | Local continuity | `{dir}/TCL.md` | One directory's history and changes |

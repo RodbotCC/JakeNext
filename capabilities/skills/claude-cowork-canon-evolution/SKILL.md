@@ -33,4 +33,4 @@ If canon changes are not explicit, the system slowly starts living off vibes and
 - Distinguish source evidence from interpretive doctrine.
 - Route Jake-specific missing truth into `jake/inbox/` instead of guessing.
 - If a canon change requires mechanical tree or queue changes, create a Codex handoff.
-- Append `ledgers/TCL.md` for meaningful canon evolution.
+- Append `ledgers/TCLl.md` for meaningful canon evolution.

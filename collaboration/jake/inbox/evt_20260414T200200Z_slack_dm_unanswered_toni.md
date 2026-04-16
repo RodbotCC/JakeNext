@@ -29,7 +29,7 @@ Jake should confirm whether this Zoom link was already used/attended. If the mee
 
 ## Downstream Files / Ledgers To Update
 
-- `ledgers/TCL.md`
+- `ledgers/TCLl.md`
 
 ## Event Packet
 

@@ -9,12 +9,12 @@
 
 Every chooser pass should:
 
-1. boot from `ledgers/`, `identity/`, `chooser/`, `handoff/`, and `jake/`,
+1. boot from `ledgers/`, `identity/`, `chooser/`, `collaboration/handoff/`, and `collaboration/jake/`,
 2. refresh `chooser/MODULE_PROGRESS.md`,
 3. score candidate next moves using the current lattice law,
 4. prefer the move that closes the most important module gap,
 5. prefer easier wins only when module impact is effectively tied,
-6. route blockers honestly into `jake/inbox/` or `handoff/claude-cowork/inbox/`,
+6. route blockers honestly into `collaboration/jake/inbox/` or `collaboration/handoff/claude-cowork/inbox/`,
 7. write a chooser run receipt,
 8. update `chooser/NEXT_STEP.md`,
 9. and leave local plus global continuity traces when the winning move changes or new packets are opened.
@@ -37,9 +37,9 @@ It privileges:
 
 ## Routing law
 
-- `codex_safe_auto` → `handoff/codex/inbox/` and eligible for the safe worker
-- `queue_only` / `claude_semantic` → `handoff/claude-cowork/inbox/`
-- `manual_jake` → `jake/inbox/`
+- `codex_safe_auto` → `collaboration/handoff/codex/inbox/` and eligible for the safe worker
+- `queue_only` / `claude_semantic` → `collaboration/handoff/claude-cowork/inbox/`
+- `manual_jake` → `collaboration/jake/inbox/`
 
 If the winner is blocked on Jake-specific truth, the right output is a Jake packet, not fake implementation work.
 

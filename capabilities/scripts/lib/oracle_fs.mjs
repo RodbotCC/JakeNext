@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, stat, writeFile, appendFile, copyFile } from "node:fs/promises";
 import path from "node:path";
 
-export const WORKSPACE = path.resolve(new URL("../..", import.meta.url).pathname);
+export const WORKSPACE = path.resolve(new URL("../../..", import.meta.url).pathname);
 
 export const IGNORE_NAMES = new Set([
   ".DS_Store",
@@ -107,13 +107,14 @@ export async function scanTree() {
 }
 
 export function classifyPath(sourcePath = "") {
-  if (sourcePath.startsWith("source/")) return "raw_source";
-  if (sourcePath.startsWith("analysis/")) return "analysis";
-  if (sourcePath.startsWith("scripts/")) return "tooling";
-  if (sourcePath.startsWith("events/")) return "event";
-  if (sourcePath.startsWith("triggers/")) return "trigger";
-  if (sourcePath.startsWith("templates/")) return "template";
-  if (sourcePath.startsWith("handoff/")) return "handoff";
+  if (sourcePath.startsWith("pieces/")) return "pieces_behavioral";
+  if (sourcePath.startsWith("knowledge/source/")) return "raw_source";
+  if (sourcePath.startsWith("knowledge/analysis/")) return "analysis";
+  if (sourcePath.startsWith("capabilities/scripts/")) return "tooling";
+  if (sourcePath.startsWith("signals/events/")) return "event";
+  if (sourcePath.startsWith("signals/triggers/")) return "trigger";
+  if (sourcePath.startsWith("capabilities/templates/")) return "template";
+  if (sourcePath.startsWith("collaboration/handoff/")) return "handoff";
   if (sourcePath.startsWith(".oraclestate/")) return "state";
   if (sourcePath === "canon/JAKE_PERSONAL_ORACLE_FOUNDATION.md") return "canon";
   if (sourcePath === "canon/JAKE_DEFERRED_REGISTRY.md") return "registry";
@@ -126,7 +127,8 @@ export function routeForPath(sourcePath = "", eventType = "file_edited") {
   const classification = classifyPath(sourcePath);
   if (eventType === "correction") return "claude-cowork";
   if (eventType === "density") return "claude-cowork";
-  if (sourcePath.startsWith("handoff/shared/")) return "shared/conflicts";
+  if (sourcePath.startsWith("collaboration/handoff/shared/")) return "shared/conflicts";
+  if (classification === "pieces_behavioral") return "claude-cowork";
   if (classification === "raw_source" || classification === "analysis" || classification === "canon" || classification === "registry") {
     return "claude-cowork";
   }
@@ -134,20 +136,49 @@ export function routeForPath(sourcePath = "", eventType = "file_edited") {
   return "codex";
 }
 
+/**
+ * Compute the barcode suffix for a directory path.
+ * Rules: top-level dirs starting with 'c' use 2 letters (ca, cp, ch, cl).
+ * Subdirs use first letter, except: scripts→sc, skills→sk, codex→co,
+ * claude-cowork→cc.
+ */
+export function ledgerBarcode(dirPath) {
+  const segments = dirPath.replace(/\/+$/, "").split("/").filter(Boolean);
+  if (segments.length === 0) return "";
+
+  const TWO_LETTER_TOPS = { canon: "ca", capabilities: "cp", chooser: "ch", collaboration: "cl", clips: "ci" };
+  const SUB_OVERRIDES = { scripts: "sc", skills: "sk", codex: "co", "claude-cowork": "cc" };
+
+  let code = "";
+  for (let i = 0; i < segments.length; i++) {
+    const seg = segments[i];
+    if (i === 0 && TWO_LETTER_TOPS[seg]) {
+      code += TWO_LETTER_TOPS[seg];
+    } else if (SUB_OVERRIDES[seg]) {
+      code += SUB_OVERRIDES[seg];
+    } else {
+      code += seg[0];
+    }
+  }
+  return code;
+}
+
 export function ledgerUpdatesForPath(sourcePath = "", eventType = "file_edited") {
-  const updates = ["ledgers/TCL.md"];
+  const updates = ["ledgers/TCLl.md"];
   const top = sourcePath.split("/")[0];
   if (eventType === "file_created" || eventType === "file_moved") {
     if (sourcePath.includes("/")) {
-      updates.push(`${top}/FCL.md`);
-      updates.push(`${top}/TCL.md`);
+      const topBarcode = ledgerBarcode(top);
+      updates.push(`${top}/FCL${topBarcode}.md`);
+      updates.push(`${top}/TCL${topBarcode}.md`);
     } else {
-      updates.push("ledgers/FCL.md");
+      updates.push("ledgers/FCLl.md");
     }
     updates.push("ledgers/FDL.md");
   }
   if (["ledger_drift", "correction", "density"].includes(eventType) && sourcePath.includes("/")) {
-    updates.push(`${top}/TCL.md`);
+    const topBarcode = ledgerBarcode(top);
+    updates.push(`${top}/TCL${topBarcode}.md`);
   }
   return [...new Set(updates)];
 }
@@ -178,7 +209,7 @@ export function buildEventPacket({
   };
 }
 
-export async function writeEvent(packet, dir = "events/inbox") {
+export async function writeEvent(packet, dir = "signals/events/inbox") {
   const file = `${dir}/${packet.event_id}.json`;
   await writeJson(file, packet);
   await appendEventLog(packet, file);

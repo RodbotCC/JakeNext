@@ -30,5 +30,5 @@ The ledgers are the memory spine. If they drift from actual reality, the oracle 
 - Fix structure directly when the repair is unambiguous.
 - Do not “solve” semantic/source gaps by fabricating missing meaning.
 - If a drift item changes doctrine or interpretation, route it to Claude Co-Work.
-- Append `ledgers/TCL.md` when the repair is significant.
+- Append `ledgers/TCLl.md` when the repair is significant.
 

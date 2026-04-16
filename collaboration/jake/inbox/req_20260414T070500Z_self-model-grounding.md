@@ -32,8 +32,8 @@ Provide the minimum set of truths Sylvia should carry about:
 - `identity/RELATION.md`
 - `identity/SYLVIA.md`
 - `identity/modules/02_self_model.md`
-- `ledgers/RLL.md`
-- `ledgers/TCL.md`
+- `ledgers/RLLl.md`
+- `ledgers/TCLl.md`
 
 ## Notes
 

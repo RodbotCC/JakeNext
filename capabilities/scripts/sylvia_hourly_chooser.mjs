@@ -34,23 +34,23 @@ function slug(value) {
 
 function packetPathFor(module) {
   const tail = `auto_${module.id}_${slug(module.best_next_move).slice(0, 48)}.md`;
-  if (module.blocking_lane === "jake") return `jake/inbox/${tail}`;
-  if (module.blocking_lane === "claude-cowork") return `handoff/claude-cowork/inbox/${tail}`;
-  return `handoff/codex/inbox/${tail}`;
+  if (module.blocking_lane === "jake") return `collaboration/jake/inbox/${tail}`;
+  if (module.blocking_lane === "claude-cowork") return `collaboration/handoff/claude-cowork/inbox/${tail}`;
+  return `collaboration/handoff/codex/inbox/${tail}`;
 }
 
 function duplicateLocationsFor(packetPath) {
-  if (packetPath.startsWith("handoff/codex/inbox/")) {
+  if (packetPath.startsWith("collaboration/handoff/codex/inbox/")) {
     const base = path.basename(packetPath);
-    return [packetPath, `handoff/codex/active/${base}`];
+    return [packetPath, `collaboration/handoff/codex/active/${base}`];
   }
-  if (packetPath.startsWith("handoff/claude-cowork/inbox/")) {
+  if (packetPath.startsWith("collaboration/handoff/claude-cowork/inbox/")) {
     const base = path.basename(packetPath);
-    return [packetPath, `handoff/claude-cowork/active/${base}`];
+    return [packetPath, `collaboration/handoff/claude-cowork/active/${base}`];
   }
-  if (packetPath.startsWith("jake/inbox/")) {
+  if (packetPath.startsWith("collaboration/jake/inbox/")) {
     const base = path.basename(packetPath);
-    return [packetPath, `jake/active/${base}`];
+    return [packetPath, `collaboration/jake/active/${base}`];
   }
   return [packetPath];
 }
@@ -70,7 +70,7 @@ function scoreCandidate(module) {
       ? 3
       : 0;
   const blockerPenalty = module.blocker_type === "jake_input"
-    ? 12
+    ? 8
     : module.blocker_type === "semantic_gap"
       ? 6
       : 0;
@@ -190,7 +190,7 @@ async function appendTcl(relativePath, heading, action) {
   await appendText(relativePath, `\n### ${new Date().toISOString().slice(0, 10)} ~${now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: false })} EDT — ${heading}\n\n**Action**: ${action}\n`);
 }
 
-const moduleRaw = await execFileAsync(process.execPath, ["scripts/update_module_progress.mjs", "--json"], { cwd: workspacePath("") });
+const moduleRaw = await execFileAsync(process.execPath, ["capabilities/scripts/update_module_progress.mjs", "--json"], { cwd: workspacePath("") });
 const moduleState = JSON.parse(moduleRaw.stdout);
 const modules = moduleState.modules || [];
 
@@ -198,7 +198,8 @@ const candidates = [];
 for (const module of modules) {
   const packetPath = packetPathFor(module);
   const open = await openPacketExists(packetPath);
-  const score = scoreCandidate(module) - (open ? 30 : 0);
+  const duplicatePenalty = open ? 12 : 0;
+  const score = scoreCandidate(module) - duplicatePenalty;
   candidates.push({
     ...module,
     score,
@@ -207,7 +208,7 @@ for (const module of modules) {
   });
 }
 
-candidates.sort((a, b) => b.score - a.score);
+candidates.sort((a, b) => (b.score - a.score) || (b.priority - a.priority));
 const winner = candidates[0];
 const chooserSource = `chooser/runs/${runId}.md`;
 let packetOpened = false;
@@ -297,7 +298,7 @@ ${candidates.slice(0, 5).map((candidate, index) => `${index + 1}. \`${candidate.
 
 \`${winner.id}\` wins locally because it is the strongest combination of module gap closure, actionability, and low current-blocker drag.
 `;
-await writeText("chooser/RLL.md", `${rll}\n`);
+await writeText("chooser/RLLch.md", `${rll}\n`);
 
 const runBody = `# Chooser Run
 
@@ -307,12 +308,12 @@ Created: \`${iso}\`
 ## Boot Sources Read
 
 - \`ledgers/MACRO_LEDGER.md\`
-- recent \`ledgers/TCL.md\`
-- \`ledgers/RLL.md\`
+- recent \`ledgers/TCLl.md\`
+- \`ledgers/RLLl.md\`
 - \`identity/\`
 - \`chooser/MODULE_PROGRESS.md\`
-- \`handoff/\`
-- \`jake/\`
+- \`collaboration/handoff/\`
+- \`collaboration/jake/\`
 
 ## Current Module Gap Table
 
@@ -348,11 +349,11 @@ ${winner.completion_signal}
 `;
 
 await writeText(`chooser/runs/${runId}.md`, `${runBody}\n`);
-await appendTcl("chooser/TCL.md", "Hourly chooser run recorded", `Recorded ${runId}, selected ${winner.id}, and ${packetOpened ? "opened" : "reused"} the corresponding packet.`);
-await appendTcl("chooser/runs/TCL.md", "Chooser run receipt added", `Added chooser receipt \`${runId}.md\` for winner \`${winner.id}\`.`);
+await appendTcl("chooser/TCLch.md", "Hourly chooser run recorded", `Recorded ${runId}, selected ${winner.id}, and ${packetOpened ? "opened" : "reused"} the corresponding packet.`);
+await appendTcl("chooser/runs/TCLchr.md", "Chooser run receipt added", `Added chooser receipt \`${runId}.md\` for winner \`${winner.id}\`.`);
 
 if (previousChanged || packetOpened) {
-  await appendTcl("ledgers/TCL.md", "Sylvia hourly chooser advanced", `Hourly chooser selected ${winner.id} with execution mode ${winner.execution_mode} and ${packetOpened ? "opened a new packet" : "reused the current packet"}.`);
+  await appendTcl("ledgers/TCLl.md", "Sylvia hourly chooser advanced", `Hourly chooser selected ${winner.id} with execution mode ${winner.execution_mode} and ${packetOpened ? "opened a new packet" : "reused the current packet"}.`);
 }
 
 console.log(JSON.stringify({

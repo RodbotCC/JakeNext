@@ -48,7 +48,10 @@ const MIME = {
   ".ico":  "image/x-icon",
 };
 
-const LEDGER_FILES = new Set(["FCL.md", "TCL.md", "RLL.md"]);
+// Match both old (FCL.md) and barcoded (FCLxyz.md) ledger filenames
+function isLedgerFile(name) {
+  return /^(?:FCL|TCL|RLL|NSL)[a-z]*\.md$/.test(name);
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -102,7 +105,7 @@ async function getQueueState() {
     let packets = [];
     try {
       packets = (await readdir(workspacePath(q.path)))
-        .filter(f => f.endsWith(".md") && !LEDGER_FILES.has(f));
+        .filter(f => f.endsWith(".md") && !isLedgerFile(f));
     } catch { /**/ }
     result.push({ ...q, count: packets.length, packets });
   }

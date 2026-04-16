@@ -10,9 +10,9 @@ Read this first, then jump to the nearest subsystem.
 
 | Component | Status | Notes |
 |---|---|---|
-| Global ledger spine | ✅ Live | `ledgers/FDL.md`, `ledgers/FCL.md`, `ledgers/TCL.md`, `ledgers/MACRO_LEDGER.md` |
+| Global ledger spine | ✅ Live | `ledgers/FDL.md`, `ledgers/FCLl.md`, `ledgers/TCLl.md`, `ledgers/MACRO_LEDGER.md` |
 | Local ledger discipline | ✅ Live | Every meaningful directory now has both `FCL.md` and `TCL.md` |
-| Ratio lattice baseline | ✅ v1 | `ledgers/RLL.md` plus key local `RLL.md` files now rank the current corpus by comparator |
+| Ratio lattice baseline | ✅ v1 | `ledgers/RLLl.md` plus key local `RLL.md` files now rank the current corpus by comparator |
 | Sylvia chooser loop | ✅ v1 | `chooser/` now turns module gaps into a current winner, queue packets, run receipts, and recurring automations |
 | Sylvia identity layer | ✅ v1 | `identity/` defines personality, decision laws, relation boundaries, and module doctrine |
 | North star goals | ✅ v1 | `northstar/` defines the three breakthrough pillars: Ratio Lattice, Perceptual Substrate, Hardware Inference |
@@ -26,6 +26,10 @@ Read this first, then jump to the nearest subsystem.
 | Dispatcher (core) | ✅ v1 | `scripts/dispatcher.mjs` + `skills/codex-dispatcher/` — queue detection, routing law, safe-auto execution, ledger traces |
 | Orchestrator live actions | ✅ v1 | `scripts/orchestrator_server.mjs` + Act panel in UI — real-time queue state, action buttons, console output |
 | Ingress adapters | ✅ v1 | Slack + ClickUp skills live and first passes run; GCal needs MCP tool refresh (upgrade broke session) |
+| Pieces behavioral memory | ✅ v1 | `pieces/` — Pieces MCP integration with sweep policy, Tier 1/2/3 tools, pattern promotion, scheduled sweeps |
+| Breakthrough research | ✅ Live | `breakthrough/` — Theoretical frameworks (ONAL, delta physics) that are confident but not yet bedrock |
+| Claude auto-memory reference | ✅ Live | `claude-memory/` symlink — read-only orientation context from Claude Code harness (dreaming enabled) |
+| Framed (product) | ✅ Live | Visual operating-manual system — block builder, flow builder, manual view, command bridge, relationship graph — now under JakeNext governance |
 
 ---
 
@@ -36,9 +40,9 @@ Read this first, then jump to the nearest subsystem.
 | Agent boundaries and mandatory ledger discipline | `AGENTS.md` |
 | Global repository rules | `CLAUDE.md` |
 | Global topology map | `ledgers/FDL.md` |
-| Global root inventory | `ledgers/FCL.md` |
-| Global continuity log | `ledgers/TCL.md` |
-| Global ratio lattice baseline | `ledgers/RLL.md` |
+| Global root inventory | `ledgers/FCLl.md` |
+| Global continuity log | `ledgers/TCLl.md` |
+| Global ratio lattice baseline | `ledgers/RLLl.md` |
 | Sylvia chooser loop | `chooser/` |
 | Sylvia identity kernel | `identity/` |
 | North star goals and breakthrough pillars | `northstar/` |
@@ -49,6 +53,10 @@ Read this first, then jump to the nearest subsystem.
 | Trigger grammar | `triggers/TRIGGER_RULES.md` |
 | Event receipts | `events/` |
 | Handoff queues | `handoff/` |
+| Pieces behavioral memory | `pieces/` |
+| Breakthrough research | `breakthrough/` |
+| Claude auto-memory (symlink) | `claude-memory/` |
+| Framed product app | `Framed/` |
 
 ---
 
@@ -59,9 +67,9 @@ Read this first, then jump to the nearest subsystem.
 | `AGENTS.md` | root | Agent boundaries, skills-first doctrine, trigger-safe work |
 | `CLAUDE.md` | root | Global repository governance |
 | `ledgers/FDL.md` | `ledgers/` | Global directory map |
-| `ledgers/FCL.md` | `ledgers/` | Global root-level inventory |
-| `ledgers/TCL.md` | `ledgers/` | Global continuity log |
-| `ledgers/RLL.md` | `ledgers/` | Global comparative ranking ledger |
+| `ledgers/FCLl.md` | `ledgers/` | Global root-level inventory |
+| `ledgers/TCLl.md` | `ledgers/` | Global continuity log |
+| `ledgers/RLLl.md` | `ledgers/` | Global comparative ranking ledger |
 | `identity/SYLVIA.md` | `identity/` | Sylvia identity definition and invariants |
 | `northstar/BREAKTHROUGH_GOALS.md` | `northstar/` | The three technology pillars — Ratio Lattice, Perceptual Substrate, Hardware Inference |
 | `northstar/NORTH_STAR.md` | `northstar/` | End condition and capability milestones |
@@ -109,7 +117,11 @@ JakeNext/
 ├── handoff/
 ├── orchestrator/
 ├── templates/
-└── scripts/
+├── scripts/
+├── pieces/
+├── breakthrough/
+├── claude-memory -> (~/.claude/.../memory/)
+└── Framed/
 ```
 
 ---
@@ -121,8 +133,8 @@ Every meaningful action must update:
 1. the relevant local `FCL.md`,
 2. the relevant local `TCL.md`,
 3. the global `ledgers/FDL.md` if topology changed,
-4. the global `ledgers/TCL.md`,
-5. the global `ledgers/RLL.md` when comparative ranking changes,
+4. the global `ledgers/TCLl.md`,
+5. the global `ledgers/RLLl.md` when comparative ranking changes,
 6. `chooser/` when the active next move or module gap state changes,
 7. `ledgers/MACRO_LEDGER.md` when top-level navigation or status changes,
 8. the relevant `jake/` ledgers when the operator lane is used or changed,

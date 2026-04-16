@@ -12,12 +12,12 @@ The workspace root is: `/Users/jakeaaron/JakeNext/`
 After significant oracle work (new files created, signals pulled, decisions made, items added to deferred registry, corrections logged), this skill:
 
 1. **Reads** the current state of the global ledgers and the local ledgers for touched directories
-2. **Appends** `ledgers/TCL.md` with a session-level continuity entry
+2. **Appends** `ledgers/TCLl.md` with a session-level continuity entry
 3. **Appends** local `TCL.md` files for touched directories
 4. **Updates** `ledgers/FDL.md` if any new directories were created or moved
-5. **Updates** `ledgers/FCL.md` if root-level reality changed
+5. **Updates** `ledgers/FCLl.md` if root-level reality changed
 6. **Updates** local `FCL.md` files if directory contents or file purposes changed
-7. **Updates** `ledgers/RLL.md` and any relevant local `RLL.md` files if comparative ranking changed
+7. **Updates** `ledgers/RLLl.md` and any relevant local `RLL.md` files if comparative ranking changed
 8. **Updates** `ledgers/MACRO_LEDGER.md` if major subsystem status changed
 9. **Updates** `identity/` and `jake/` ledgers when identity law or Jake-lane routing changes
 
@@ -32,9 +32,9 @@ Read the global ledger spine before doing anything:
 ```
 Read: ledgers/MACRO_LEDGER.md   → get oracle status overview
 Read: ledgers/FDL.md            → get current directory map
-Read: ledgers/FCL.md            → get current root file index
-Read: ledgers/TCL.md (recent)   → get last session entries
-Read: ledgers/RLL.md            → get current comparative ranking baseline
+Read: ledgers/FCLl.md            → get current root file index
+Read: ledgers/TCLl.md (recent)   → get last session entries
+Read: ledgers/RLLl.md            → get current comparative ranking baseline
 ```
 
 Also read `canon/JAKE_DEFERRED_REGISTRY.md` to check for any items that should be updated.
@@ -49,9 +49,9 @@ Ask: what happened in this session?
 - Were new files created? → Update local `FCL.md` + local `TCL.md`; update global ledgers if topology or root changed
 - Were new directories created? → Create `FCL.md` + `TCL.md` stubs in that directory + update `ledgers/FDL.md`
 - Did Sylvia's identity, module doctrine, or roadmap change? → Update `identity/` ledgers and append continuity
-- Were Jake-needed blockers introduced or resolved? → Update `jake/` ledgers and `ledgers/TCL.md`
-- Were corrections made? → Log them in `ledgers/TCL.md`, the relevant local `TCL.md`, and the deferred registry correction log
-- Did the ranking law or comparative importance change? → Update `ledgers/RLL.md` and any relevant local `RLL.md`
+- Were Jake-needed blockers introduced or resolved? → Update `jake/` ledgers and `ledgers/TCLl.md`
+- Were corrections made? → Log them in `ledgers/TCLl.md`, the relevant local `TCL.md`, and the deferred registry correction log
+- Did the ranking law or comparative importance change? → Update `ledgers/RLLl.md` and any relevant local `RLL.md`
 - Were deferred items resolved? → Mark ✅ and move to CLOSED in registry
 - Were new items deferred? → Add to OPEN section in registry with date
 - Was the oracle foundation updated? → Update `ledgers/MACRO_LEDGER.md` status table
@@ -60,7 +60,7 @@ Ask: what happened in this session?
 
 ## Step 3 — Write global TCL entry
 
-Append a new entry to `ledgers/TCL.md` using this format:
+Append a new entry to `ledgers/TCLl.md` using this format:
 
 ```markdown
 ### [YYYY-MM-DD] [~TIME EST] — [ONE LINE SUMMARY]
@@ -118,7 +118,7 @@ If no new directories: no FDL update needed.
 ## Step 6 — Update FCL(s) if files changed
 
 For each directory where files were added or significantly changed:
-- Open that directory's `FCL.md` (`ledgers/FCL.md` only if root policy or root inventory changed, or `{dir}/FCL.md` for subdirectories)
+- Open that directory's `FCL.md` (`ledgers/FCLl.md` only if root policy or root inventory changed, or `{dir}/FCL.md` for subdirectories)
 - Add or update the file entry in the table
 - Update the "Last updated" date at the top
 
@@ -157,7 +157,7 @@ If a new directory was created that does not yet have a `TCL.md`, create `{newdi
 ## Step 7 — Update RLL(s) if comparative ranking changed
 
 If the session changes what matters relative to what:
-- update `ledgers/RLL.md`,
+- update `ledgers/RLLl.md`,
 - update any relevant local `RLL.md`,
 - keep the same base vectors unless the object itself changed,
 - and explain why the ranking moved.
@@ -177,8 +177,8 @@ If any of the following changed, update the Oracle Status table in `ledgers/MACR
 ## Canonical rules for ledger updates
 
 - **Global and local `TCL.md` files are append-only** — never rewrite history to save effort
-- **`ledgers/FDL.md`, `ledgers/FCL.md`, and local `FCL.md` files are updated in place** — edit the tables directly
-- **`ledgers/RLL.md` and local `RLL.md` files are updated in place** — edit rankings and rationale directly when comparative truth changes
+- **`ledgers/FDL.md`, `ledgers/FCLl.md`, and local `FCL.md` files are updated in place** — edit the tables directly
+- **`ledgers/RLLl.md` and local `RLL.md` files are updated in place** — edit rankings and rationale directly when comparative truth changes
 - **`ledgers/MACRO_LEDGER.md` status table is updated in place** — edit status cells directly
 - **Deferred registry**: open items are edited in place, closed items are moved to CLOSED section
 - **Correction log**: append-only, newest corrections at bottom
@@ -196,7 +196,7 @@ When Jake says to create a new directory in the oracle workspace:
 2. Create ledger stubs: write `{dirname}/FCL.md` and `{dirname}/TCL.md`
 3. Update `ledgers/FDL.md`: add the new directory row to the directory map
 4. Write a local `TCL.md` entry noting the new directory and its purpose
-5. Write a global `ledgers/TCL.md` entry noting the new directory and its purpose
+5. Write a global `ledgers/TCLl.md` entry noting the new directory and its purpose
 6. Create `{dirname}/RLL.md` if the directory will contain enough meaningful objects to compare
 7. Update `ledgers/MACRO_LEDGER.md` if this directory represents a significant new oracle component
 

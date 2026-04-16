@@ -14,7 +14,7 @@ Use this skill to sweep Google Calendar for signals that carry time pressure, co
 - Surfaces events that imply action Jake hasn't taken yet (no prep packet, no associated ClickUp task, no oracle routing).
 - Identifies calendar gaps — windows where oracle-generated commitments should be proposed.
 - Writes one event packet per meaningful signal to `events/inbox/`.
-- Appends to `events/inbox/TCL.md` and `ledgers/TCL.md`.
+- Appends to `events/inbox/TCL.md` and `ledgers/TCLl.md`.
 
 ## Why this skill exists
 
@@ -46,4 +46,4 @@ Jake does not currently maintain a calendar. The oracle builds one gradually —
 
 - `events/inbox/FCL.md`
 - `events/inbox/TCL.md`
-- `ledgers/TCL.md`
+- `ledgers/TCLl.md`

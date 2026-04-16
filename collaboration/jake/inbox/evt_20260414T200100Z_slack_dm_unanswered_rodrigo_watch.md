@@ -29,7 +29,7 @@ Jake should open the ClickUp link and watch/review whatever Rodrigo flagged. Res
 
 ## Downstream Files / Ledgers To Update
 
-- `ledgers/TCL.md`
+- `ledgers/TCLl.md`
 
 ## Event Packet
 

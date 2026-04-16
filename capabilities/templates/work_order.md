@@ -36,7 +36,7 @@ What should be produced, changed, reviewed, or decided.
 - relevant `FCL.md`: no
 - relevant `RLL.md`: no
 - `ledgers/MACRO_LEDGER.md`: no
-- `ledgers/TCL.md`: no
+- `ledgers/TCLl.md`: no
 
 ## Notes
 

@@ -6,7 +6,7 @@ Created: `2026-04-14T05:35:00Z`
 
 ## Source Artifact
 
-`AGENTS.md`, `CLAUDE.md`, `ledgers/FDL.md`, `ledgers/FCL.md`, `ledgers/TCL.md`, `ledgers/MACRO_LEDGER.md`
+`AGENTS.md`, `CLAUDE.md`, `ledgers/FDL.md`, `ledgers/FCLl.md`, `ledgers/TCLl.md`, `ledgers/MACRO_LEDGER.md`
 
 ## Reason
 
@@ -97,7 +97,7 @@ That means:
 - only `AGENTS.md` and `CLAUDE.md` may float at root,
 - every meaningful directory must have both `FCL.md` and `TCL.md`,
 - every meaningful action must leave both global and local ledger receipts,
-- global continuity belongs in `ledgers/TCL.md`,
+- global continuity belongs in `ledgers/TCLl.md`,
 - local continuity belongs in the touched directory's `TCL.md`,
 - structural changes must update `ledgers/FDL.md`,
 - inventory changes must update the touched directory's `FCL.md`,
@@ -110,8 +110,8 @@ Do not treat ledger work as post-hoc polishing. In JakeNext, it is part of the w
 Global spine:
 
 - `ledgers/FDL.md`
-- `ledgers/FCL.md`
-- `ledgers/TCL.md`
+- `ledgers/FCLl.md`
+- `ledgers/TCLl.md`
 - `ledgers/MACRO_LEDGER.md`
 
 Local law:
@@ -125,7 +125,7 @@ When Claude Co-Work opens JakeNext, the default move should be:
 
 1. read `AGENTS.md`,
 2. read `CLAUDE.md`,
-3. read the recent tail of `ledgers/TCL.md`,
+3. read the recent tail of `ledgers/TCLl.md`,
 4. read the local `FCL.md` and `TCL.md` for any directories being touched,
 5. process any packets in `handoff/claude-cowork/inbox/`,
 6. and after meaningful work, update both the global and local ledgers before considering the task complete.
@@ -150,7 +150,7 @@ This is semantic triage territory, not mechanical drift.
 
 ## Ledger Updates Required
 
-- `ledgers/TCL.md`
+- `ledgers/TCLl.md`
 - `handoff/TCL.md`
 - `handoff/claude-cowork/TCL.md`
 - `handoff/claude-cowork/inbox/TCL.md`
