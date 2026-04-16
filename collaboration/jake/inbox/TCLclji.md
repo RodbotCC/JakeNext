@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Local continuity ledger for `collaboration/jake/inbox/`.
-> Last updated: 2026-04-14
+> Last updated: 2026-04-16
 
 ---
 
@@ -11,6 +11,14 @@
 ### 2026-04-15 ~01:33 EDT — Chooser reused André alignment packet
 
 **Action**: Hourly chooser confirmed `auto_09_action_selection_storytelling_use-andr-dm-automations-for-close-as-one-active-.md` remains the active Jake-lane blocker after reconciling stale top-level queue references to `collaboration/jake/inbox/`.
+
+### 2026-04-16 ~14:22 EDT — Chooser reused André alignment packet again
+
+**Action**: Hourly chooser confirmed `auto_09_action_selection_storytelling_use-andr-dm-automations-for-close-as-one-active-.md` still remains the active Jake-lane blocker because the owner decision has not moved and no higher-priority Jake packet displaced it.
+
+### 2026-04-16 ~15:23 EDT — Chooser reused André alignment packet again
+
+**Action**: Hourly chooser confirmed `auto_09_action_selection_storytelling_use-andr-dm-automations-for-close-as-one-active-.md` still remains the active Jake-lane blocker because the owner decision has not moved, the shared loop-review is still unratified, and no queue truth displaced it.
 
 ### 2026-04-14 ~03:05 EDT — Jake inbox initialized
 

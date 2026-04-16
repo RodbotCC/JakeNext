@@ -56,6 +56,17 @@ Prediction error is how surprise, salience, confidence, and disorientation show 
 
 - surprises become explicit correction signals rather than vague confusion
 
+## Implementation Status: LIVE
+
+**Wired**: 2026-04-16. The hourly chooser writes a `prediction` section to `.oraclestate/world.json` every cycle:
+- `last_expectation` — what we predicted last cycle
+- `expectation_met` — boolean, did it come true?
+- `next_expectation` — what we predict for next cycle (currently: the winner persists)
+- `consecutive_correct` / `consecutive_wrong` — streak counters
+- `surprise` — boolean, did the winner change unexpectedly?
+
+This is the prediction→check→update loop. When `surprise: true`, that's prediction error — the signal that something in the environment changed that the system didn't anticipate.
+
 ## Immediate next build step
 
-Add an outcome field to future recommended-action packets so later sweeps can compare expected vs actual results.
+Use `consecutive_wrong` > 3 as a trigger for the chooser to re-evaluate its scoring weights. Persistent surprise means the model is miscalibrated.

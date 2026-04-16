@@ -54,6 +54,10 @@ Agency needs both selection and reportability. A system that cannot explain its 
 
 - the system can say what it chose, why it chose it, and what blocked alternatives
 
+## Implementation Status: LIVE
+
+**Wired**: 2026-04-16. world.json `action` section: chosen module, lane, mode, packet path, opened/reused status, and a plain-language `narration` explaining WHY this move won over alternatives.
+
 ## Immediate next build step
 
-Have the first Codex starter packet translate module doctrine into dispatcher implementation priorities.
+Make the narration richer — include what was explicitly rejected and why, not just what won.

@@ -3,7 +3,7 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { readdir, stat } from "node:fs/promises";
 import path from "node:path";
-import { appendText, readText, writeText, workspacePath, parseArgs } from "./lib/oracle_fs.mjs";
+import { appendText, readText, writeText, writeJson, readJson, workspacePath, parseArgs, GENERATED_STATE_DIR } from "./lib/oracle_fs.mjs";
 
 const execFileAsync = promisify(execFile);
 const args = parseArgs();
@@ -356,10 +356,156 @@ if (previousChanged || packetOpened) {
   await appendTcl("ledgers/TCLl.md", "Sylvia hourly chooser advanced", `Hourly chooser selected ${winner.id} with execution mode ${winner.execution_mode} and ${packetOpened ? "opened a new packet" : "reused the current packet"}.`);
 }
 
+// ─── Module 01: World Model — persist unified scene snapshot ──────────────
+// ─── Module 03: Affect — compute stress/mood from chooser data ───────────
+
+const previousWorld = await readJson(`${GENERATED_STATE_DIR}/world.json`, {});
+
+// ─── Module 06: Temporal Continuity — current narrative thread ────────────
+const globalTcl = await readText("ledgers/TCLl.md").catch(() => "");
+// Extract last 3 TCL entry headings (### lines) as the narrative thread
+// Filter to actual dated entries (### 2026-...), skip format examples, take most recent 3
+const tclHeadings = (globalTcl.match(/^### 202\d.+$/gm) || []).reverse();
+const recentThread = tclHeadings.slice(0, 3).map(h => h.replace(/^### /, ""));
+
+// Compute affect from observable signals (Module 03)
+const duplicateCount = candidates.filter(c => c.duplicate_open).length;
+const jakeBlockedCount = candidates.filter(c => c.blocker_type === "jake_input").length;
+const topScore = candidates[0]?.score || 0;
+const scoreSpread = topScore - (candidates[candidates.length - 1]?.score || 0);
+const scaffoldedCount = modules.filter(m => m.status === "scaffolded").length;
+const missingCount = modules.filter(m => m.status === "missing").length;
+
+let mood = "clear";
+if (missingCount > 2) mood = "strained";
+else if (jakeBlockedCount >= 3 && duplicateCount >= 4) mood = "stuck";
+else if (duplicateCount >= 5) mood = "looping";
+else if (scoreSpread < 15) mood = "ambiguous";
+else if (scaffoldedCount >= 4) mood = "early";
+else if (jakeBlockedCount === 0 && duplicateCount <= 1) mood = "flowing";
+
+const worldSnapshot = {
+  cycle_id: runId,
+  timestamp: iso,
+  // Module 01: World Model
+  world: {
+    winner: { id: winner.id, score: winner.score, lane: winner.blocking_lane, mode: winner.execution_mode },
+    module_summary: modules.map(m => ({ id: m.id, status: m.status })),
+    candidates_top3: candidates.slice(0, 3).map(c => ({ id: c.id, score: c.score, duplicate: c.duplicate_open })),
+    queue_pressure: { duplicates: duplicateCount, jake_blocked: jakeBlockedCount, scaffolded: scaffoldedCount },
+    previous_winner: previousWorld.world?.winner?.id || null,
+    winner_changed: (previousWorld.world?.winner?.id || null) !== winner.id,
+  },
+  // Module 03: Affect
+  affect: {
+    mood,
+    stress_signals: { duplicateCount, jakeBlockedCount, scaffoldedCount, missingCount, scoreSpread },
+  },
+  // Module 02: Self Model — who am I in this situation?
+  self: {
+    identity: "Sylvia",
+    role: "integrated decision intelligence for Jake's life and work",
+    current_mode: winner.blocking_lane === "jake" ? "waiting on operator" : winner.execution_mode === "codex_safe_auto" ? "autonomous execution" : "collaborative",
+    active_invariants: ["dynamic completeness over timeless completion", "no counterfeit progress", "escalate when Jake is genuinely needed"],
+  },
+  // Module 04: Attention — what's foregrounded right now?
+  attention: {
+    focus: winner.id,
+    focus_score: winner.score,
+    focus_task: winner.best_next_move,
+    runner_up: candidates[1]?.id || null,
+    runner_up_gap: winner.score - (candidates[1]?.score || 0),
+    comparator: "next_best_move",
+  },
+  // Module 09: Action Selection + Narration — what's the move and why?
+  action: {
+    chosen: winner.id,
+    lane: winner.blocking_lane,
+    mode: winner.execution_mode,
+    packet: winner.packet_path,
+    opened: packetOpened,
+    reused: packetReused,
+    narration: `${winner.id} wins because ${
+      winner.blocker_type === "jake_input"
+        ? "it is blocked on Jake's input and no other move can honestly outrank an unresolved operator bottleneck"
+        : winner.duplicate_open
+          ? "despite duplicate suppression, it still scores highest under module gap closure"
+          : `it has the highest combined score (${winner.score}) under next_best_move weighting`
+    }. ${candidates[1] ? `Runner-up ${candidates[1].id} scored ${candidates[1].score} (gap: ${winner.score - candidates[1].score}).` : ""}`,
+  },
+  // Module 05: Predictive Processing — expect, then check
+  prediction: {
+    // What we expected last cycle (read from previous world.json)
+    last_expectation: previousWorld.prediction?.next_expectation || null,
+    // Did it come true?
+    expectation_met: previousWorld.prediction?.next_expectation
+      ? previousWorld.prediction.next_expectation === winner.id
+      : null,
+    // What we expect NEXT cycle
+    next_expectation: winner.id,
+    // Mismatch tracking
+    consecutive_correct: previousWorld.prediction?.next_expectation === winner.id
+      ? (previousWorld.prediction?.consecutive_correct || 0) + 1
+      : 0,
+    consecutive_wrong: previousWorld.prediction?.next_expectation && previousWorld.prediction.next_expectation !== winner.id
+      ? (previousWorld.prediction?.consecutive_wrong || 0) + 1
+      : 0,
+    surprise: previousWorld.prediction?.next_expectation && previousWorld.prediction.next_expectation !== winner.id,
+  },
+  // Module 07: Metacognition — how confident are we?
+  metacognition: {
+    selection_confidence: scoreSpread > 30 ? "high" : scoreSpread > 15 ? "medium" : "low",
+    confidence_reason: scoreSpread > 30
+      ? "Clear winner — large score gap from runner-up"
+      : scoreSpread > 15
+        ? "Moderate confidence — reasonable gap but alternatives are viable"
+        : "Low confidence — candidates are clustered, selection may be arbitrary",
+    winner_is_blocked: winner.blocker_type !== "none",
+    stale_winner: (previousWorld.continuity?.cycles_since_winner_change || 0) > 5,
+  },
+  // Module 06: Temporal Continuity
+  continuity: {
+    recent_thread: recentThread,
+    cycles_since_winner_change: (previousWorld.continuity?.cycles_since_winner_change || 0) + (previousWorld.world?.winner?.id === winner.id ? 1 : 0),
+    total_cycles: (previousWorld.continuity?.total_cycles || 0) + 1,
+  },
+  // Module 08: Social Cognition Inward — should I reconsider?
+  reconsider: {
+    should_reconsider: mood === "ambiguous" || (scoreSpread < 15 && jakeBlockedCount >= 2),
+    reason: mood === "ambiguous"
+      ? "Candidates are too close — the selection may be arbitrary"
+      : scoreSpread < 15 && jakeBlockedCount >= 2
+        ? "Multiple jake-blocked candidates with tight scoring — internal debate warranted"
+        : "No reconsideration needed — selection is clear",
+    inner_tension: candidates.length >= 2 && candidates[0].blocking_lane !== candidates[1].blocking_lane
+      ? `Top two candidates disagree on lane: ${candidates[0].blocking_lane} vs ${candidates[1].blocking_lane}`
+      : null,
+  },
+  // Module 10: Global Availability — this file IS the broadcast
+  broadcast: {
+    target: `${GENERATED_STATE_DIR}/world.json`,
+    consumers: ["chooser", "dispatcher", "sweep", "any-agent-reading-world.json"],
+    note: "world.json is the broadcast. Writing it makes all module outputs globally available.",
+  },
+  // Delta: what changed since last cycle
+  delta: {
+    winner_changed: (previousWorld.world?.winner?.id || null) !== winner.id,
+    mood_changed: (previousWorld.affect?.mood || null) !== mood,
+    new_modules_since_last: modules.filter(m => {
+      const prev = (previousWorld.world?.module_summary || []).find(p => p.id === m.id);
+      return prev && prev.status !== m.status;
+    }).map(m => m.id),
+  },
+};
+
+await writeJson(`${GENERATED_STATE_DIR}/world.json`, worldSnapshot);
+
 console.log(JSON.stringify({
   run_id: runId,
   winner: winner.id,
   packet_path: winner.packet_path,
   packet_opened: packetOpened,
-  packet_reused: packetReused
+  packet_reused: packetReused,
+  mood,
+  winner_changed: worldSnapshot.delta.winner_changed,
 }, null, 2));

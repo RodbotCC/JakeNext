@@ -54,6 +54,12 @@ Information feels conscious when it becomes globally available for memory, refle
 
 - key information becomes available across ledgers, queues, and UI without contradiction
 
+## Implementation Status: LIVE
+
+**Wired**: 2026-04-16. world.json IS the broadcast. Writing it makes all module outputs globally available to any agent, script, or tool that reads `.oraclestate/world.json`. The `broadcast` section explicitly names the consumers and notes this design.
+
+Combined with the existing global ledgers, handoff bus, and orchestrator UI, information is now available at three levels: structured (world.json), narrative (TCL), and visual (orchestrator).
+
 ## Immediate next build step
 
-Use the orchestrator update rule plus starter packets as the first low-bandwidth broadcast protocol.
+Have other scripts/agents actually READ world.json at their start instead of re-scanning everything. The dispatcher and sweep should consume the snapshot rather than rebuilding state from scratch.

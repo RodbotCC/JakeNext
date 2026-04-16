@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Append-only receipts for hourly chooser runs and daily reflection passes.
-> Last updated: 2026-04-15
+> Last updated: 2026-04-16
 
 ---
 
@@ -26,3 +26,5 @@
 | `run_20260415T024717Z.md` | Hourly chooser receipt confirming the same Jake-lane winner remains authoritative because no queue or owner-truth changed | ✅ Live |
 | `run_20260415T053330Z.md` | Hourly chooser receipt keeping `09_action_selection_storytelling` live after reconciling queue paths to `collaboration/` | ✅ Live |
 | `run_20260415T143218Z.md` | Hourly chooser receipt confirming the same Jake-lane winner remains authoritative because no owner-truth changed | ✅ Live |
+| `run_20260416T182255Z.md` | Hourly chooser receipt confirming the same Jake-lane winner still outranks the pending shared loop-review because no owner-truth changed | ✅ Live |
+| `run_20260416T192328Z.md` | Hourly chooser receipt confirming the same Jake-lane winner still outranks the pending shared loop-review because no queue truth changed | ✅ Live |

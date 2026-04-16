@@ -53,6 +53,10 @@ Part of selfhood comes from modeling oneself as an intelligible agent rather tha
 
 - the system can reason about itself without collapsing into fuzzy self-mythology
 
+## Implementation Status: LIVE
+
+**Wired**: 2026-04-16. world.json `reconsider` section: should_reconsider (boolean), reason, inner_tension (top candidates disagreeing on lane). Fires when mood is ambiguous or multiple jake-blocked candidates cluster with tight scores.
+
 ## Immediate next build step
 
-Start using shared conflicts and Jake escalation packets as the seed protocol for inward social cognition.
+When `should_reconsider: true`, have the chooser actually run a second pass with different comparator weights to see if the result changes. That's genuine inner debate, not just a flag.

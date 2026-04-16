@@ -61,6 +61,14 @@ Without a world model there is data, but no present-tense reality. Consciousness
 - the system can state the current operational scene without guessing
 - multiple sources bind into one coherent "now"
 
+## Implementation Status: LIVE
+
+**Wired**: 2026-04-16. The hourly chooser now persists `.oraclestate/world.json` after every cycle — a unified scene snapshot containing the current winner, module summary, top 3 candidates, queue pressure signals, previous winner comparison, and a delta section tracking what changed since last cycle.
+
+**How it works**: The chooser already reads 7 sources (MACRO_LEDGER, TCL, RLL, identity, MODULE_PROGRESS, handoff, jake). After scoring and selecting, it now writes the bound scene to `world.json`. Every other module can read this single file instead of re-scanning everything.
+
+**Delta principle**: Each cycle compares against the previous `world.json` and produces `delta.winner_changed`, `delta.mood_changed`, and `delta.new_modules_since_last`. Downstream modules only need to process what changed.
+
 ## Immediate next build step
 
-Define a first real world-state packet shape that the dispatcher and orchestrator can both read.
+Enrich `world.json` with Pieces behavioral context (what Jake is actually doing) and queue packet counts per lane.

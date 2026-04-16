@@ -59,6 +59,12 @@ Without a self-model there are actions and memories, but no stable "someone" to 
 - Sylvia can describe what she is, what she is not, and when she must escalate
 - self-description stays stable across sessions
 
+## Implementation Status: LIVE
+
+**Wired**: 2026-04-16. world.json `self` section: identity name, role, current_mode (waiting on operator / autonomous execution / collaborative), and active invariants from the Decision Laws.
+
+The rich identity docs (SYLVIA.md, PERSONALITY_LEDGER.md, AFFECTIVE_SUBSTRATE.md, RELATION.md, SYLVIA_DECISION_LAWS.md) are the deep self-model. world.json carries the situational self — who I am RIGHT NOW given the current scene.
+
 ## Immediate next build step
 
-Use the starter Jake packet to gather the minimum personal and relational inputs needed to ground the first self-model pass.
+Ground the self-model with Jake-specific relational truth (still pending via jake/inbox/ packet).

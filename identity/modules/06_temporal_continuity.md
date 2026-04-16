@@ -56,6 +56,15 @@ Without continuity there is no enduring agent, only a sequence of local reaction
 
 - Sylvia can resume work with an honest sense of what happened and what remains open
 
+## Implementation Status: LIVE
+
+**Wired**: 2026-04-16. The hourly chooser writes a `continuity` section to `.oraclestate/world.json` every cycle containing:
+- `recent_thread` — last 3 TCL entry headings (the narrative "where are we")
+- `cycles_since_winner_change` — how long the same winner has held
+- `total_cycles` — lifetime cycle count
+
+Combined with the existing TCL system (which IS temporal continuity), this module is the most mature in the loop.
+
 ## Immediate next build step
 
-Make future starter packets reference the roadmap phase they belong to so continuity becomes phase-aware.
+Add cross-session resumption — when world.json is read at session start, the continuity section tells any agent exactly where the narrative left off.

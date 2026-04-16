@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Local continuity ledger for the `chooser/` subsystem.
-> Last updated: 2026-04-15
+> Last updated: 2026-04-16
 
 ---
 
@@ -81,3 +81,51 @@
 ### 2026-04-15 ~10:32 EDT — Hourly chooser run recorded
 
 **Action**: Recorded run_20260415T143218Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~14:22 EDT — Hourly chooser run recorded
+
+**Action**: Recorded `run_20260416T182255Z`, refreshed module progress, kept `09_action_selection_storytelling` as the winner, and reused the live Jake packet because the owner-truth blocker is still open and the shared loop-review has not yet been ratified into chooser law.
+
+### 2026-04-16 ~15:23 EDT — Hourly chooser run recorded
+
+**Action**: Recorded `run_20260416T192328Z`, refreshed module progress again, kept `09_action_selection_storytelling` as the winner, and reused the live Jake packet because no owner-truth, shared-decision truth, or codex-safe queue truth changed since the previous pass.
+
+### 2026-04-16 ~16:21 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202137Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~16:21 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202152Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~16:23 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202314Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~16:24 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202427Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~16:24 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202452Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~16:25 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202517Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~16:26 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202652Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~16:27 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202702Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~16:27 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202755Z, selected 09_action_selection_storytelling, and reused the corresponding packet.
+
+### 2026-04-16 ~16:28 EDT — Hourly chooser run recorded
+
+**Action**: Recorded run_20260416T202833Z, selected 09_action_selection_storytelling, and reused the corresponding packet.

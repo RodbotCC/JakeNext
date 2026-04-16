@@ -2,7 +2,7 @@
 ### Sylvia Bootstrap Loop v1
 
 > This file tracks how close the system is to each Sylvia module becoming real.
-> Last updated: 2026-04-15
+> Last updated: 2026-04-16
 
 ---
 
@@ -10,16 +10,16 @@
 
 | Module | Status | Current Gap | Best Next Move | Blocking Lane | Last Meaningful Update | Linked Artifacts |
 |---|---|---|---|---|---|---|
-| `09_action_selection_storytelling` | `partial` | The André alignment cluster is already semantically legible, but the live work is still fragmented across DM, ClickUp, and Jake packets instead of one operator-owned push with a named owner decision. | Use André DM + Automations-for-Close as one active alignment push: reply to André, set a 15-minute sync, and decide who owns Close automations/KPIs versus who just needs visibility. | `jake` | `2026-04-15` | `chooser/`, `capabilities/scripts/consume_codex_safe_packets.mjs` |
-| `08_social_cognition_inward` | `partial` | Reflection has now surfaced the alternating `04` / `09` loop, but the system still lacks a ratified rule for when inward disagreement becomes an architecture-level mismatch. | Resolve the alternating-winner shared decision into one explicit escalation rule for chooser reflection. | `shared` | `2026-04-15` | `collaboration/handoff/shared/decisions/`, `chooser/runs/reflection_20260415T000138Z.md` |
-| `05_predictive_processing` | `partial` | Drift and mismatch exist, but the reflection output still is not feeding explicit chooser-law consequences when loops persist. | Use daily reflection to turn repeated chooser results into explicit mismatch signal. | `codex` | `2026-04-15` | `capabilities/scripts/detect_ledger_drift.mjs`, `capabilities/scripts/daily_sylvia_reflection.mjs` |
-| `04_attention_selection` | `partial` | `chooser/NEXT_STEP.md` is now a real active-focus object, but the system still over-rewards maintenance moves that close cleanly while a higher-impact blocker stays open. | Keep chooser/NEXT_STEP authoritative and tied to queue truth, without letting repeat maintenance wins outrank the unresolved owner decision. | `codex` | `2026-04-15` | `ledgers/RLLl.md`, `chooser/NEXT_STEP.md`, `collaboration/handoff/codex/done/` |
-| `02_self_model` | `scaffolded` | Sylvia has identity doctrine, but the self-model still lacks Jake-grounded relational truth. | Get Jake's grounding response and integrate it into identity doctrine. | `jake` | `2026-04-15` | `identity/`, `collaboration/jake/inbox/req_20260414T070500Z_self-model-grounding.md` |
-| `01_world_model` | `partial` | Scene binding still lives across ledgers and events instead of a chooser-facing world-state object. | Define a chooser-facing scene summary in hourly run receipts. | `codex` | `2026-04-15` | `signals/events/`, `capabilities/scripts/daily_substrate_sweep.mjs`, `capabilities/orchestrator/` |
-| `06_temporal_continuity` | `partial` | Continuity is strong globally, but chooser-state continuity is brand new. | Make chooser runs and NEXT_STEP part of the continuity spine. | `codex` | `2026-04-15` | `ledgers/TCLl.md`, `chooser/runs/`, `chooser/NEXT_STEP.md` |
-| `10_global_availability` | `partial` | Ledgers, queues, and UI exist, but chooser state is not yet fully broadcast across all visible surfaces. | Surface the current winner, module progress, and blocker state in the orchestrator. | `codex` | `2026-04-15` | `capabilities/orchestrator/`, `chooser/` |
-| `07_metacognition` | `partial` | Confidence and blocker truth exist in doctrine, but not yet consistently across packets. | Standardize confidence and blocker metadata in chooser-created packets. | `codex` | `2026-04-15` | `capabilities/templates/work_order.md`, `capabilities/templates/jake_request.md` |
-| `03_interoception_affect` | `scaffolded` | No explicit state vocabulary or felt-tone model exists yet. | Define a first bounded affect vocabulary for chooser and sweep outputs. | `claude-cowork` | `2026-04-15` | `identity/modules/03_interoception_affect.md` |
+| `01_world_model` | `operational` | world.json writes unified scene every cycle. Missing: Pieces behavioral context, per-lane queue counts. | Enrich world.json with Pieces LTM and queue packet counts. | `codex` | `2026-04-16` | `.oraclestate/world.json` |
+| `02_self_model` | `operational` | world.json carries situational self (identity, role, current_mode, invariants). Missing: Jake-grounded relational truth. | Ground self-model with Jake's relational input. | `jake` | `2026-04-16` | `.oraclestate/world.json`, `identity/` |
+| `03_interoception_affect` | `operational` | Mood tag + stress signals computed every cycle. Missing: mood-aware chooser scoring. | Wire mood into chooser — stuck/looping should boost novelty weight. | `codex` | `2026-04-16` | `.oraclestate/world.json` |
+| `04_attention_selection` | `operational` | Focus target, score, runner-up, gap all in world.json. Missing: dual-candidate surfacing when gap is tiny. | When mood=ambiguous and gap<5, surface both as genuine choice. | `codex` | `2026-04-16` | `.oraclestate/world.json` |
+| `05_predictive_processing` | `operational` | Prediction→check→update loop live. Tracks expectation_met, surprise, consecutive streaks. | Use consecutive_wrong > 3 to trigger chooser weight re-evaluation. | `codex` | `2026-04-16` | `.oraclestate/world.json` |
+| `06_temporal_continuity` | `operational` | recent_thread, cycles_since_winner_change, total_cycles in world.json. TCL system provides the rest. | Add cross-session resumption from world.json continuity section. | `codex` | `2026-04-16` | `.oraclestate/world.json`, `ledgers/TCLl.md` |
+| `07_metacognition` | `operational` | selection_confidence, confidence_reason, winner_is_blocked, stale_winner every cycle. | Propagate confidence into chooser-created packets. | `codex` | `2026-04-16` | `.oraclestate/world.json` |
+| `08_social_cognition_inward` | `operational` | should_reconsider flag, reason, inner_tension when top candidates disagree on lane. | When reconsider=true, run second chooser pass with different weights. | `codex` | `2026-04-16` | `.oraclestate/world.json` |
+| `09_action_selection_storytelling` | `operational` | Action + narration explaining WHY the winner won. Lane, mode, packet state all tracked. | Make narration richer — include what was rejected and why. | `codex` | `2026-04-16` | `.oraclestate/world.json` |
+| `10_global_availability` | `operational` | world.json IS the broadcast. All module outputs globally available to any consumer. | Have dispatcher and sweep read world.json instead of re-scanning. | `codex` | `2026-04-16` | `.oraclestate/world.json` |
 
 ---
 

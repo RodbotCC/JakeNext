@@ -54,6 +54,23 @@ Consciousness is not only about the outside world; it is also about being in som
 
 - the system can distinguish "structurally blocked" from "energetically wrong" states
 
+## Implementation Status: LIVE
+
+**Wired**: 2026-04-16. The hourly chooser now computes a `mood` tag and `stress_signals` object and writes them to `.oraclestate/world.json` under the `affect` key.
+
+**Mood vocabulary** (first pass):
+- `clear` — low stress, things are moving
+- `flowing` — no blockers, no duplicates, rare
+- `early` — many scaffolded modules, system is young
+- `ambiguous` — top candidates are too close to call
+- `looping` — too many duplicate-open penalties (stuck in same moves)
+- `stuck` — high jake-blocked + high duplicates (real bottleneck)
+- `strained` — missing modules (structural gaps)
+
+**Stress signals**: `duplicateCount`, `jakeBlockedCount`, `scaffoldedCount`, `missingCount`, `scoreSpread`
+
+**Delta tracking**: `mood_changed` in the delta section flags when the felt tone shifts between cycles.
+
 ## Immediate next build step
 
-Add a lightweight state vocabulary to future daily sweep outputs without pretending the system already has full affect.
+Wire mood into chooser behavior — when mood is `stuck` or `looping`, the chooser should weight novelty higher and duplicate-suppression lower to break out of ruts.

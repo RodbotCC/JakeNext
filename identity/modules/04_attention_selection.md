@@ -54,6 +54,10 @@ Attention creates ownership and coherence by making some content vivid enough to
 
 - the system can point to one active focus and explain why it won
 
+## Implementation Status: LIVE
+
+**Wired**: 2026-04-16. world.json `attention` section: focus target, score, task, runner-up, gap to runner-up, active comparator. The chooser IS attention — this module just makes its output readable.
+
 ## Immediate next build step
 
-Use `sylvia_emergence` and `action_now` together to produce the first real focus recommendation.
+When mood is `ambiguous` and runner_up_gap < 5, surface both candidates as a genuine choice rather than forcing a single winner.

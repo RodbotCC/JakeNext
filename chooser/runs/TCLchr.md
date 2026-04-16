@@ -2,7 +2,7 @@
 ### Jake Personal Oracle Project
 
 > Local continuity ledger for `chooser/runs/`.
-> Last updated: 2026-04-15
+> Last updated: 2026-04-16
 
 ---
 
@@ -75,3 +75,51 @@
 ### 2026-04-15 ~10:32 EDT — Chooser run receipt added
 
 **Action**: Added chooser receipt `run_20260415T143218Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~14:22 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T182255Z.md` for winner `09_action_selection_storytelling`, confirming the same Jake-lane blocker still outranks the pending shared loop-review because no owner-truth changed.
+
+### 2026-04-16 ~15:23 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T192328Z.md` for winner `09_action_selection_storytelling`, confirming the same Jake-lane blocker still outranks the pending shared loop-review because no owner-truth or queue truth changed.
+
+### 2026-04-16 ~16:21 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202137Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~16:21 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202152Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~16:23 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202314Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~16:24 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202427Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~16:24 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202452Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~16:25 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202517Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~16:26 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202652Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~16:27 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202702Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~16:27 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202755Z.md` for winner `09_action_selection_storytelling`.
+
+### 2026-04-16 ~16:28 EDT — Chooser run receipt added
+
+**Action**: Added chooser receipt `run_20260416T202833Z.md` for winner `09_action_selection_storytelling`.
