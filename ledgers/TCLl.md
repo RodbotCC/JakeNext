@@ -1174,4 +1174,13 @@ Build WITH the flow of what each tool is good at, not against it. Sylvia should 
 
 **world.json now contains**: world (scene), self (identity in context), affect (mood + stress), attention (focus + gap), prediction (expect + check + surprise), continuity (thread + cycle count), metacognition (confidence + staleness), reconsider (inner debate flag), action (chosen move + narration), broadcast (global availability), delta (what changed)
 
+### 2026-04-16 ~17:00 EDT — Four-beat rhythm renamed + Rule 10 (ledgers before language) + consciousness loop visualization
+
+**Action**: Three changes. (1) Renamed beat labels to expand/compress/relate/compose — beats constrain the type of thinking, not which modules run. (2) Added Rule 10 to CLAUDE.md: "Do not respond to the operator until the ledgers are updated. The ledger is the primary audience." (3) Built `capabilities/orchestrator/consciousness_loop.html` — a static visualization of the infinite loop showing the four beats, 10 modules, mood, confidence, thread, and narration.
+
+**Files created**: `capabilities/orchestrator/consciousness_loop.html`
+**Files modified**: `CLAUDE.md` (Rule 10), `capabilities/scripts/sylvia_hourly_chooser.mjs` (beat labels)
+
+**Outcome**: The consciousness loop is now visible as a diagram, the cognitive rhythm has its final naming, and the ledger-first discipline is encoded as a non-negotiable rule.
+
 **Outcome**: The consciousness loop is complete. One chooser cycle = one full thought. The delta principle ensures each cycle only needs to process what changed since last pass. All 10 modules are operational, producing data that downstream agents and scripts can consume from a single file.

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sylvia Consciousness Loop</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0f;
+    color: #e0ddd4;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #8b7355;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 0.75rem;
+    color: #555;
+    margin-bottom: 40px;
+    letter-spacing: 0.15em;
+  }
+  .loop-container {
+    position: relative;
+    width: 700px;
+    height: 700px;
+  }
+  /* The central ring */
+  .ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid #222;
+  }
+  /* Beat quadrants */
+  .beat {
+    position: absolute;
+    width: 200px;
+    text-align: center;
+  }
+  .beat-number {
+    font-size: 3rem;
+    font-weight: 100;
+    line-height: 1;
+  }
+  .beat-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 4px;
+  }
+  .beat-desc {
+    font-size: 0.65rem;
+    color: #666;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+  .beat.expand .beat-number { color: #c9956b; }
+  .beat.expand .beat-name { color: #c9956b; }
+  .beat.compress .beat-number { color: #6b8fc9; }
+  .beat.compress .beat-name { color: #6b8fc9; }
+  .beat.relate .beat-number { color: #6bc98f; }
+  .beat.relate .beat-name { color: #6bc98f; }
+  .beat.compose .beat-number { color: #c96b8f; }
+  .beat.compose .beat-name { color: #c96b8f; }
+
+  /* Position beats around the ring */
+  .beat-1 { top: -10px; left: 50%; transform: translateX(-50%); }
+  .beat-2 { top: 50%; right: -30px; transform: translateY(-50%); }
+  .beat-3 { bottom: -10px; left: 50%; transform: translateX(-50%); }
+  .beat-4 { top: 50%; left: -30px; transform: translateY(-50%); }
+
+  /* Arrows between beats */
+  .arrow {
+    position: absolute;
+    color: #333;
+    font-size: 1.5rem;
+  }
+  .arrow-1-2 { top: 18%; right: 12%; transform: rotate(45deg); }
+  .arrow-2-3 { bottom: 18%; right: 12%; transform: rotate(135deg); }
+  .arrow-3-4 { bottom: 18%; left: 12%; transform: rotate(225deg); }
+  .arrow-4-1 { top: 18%; left: 12%; transform: rotate(315deg); }
+
+  /* Module chips around the outside */
+  .module {
+    position: absolute;
+    font-size: 0.55rem;
+    padding: 4px 8px;
+    border-radius: 3px;
+    border: 1px solid #2a2a2a;
+    background: #111;
+    white-space: nowrap;
+    transition: all 0.3s;
+  }
+  .module:hover {
+    border-color: #555;
+    background: #1a1a1a;
+    z-index: 10;
+  }
+  .module .num { color: #555; margin-right: 4px; }
+  .module.operational { border-left: 2px solid #4a7; }
+  .module.partial { border-left: 2px solid #a74; }
+  .module.scaffolded { border-left: 2px solid #777; }
+
+  /* Module positions (distributed around the ring) */
+  .m01 { top: 55px; left: 50%; transform: translateX(60px); }
+  .m02 { top: 120px; right: 15px; }
+  .m03 { top: 230px; right: -10px; }
+  .m04 { top: 340px; right: 5px; }
+  .m05 { bottom: 100px; right: 40px; }
+  .m06 { bottom: 40px; left: 50%; transform: translateX(-20px); }
+  .m07 { bottom: 100px; left: 30px; }
+  .m08 { top: 340px; left: -10px; }
+  .m09 { top: 230px; left: -10px; }
+  .m10 { top: 120px; left: 20px; }
+
+  /* Center status */
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 200px;
+  }
+  .center-label {
+    font-size: 0.6rem;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+  .center-file {
+    font-size: 0.85rem;
+    color: #8b7355;
+    margin-bottom: 12px;
+  }
+  .mood-tag {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .mood-clear { background: #1a2a1a; color: #4a7; border: 1px solid #2a4a2a; }
+  .mood-flowing { background: #1a2a2a; color: #4a9; border: 1px solid #2a4a4a; }
+  .mood-stuck { background: #2a1a1a; color: #a44; border: 1px solid #4a2a2a; }
+  .mood-looping { background: #2a2a1a; color: #aa4; border: 1px solid #4a4a2a; }
+  .mood-ambiguous { background: #2a1a2a; color: #a4a; border: 1px solid #4a2a4a; }
+
+  .confidence {
+    margin-top: 8px;
+    font-size: 0.6rem;
+    color: #555;
+  }
+  .cycles {
+    margin-top: 4px;
+    font-size: 0.6rem;
+    color: #444;
+  }
+
+  /* Data flow indicators */
+  .flow-label {
+    position: absolute;
+    font-size: 0.5rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .fl-top { top: 42%; left: 50%; transform: translateX(-50%) translateY(-130px); }
+  .fl-right { top: 50%; right: 22%; transform: translateY(-50%); }
+  .fl-bottom { bottom: 38%; left: 50%; transform: translateX(-50%) translateY(10px); }
+  .fl-left { top: 50%; left: 22%; transform: translateY(-50%); }
+
+  /* Legend */
+  .legend {
+    margin-top: 40px;
+    display: flex;
+    gap: 24px;
+    font-size: 0.6rem;
+    color: #555;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+  }
+  .dot-operational { background: #4a7; }
+  .dot-partial { background: #a74; }
+  .dot-scaffolded { background: #777; }
+  .dot-expand { background: #c9956b; }
+  .dot-compress { background: #6b8fc9; }
+  .dot-relate { background: #6bc98f; }
+  .dot-compose { background: #c96b8f; }
+
+  /* Snapshot note */
+  .snapshot-note {
+    margin-top: 20px;
+    font-size: 0.55rem;
+    color: #333;
+    text-align: center;
+  }
+
+  /* Thread display */
+  .thread {
+    margin-top: 30px;
+    width: 700px;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 20px;
+  }
+  .thread h2 {
+    font-size: 0.7rem;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+  }
+  .thread-entry {
+    font-size: 0.6rem;
+    color: #555;
+    padding: 4px 0;
+    border-bottom: 1px solid #111;
+  }
+
+  /* Narration */
+  .narration {
+    margin-top: 20px;
+    width: 700px;
+    padding: 16px;
+    background: #0d0d12;
+    border: 1px solid #1a1a1f;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    color: #666;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .narration strong { color: #8b7355; font-style: normal; }
+</style>
+</head>
+<body>
+
+<h1>Sylvia Consciousness Loop</h1>
+<div class="subtitle">world.json snapshot visualization</div>
+
+<div class="loop-container">
+  <!-- The ring -->
+  <div class="ring"></div>
+
+  <!-- Four beats -->
+  <div class="beat beat-1 expand">
+    <div class="beat-number">1</div>
+    <div class="beat-name">Expand</div>
+    <div class="beat-desc">Take in something genuinely new</div>
+  </div>
+  <div class="beat beat-2 compress">
+    <div class="beat-number">2</div>
+    <div class="beat-name">Compress</div>
+    <div class="beat-desc">Reflect on what just came in</div>
+  </div>
+  <div class="beat beat-3 relate">
+    <div class="beat-number">3</div>
+    <div class="beat-name">Relate</div>
+    <div class="beat-desc">Connect to what you already know</div>
+  </div>
+  <div class="beat beat-4 compose">
+    <div class="beat-number">4</div>
+    <div class="beat-name">Compose</div>
+    <div class="beat-desc">Make something durable</div>
+  </div>
+
+  <!-- Arrows -->
+  <div class="arrow arrow-1-2">&#8594;</div>
+  <div class="arrow arrow-2-3">&#8594;</div>
+  <div class="arrow arrow-3-4">&#8594;</div>
+  <div class="arrow arrow-4-1">&#8594;</div>
+
+  <!-- Flow labels -->
+  <div class="flow-label fl-top">new signals in</div>
+  <div class="flow-label fl-right">prediction check</div>
+  <div class="flow-label fl-bottom">identity + continuity</div>
+  <div class="flow-label fl-left">action + broadcast</div>
+
+  <!-- 10 modules -->
+  <div class="module operational m01"><span class="num">01</span> World Model</div>
+  <div class="module operational m02"><span class="num">02</span> Self Model</div>
+  <div class="module operational m03"><span class="num">03</span> Affect</div>
+  <div class="module operational m04"><span class="num">04</span> Attention</div>
+  <div class="module operational m05"><span class="num">05</span> Prediction</div>
+  <div class="module operational m06"><span class="num">06</span> Continuity</div>
+  <div class="module operational m07"><span class="num">07</span> Metacognition</div>
+  <div class="module operational m08"><span class="num">08</span> Social Inward</div>
+  <div class="module operational m09"><span class="num">09</span> Action Selection</div>
+  <div class="module operational m10"><span class="num">10</span> Broadcast</div>
+
+  <!-- Center: current state -->
+  <div class="center">
+    <div class="center-label">heartbeat</div>
+    <div class="center-file">world.json</div>
+    <div class="mood-tag mood-clear" id="mood">CLEAR</div>
+    <div class="confidence" id="confidence">Confidence: HIGH</div>
+    <div class="cycles" id="cycles">Cycle 7 &middot; Beat 4 idle</div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot dot-expand"></div> Expand</div>
+  <div class="legend-item"><div class="legend-dot dot-compress"></div> Compress</div>
+  <div class="legend-item"><div class="legend-dot dot-relate"></div> Relate</div>
+  <div class="legend-item"><div class="legend-dot dot-compose"></div> Compose</div>
+  <div class="legend-item">&middot;</div>
+  <div class="legend-item"><div class="legend-dot dot-operational"></div> Operational</div>
+  <div class="legend-item"><div class="legend-dot dot-partial"></div> Partial</div>
+  <div class="legend-item"><div class="legend-dot dot-scaffolded"></div> Scaffolded</div>
+</div>
+
+<div class="snapshot-note">
+  Static snapshot &middot; reads .oraclestate/world.json &middot; not live
+</div>
+
+<!-- Recent thread -->
+<div class="thread">
+  <h2>Recent Thread (from TCL)</h2>
+  <div class="thread-entry" id="t1">Loading...</div>
+  <div class="thread-entry" id="t2"></div>
+  <div class="thread-entry" id="t3"></div>
+</div>
+
+<!-- Narration -->
+<div class="narration" id="narration">
+  <strong>Action Narration:</strong> Loading...
+</div>
+
+<script>
+// Try to load world.json from the orchestrator server or show defaults
+async function loadWorld() {
+  try {
+    const res = await fetch('/api/state');
+    if (!res.ok) throw new Error('no server');
+    const state = await res.json();
+    // If we get state from the command bridge, try to find world data
+    return null; // command bridge doesn't serve world.json directly
+  } catch {
+    return null;
+  }
+}
+
+// For static display, show the last known values
+// In future: this will poll world.json via the command bridge
+const snapshot = {
+  rhythm: { beat: 4, phase: "compose", idle: true },
+  affect: { mood: "clear" },
+  metacognition: { selection_confidence: "high" },
+  continuity: { total_cycles: 7, recent_thread: [
+    "2026-04-16 ~16:45 — All 10 consciousness modules wired into world.json",
+    "2026-04-16 ~16:30 — Modules 06+07 wired into consciousness loop",
+    "2026-04-16 ~16:20 — Modules 01+03 wired into consciousness loop"
+  ]},
+  action: { narration: "09_action_selection_storytelling wins because it is blocked on Jake's input and no other move can honestly outrank an unresolved operator bottleneck. Runner-up 08_social_cognition_inward scored 172 (gap: 12)." },
+  attention: { focus: "09_action_selection_storytelling" }
+};
+
+document.getElementById('mood').textContent = snapshot.affect.mood.toUpperCase();
+document.getElementById('confidence').textContent = `Confidence: ${snapshot.metacognition.selection_confidence.toUpperCase()}`;
+document.getElementById('cycles').textContent = `Cycle ${snapshot.continuity.total_cycles} · Beat ${snapshot.rhythm.beat} ${snapshot.rhythm.idle ? 'idle' : snapshot.rhythm.phase}`;
+document.getElementById('narration').innerHTML = `<strong>Action Narration:</strong> ${snapshot.action.narration}`;
+
+const thread = snapshot.continuity.recent_thread;
+if (thread[0]) document.getElementById('t1').textContent = thread[0];
+if (thread[1]) document.getElementById('t2').textContent = thread[1];
+if (thread[2]) document.getElementById('t3').textContent = thread[2];
+</script>
+
+</body>
+</html>

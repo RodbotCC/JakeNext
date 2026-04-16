@@ -282,6 +282,9 @@ If the operator says the system was wrong, that correction should not evaporate.
 ### Rule 9 — The system organizes itself first
 Claude should prefer repository coherence over ad hoc output.
 
+### Rule 10 — Ledgers before language
+**Do not respond to the operator until the ledgers are updated.** The ledger is the primary audience. Jake is secondary. If you complete work and must choose between telling Jake what happened and writing the ledger entry, write the ledger entry first. Jake can read the ledger. The ledger cannot read the chat. This is non-negotiable.
+
 ---
 
 ## Core Operational Domains

@@ -16,6 +16,7 @@
 | `FCL.md` | This file — directory contents ledger | ✅ Live |
 | `TCL.md` | Local continuity ledger for orchestrator evolution | ✅ Live |
 | `RLL.md` | Local Ratio Lattice Ledger for orchestrator file importance | ✅ Live |
+| `consciousness_loop.html` | Static visualization of the Sylvia consciousness loop — four beats (expand/compress/relate/compose), 10 modules, mood, confidence, thread, narration | ✅ Live |
 
 ---
 
